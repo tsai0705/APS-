@@ -7,21 +7,20 @@
     android:layout_height="match_parent">
 
     <!-- 工具列 -->
-    <LinearLayout
+    <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:flexDirection="column">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="70dp">
 
             <!-- 黑色背景條 -->
-
             <View
                 android:id="@+id/query_logincolor_v"
                 android:layout_width="0dp"
@@ -47,7 +46,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/query_query_tv"
@@ -100,25 +98,27 @@
                 android:gravity="center_vertical"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
     <!-- 主內容區 -->
-    <LinearLayout
+    <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="50dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:flexDirection="column">
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            app:flexDirection="row"
+            app:alignItems="center">
 
             <TextView
                 android:id="@+id/query_process_tv"
@@ -126,22 +126,22 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="18dp"
-                android:layout_gravity="center"
                 android:layout_marginEnd="20dp"
                 android:text="製程別" />
 
             <Spinner
                 android:id="@+id/query_process_spinner"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1" />
+                app:layout_flexGrow="1"/>
 
-        </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            app:flexDirection="row"
+            app:alignItems="center"
             android:layout_marginBottom="8dp">
 
             <TextView
@@ -154,33 +154,34 @@
                 android:text="上線日期" />
 
             <EditText
-                android:layout_width="440dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
-                android:layout_height="match_parent"/>
+                app:layout_flexGrow="1"/>
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="60dp"
                 android:layout_height="58dp"
-                android:background="@drawable/querybutton">
+                android:background="@drawable/querybutton"
+                app:flexDirection="row"
+                app:alignItems="center">
 
                 <Button
                     android:id="@+id/query_moredate_btn"
                     android:layout_width="60dp"
                     android:layout_height="58dp"
-                    android:gravity="end"
-                    android:layout_gravity="center"
                     android:background="@android:color/white"
                     android:textColor="@color/black"
                     android:text="..."/>
 
-            </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            app:flexDirection="row"
+            app:alignItems="center"
             android:layout_marginBottom="8dp">
 
             <TextView
@@ -193,32 +194,34 @@
                 android:text="訂單單號" />
 
             <EditText
-                android:layout_width="440dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
-                android:layout_height="match_parent"/>
+                app:layout_flexGrow="1"/>
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="60dp"
                 android:layout_height="58dp"
-                android:background="@drawable/querybutton">
+                android:background="@drawable/querybutton"
+                app:flexDirection="row"
+                app:alignItems="center">
 
                 <Button
                     android:id="@+id/query_moreordernumber_btn"
                     android:layout_width="60dp"
                     android:layout_height="58dp"
-                    android:gravity="end"
-                    android:layout_gravity="center"
                     android:background="@android:color/white"
                     android:textColor="@color/black"
                     android:text="..."/>
 
-            </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            app:flexDirection="row"
+            app:alignItems="center">
 
             <TextView
                 android:id="@+id/textView2"
@@ -230,29 +233,29 @@
                 android:text="客戶" />
 
             <EditText
-                android:layout_width="440dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
-                android:layout_height="match_parent"/>
+                app:layout_flexGrow="1"/>
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="60dp"
                 android:layout_height="58dp"
-                android:background="@drawable/querybutton">
+                android:background="@drawable/querybutton"
+                app:flexDirection="row"
+                app:alignItems="center">
 
                 <Button
                     android:id="@+id/query_moreclient_btn"
                     android:layout_width="60dp"
                     android:layout_height="58dp"
-                    android:gravity="end"
-                    android:layout_gravity="center"
                     android:background="@android:color/white"
                     android:textColor="@color/black"
                     android:text="..."/>
 
-            </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
-        </LinearLayout>
-
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
