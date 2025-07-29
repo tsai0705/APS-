@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/production_Query_btn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#1ab5b9"
+            app:backgroundTint="#1ab5b9"
+            android:textColor="@color/white"
+            android:layout_marginStart="3dp"
+            android:textSize="18dp"
+            android:text="進度表查詢" />
+
+        <Button
+            android:id="@+id/production_adjust_btn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#1ab5b9"
+            app:backgroundTint="#1ab5b9"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="進度表調整" />
+
+        <Button
+            android:id="@+id/production_work_btn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#1ab5b9"
+            app:backgroundTint="#1ab5b9"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="報工" />
+
+        <Button
+            android:id="@+id/production_inquiry_btn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#1ab5b9"
+            app:backgroundTint="#1ab5b9"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="料況查詢" />
+
+        <Button
+            android:id="@+id/production_setting_btn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#1ab5b9"
+            app:backgroundTint="#1ab5b9"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="設定" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
