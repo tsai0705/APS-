@@ -156,12 +156,14 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="15dp"
                 app:layout_flexGrow="1"/>
 
             <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="60dp"
-                android:layout_height="58dp"
+                android:layout_width="65dp"
+                android:layout_height="54dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="2dp"
                 android:background="@drawable/querybutton"
                 app:flexDirection="row"
                 app:alignItems="center">
@@ -169,8 +171,11 @@
                 <Button
                     android:id="@+id/query_moredate_btn"
                     android:layout_width="60dp"
-                    android:layout_height="58dp"
-                    android:background="@android:color/white"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/querybutton"
+                    app:backgroundTint="@android:color/white"
                     android:textColor="@color/black"
                     android:text="..."/>
 
@@ -200,8 +205,10 @@
                 app:layout_flexGrow="1"/>
 
             <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="60dp"
-                android:layout_height="58dp"
+                android:layout_width="65dp"
+                android:layout_height="54dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="2dp"
                 android:background="@drawable/querybutton"
                 app:flexDirection="row"
                 app:alignItems="center">
@@ -209,8 +216,11 @@
                 <Button
                     android:id="@+id/query_moreordernumber_btn"
                     android:layout_width="60dp"
-                    android:layout_height="58dp"
-                    android:background="@android:color/white"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginBottom="1dp"
+                    app:backgroundTint="@android:color/white"
+                    android:background="@drawable/querybutton"
                     android:textColor="@color/black"
                     android:text="..."/>
 
@@ -235,12 +245,14 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="15dp"
                 app:layout_flexGrow="1"/>
 
             <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="60dp"
-                android:layout_height="58dp"
+                android:layout_width="65dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="2dp"
                 android:background="@drawable/querybutton"
                 app:flexDirection="row"
                 app:alignItems="center">
@@ -248,12 +260,15 @@
                 <Button
                     android:id="@+id/query_moreclient_btn"
                     android:layout_width="60dp"
-                    android:layout_height="58dp"
-                    android:background="@android:color/white"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="3dp"
+                    app:backgroundTint="@android:color/white"
+                    android:background="@drawable/querybutton"
                     android:textColor="@color/black"
                     android:text="..."/>
 
             </com.google.android.flexbox.FlexboxLayout>
+
         </com.google.android.flexbox.FlexboxLayout>
 
     </com.google.android.flexbox.FlexboxLayout>
