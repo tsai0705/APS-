@@ -17,14 +17,8 @@ import com.example.aps_true.R;
 import com.example.aps_true.ui.main.MainActivity;
 import com.example.aps_true.ui.query.QianguanActivity;
 import com.example.aps_true.ui.query.QueryMainActivity;
-
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
+import android.widget.ArrayAdapter;// 用來設定 Spinner 的資料來源
+import android.widget.Spinner;// 下拉選單元件
 import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
 import java.util.HashMap;
@@ -51,6 +45,22 @@ public class QueryActivity extends AppCompatActivity{
                 finish();
             }
         });
+
+        // 建立一組字串陣列，作為下拉選單項目
+        final String[] str={"點焊"};
+
+        // 建立 ArrayAdapter，連結字串陣列與 Spinner
+        ArrayAdapter<String> strList = new ArrayAdapter<>(
+                QueryActivity.this,
+                android.R.layout.simple_spinner_item, // 注意：此為 Spinner 預設項目的樣式
+                str
+        );
+
+        processSpinner.setAdapter(strList);// 設定 Spinner 的資料來源為strList
+
+        // 設定下拉選單列表項目的顯示樣式
+        strList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         moreordernumberButton.setOnClickListener(this::moreorderclick);
         moreclientButton.setOnClickListener(this::moreclientclick);
@@ -84,9 +94,8 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // 跳轉到 前關
                 Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-                intent.putExtra("ORDER_NUMBER", items[choice]);
+                intent.putExtra("Ordernumber", items[choice]);
                 startActivity(intent);
             }
         });
@@ -98,7 +107,7 @@ public class QueryActivity extends AppCompatActivity{
 
         choice = 0; //預設選擇Item2(從0開始)
         //前關 本階 後關 裝配 銷售
-        String[] items = {"我", "沒", "看", "到", "(M1315) MATADOR  GmbH"};
+        String[] items = {"我", "沒", "找", "到", "(M1315) MATADOR  GmbH"};
         AlertDialog.Builder dialog = new AlertDialog.Builder(QueryActivity.this);
 
         // 參數1：設置選項List;  參數2:設置預設選中項
@@ -113,7 +122,7 @@ public class QueryActivity extends AppCompatActivity{
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-                intent.putExtra("ORDER_NUMBER", items[choice]);
+                intent.putExtra("Clientnumber", items[choice]);
                 startActivity(intent);
             }
         });
@@ -121,6 +130,28 @@ public class QueryActivity extends AppCompatActivity{
     }
 
     protected void moredateclick(View view){
+        choice = 0; //預設選擇Item2(從0開始)
+        //前關 本階 後關 裝配 銷售
+        String[] items = {"2018-12-05", "2018-12-06", "2018-12-07", "2018-12-08", "沒找到=-="};
+        AlertDialog.Builder dialog = new AlertDialog.Builder(QueryActivity.this);
 
+        // 參數1：設置選項List;  參數2:設置預設選中項
+        dialog.setSingleChoiceItems(items, choice, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                choice = i;//紀錄使用者點選的選項之索引值
+            }
+        });
+
+        dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
+                intent.putExtra("Datenumber", items[choice]);
+                startActivity(intent);
+            }
+        });
+        dialog.show(); // 顯示dialog
     }
+
 }
