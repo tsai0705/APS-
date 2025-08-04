@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query;
+package com.example.aps_true.ui.query.show;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 
-public class HouguanActivity extends AppCompatActivity {
+public class QianguanActivity extends AppCompatActivity {
 
 
     @Override

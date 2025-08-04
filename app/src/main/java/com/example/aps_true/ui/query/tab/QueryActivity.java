@@ -1,33 +1,24 @@
 package com.example.aps_true.ui.query.tab;
 
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.aps_true.R;
-import com.example.aps_true.ui.main.MainActivity;
-import com.example.aps_true.ui.query.QianguanActivity;
-import com.example.aps_true.ui.query.QueryMainActivity;
+import com.example.aps_true.ui.query.main.QueryMainActivity;
 import android.widget.ArrayAdapter;// 用來設定 Spinner 的資料來源
-import android.widget.Spinner;// 下拉選單元件
 import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
-import java.util.HashMap;
-import java.util.regex.Pattern;
 
 public class QueryActivity extends AppCompatActivity{
 
     private ImageButton backImageButton;
-    private Button moredateButton,moreordernumberButton,moreclientButton;
+    private Button moredateButton,moreordernumberButton,moreclientButton,submitButton;
     private Spinner processSpinner;
     private int choice = 0;
 
@@ -65,6 +56,7 @@ public class QueryActivity extends AppCompatActivity{
         moreordernumberButton.setOnClickListener(this::moreorderclick);
         moreclientButton.setOnClickListener(this::moreclientclick);
         moredateButton.setOnClickListener(this::moredateclick);
+        submitButton.setOnClickListener(this::submitclick);
 
     }
 
@@ -73,6 +65,7 @@ public class QueryActivity extends AppCompatActivity{
         moredateButton = findViewById(R.id.query_moredate_btn);
         moreordernumberButton = findViewById(R.id.query_moreordernumber_btn);
         moreclientButton = findViewById(R.id.query_moreclient_btn);
+        submitButton = findViewById(R.id.query_submit_btn);
         processSpinner = findViewById(R.id.query_process_spinner);
     }
 
@@ -94,9 +87,9 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-                intent.putExtra("Ordernumber", items[choice]);
-                startActivity(intent);
+//                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
+//                intent.putExtra("Ordernumber", items[choice]);
+//                startActivity(intent);
             }
         });
         dialog.show(); // 顯示dialog
@@ -121,9 +114,9 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-                intent.putExtra("Clientnumber", items[choice]);
-                startActivity(intent);
+//                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
+//                intent.putExtra("Clientnumber", items[choice]);
+//                startActivity(intent);
             }
         });
         dialog.show(); // 顯示dialog
@@ -146,12 +139,16 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-                intent.putExtra("Datenumber", items[choice]);
-                startActivity(intent);
+//                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
+//                intent.putExtra("Datenumber", items[choice]);
+//                startActivity(intent);
             }
         });
         dialog.show(); // 顯示dialog
     }
 
+    protected void submitclick(View view){
+        Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
+        startActivity(intent);
+    }
 }

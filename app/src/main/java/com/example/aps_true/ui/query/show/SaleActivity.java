@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query;
+package com.example.aps_true.ui.query.show;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 
-public class QueryMainActivity extends AppCompatActivity {
+public class SaleActivity extends AppCompatActivity {
 
 
     @Override
@@ -18,4 +18,3 @@ public class QueryMainActivity extends AppCompatActivity {
 
     }
 }
-

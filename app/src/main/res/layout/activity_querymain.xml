@@ -1,6 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <!-- 工具列 -->
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:flexDirection="column">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <!-- 黑色背景條 -->
+            <View
+                android:id="@+id/query_logincolor_v"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/query_back_ibtn"
+                android:layout_width="75dp"
+                android:layout_height="70dp"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:contentDescription="返回上一頁"
+                android:focusable="true"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:layout_marginStart="45dp"
+                android:src="@drawable/u154"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/query_query_tv"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="進度表查詢"
+                app:layout_constraintBottom_toBottomOf="@id/query_logincolor_v"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/query_avatar_iv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/u8"
+                app:layout_constraintEnd_toStartOf="@id/query_username_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="8dp"/>
+
+            <ImageView
+                android:id="@+id/query_badge_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/u9"
+                app:layout_constraintEnd_toStartOf="@id/query_username_tv"
+                app:layout_constraintTop_toTopOf="@id/query_avatar_iv"
+                android:translationX="-13dp"
+                android:translationY="6dp"
+                />
+
+            <TextView
+                android:id="@+id/query_username_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="羅正修"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="24dp"
+                android:gravity="center_vertical"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <!-- 筆數列 -->
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/number_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexDirection="column"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <View
+                android:id="@+id/querymain_color_v"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="#cccccc"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/querymain_number_tv"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:text="載入筆數"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/querymain_color_v"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <View
+                android:id="@+id/querymain_line_v"
+                android:layout_width="1dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="3dp"
+                android:background="@color/black"
+                android:layout_marginStart="-10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/querymain_total_tv"
+                app:layout_constraintStart_toEndOf="@id/querymain_number_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/querymain_total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-600dp"
+                android:text="共10筆"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/querymain_number_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/number_layout"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 最下面的按鈕列 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/login_color_v"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/login_back_ibtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="返回上一頁"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:src="@drawable/u11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/login_home_ibtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="返回首頁"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:src="@drawable/u13"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/login_square_ibtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="方形功能"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:src="@drawable/u12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query;
+package com.example.aps_true.ui.query.show;
 
 import android.os.Bundle;
 
@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 
-//本階
-public class ThisevelActivity extends AppCompatActivity {
+public class HouguanActivity extends AppCompatActivity {
 
 
     @Override

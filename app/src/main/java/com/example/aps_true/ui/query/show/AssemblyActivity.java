@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query;
+package com.example.aps_true.ui.query.show;
 
 import android.os.Bundle;
 

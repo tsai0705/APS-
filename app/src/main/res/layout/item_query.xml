@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/query_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="#FFFFFF">
+
+    <!-- 編號 -->
+    <TextView
+        android:id="@+id/recyclerview_serial_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:text="1"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center" />
+
+    <!-- 單號區塊 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="2.5"
+        android:gravity="center_vertical|center_horizontal">
+
+        <!-- 單號 -->
+        <TextView
+            android:id="@+id/recyclerview_ordernumber_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1MO1812040031"
+            android:textColor="#008000"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center_vertical|start"/>
+
+        <!-- 日期 -->
+        <TextView
+            android:id="@+id/recyclerview_source_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1SO1811270009"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center_vertical|start" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical|center_horizontal">
+
+        <!-- 單號 -->
+        <TextView
+            android:id="@+id/recyclerview_number_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="F260011ATN-2"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center_vertical|start" />
+
+        <!-- 日期 -->
+        <TextView
+            android:id="@+id/recyclerview_number2_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MATADOR"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center_vertical|start" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:gravity="center_vertical|center_horizontal">
+
+        <!-- 單號 -->
+        <TextView
+            android:id="@+id/recyclerview_number3_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="      數量：3"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center_vertical" />
+
+        <!-- 日期 -->
+        <TextView
+            android:id="@+id/recyclerview_number4_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  結關日：2018-12-08"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <!-- 時間 -->
+    <TextView
+        android:id="@+id/recyclerview_time_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:text="上線日：2018-12-07"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/recyclerview_process_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:text="一群-點焊"
+        android:textColor="#008000"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:gravity="center" />
+
+    <!-- 紅利點數 -->
+    <TextView
+        android:id="@+id/recyclerview_check_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="生效"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        app:srcCompat="@drawable/u34" />
+
+
+</LinearLayout>

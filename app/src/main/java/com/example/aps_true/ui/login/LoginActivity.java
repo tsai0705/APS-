@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         accountEditText = findViewById(R.id.login_account_et);
         passwordEditText = findViewById(R.id.login_password_et);
         submitButton = findViewById(R.id.login_submit_btn);
-
+        submitButton.setBackgroundTintList(null);
         check();
 
         passwordEditText.setOnFocusChangeListener((v, hasFocus) -> {
