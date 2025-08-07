@@ -20,17 +20,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.query.tab.QueryActivity" />
-
         <!-- 註冊 MainActivity（用於跳轉） -->
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.query.tab.SettingActivity" />
+        <activity android:name=".ui.query.tab.QueryActivity" />
         <activity android:name=".ui.query.main.QueryMainActivity" />
-        <activity android:name=".ui.todayschedule.QianguanActivity" />
-        <activity android:name=".ui.todayschedule.AssemblyActivity" />
-        <activity android:name=".ui.todayschedule.ThisevelActivity" />
-        <activity android:name=".ui.todayschedule.HouguanActivity" />
-        <activity android:name=".ui.todayschedule.SaleActivity" />
+        <activity android:name=".viewpager.todayschedule.TD_QianguanActivity" />
+        <activity android:name=".viewpager.todayschedule.TD_AssemblyActivity" />
+        <activity android:name=".viewpager.todayschedule.TD_ThisevelActivity" />
+        <activity android:name=".viewpager.todayschedule.TD_HouguanActivity" />
+        <activity android:name=".viewpager.todayschedule.TD_SaleActivity" />
     </application>
 
 </manifest>

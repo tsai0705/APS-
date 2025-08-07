@@ -156,6 +156,7 @@
                 android:text="上線日期" />
 
             <EditText
+                android:id="@+id/query_date_et"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="15dp"
@@ -166,17 +167,17 @@
                 android:layout_height="54dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="2dp"
-                android:background="@drawable/querybutton"
+                android:background="@drawable/query_button"
                 app:flexDirection="row"
                 app:alignItems="center">
 
                 <Button
-                    android:id="@+id/query_moredate_btn"
+                    android:id="@+id/query_date_btn"
                     android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="1dp"
-                    android:background="@drawable/querybutton"
+                    android:background="@drawable/query_button"
                     app:backgroundTint="@android:color/white"
                     android:textColor="@color/black"
                     android:text="..."/>
@@ -192,7 +193,7 @@
             android:layout_marginBottom="8dp">
 
             <TextView
-                android:id="@+id/query_ordernumber_tv"
+                android:id="@+id/query_order_number_tv"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -201,6 +202,7 @@
                 android:text="訂單單號" />
 
             <EditText
+                android:id="@+id/query_order_number_et"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
@@ -211,18 +213,18 @@
                 android:layout_height="54dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="2dp"
-                android:background="@drawable/querybutton"
+                android:background="@drawable/query_button"
                 app:flexDirection="row"
                 app:alignItems="center">
 
                 <Button
-                    android:id="@+id/query_moreordernumber_btn"
+                    android:id="@+id/query_order_number_btn"
                     android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="1dp"
                     app:backgroundTint="@android:color/white"
-                    android:background="@drawable/querybutton"
+                    android:background="@drawable/query_button"
                     android:textColor="@color/black"
                     android:text="..."/>
 
@@ -236,7 +238,7 @@
             app:alignItems="center">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/query_client_tv"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -245,6 +247,7 @@
                 android:text="客戶" />
 
             <EditText
+                android:id="@+id/query_client_et"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="15dp"
@@ -255,17 +258,17 @@
                 android:layout_height="56dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="2dp"
-                android:background="@drawable/querybutton"
+                android:background="@drawable/query_button"
                 app:flexDirection="row"
                 app:alignItems="center">
 
                 <Button
-                    android:id="@+id/query_moreclient_btn"
+                    android:id="@+id/query_client_btn"
                     android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="3dp"
                     app:backgroundTint="@android:color/white"
-                    android:background="@drawable/querybutton"
+                    android:background="@drawable/query_button"
                     android:textColor="@color/black"
                     android:text="..."/>
 
@@ -293,65 +296,6 @@
             android:background="@drawable/checkbutton"
             app:backgroundTint="@android:color/holo_red_light"
             tools:layout_editor_absoluteX="192dp" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <View
-                android:id="@+id/query_color_v"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/query_backtwo_ibtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:contentDescription="返回上一頁"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:padding="12dp"
-                android:src="@drawable/u11"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/query_home_ibtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:contentDescription="返回首頁"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:padding="12dp"
-                android:src="@drawable/u13"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/query_square_ibtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:contentDescription="方形功能"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:padding="12dp"
-                android:src="@drawable/u12"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

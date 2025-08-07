@@ -1,6 +1,6 @@
-package com.example.aps_true.ui.query.main;
+package com.example.aps_true.viewpager.schdule;
 
-public class QueryItem {
+public class ScheduleItem {
     private int serial;
     private String ordernumber;
     private String source;
@@ -10,11 +10,10 @@ public class QueryItem {
     private String number4;
     private String time;
     private String process;
-    private String check;
 
 
-    public QueryItem(Integer serial, String ordernumber,String source, String number, String number2,
-                     String number3, String number4, String time, String process, String check) {
+    public ScheduleItem(Integer serial, String ordernumber, String source, String number, String number2,
+                        String number3, String number4, String time, String process) {
         this.serial = serial;
         this.ordernumber = ordernumber;
         this.source = source;
@@ -24,7 +23,6 @@ public class QueryItem {
         this.number4 = number4;
         this.time = time;
         this.process = process;
-        this.check = check;
     }
 
     public Integer getSerial() { return serial; }
@@ -36,5 +34,4 @@ public class QueryItem {
     public String getNumber4() { return number4; }
     public String getTime() { return  time; }
     public String getProcess() { return  process; }
-    public String getCheck() { return check; }
 }

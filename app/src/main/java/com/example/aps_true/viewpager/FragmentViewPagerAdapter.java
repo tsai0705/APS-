@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.aps_true.viewpager.schdule.FragmentSchedule;
+
 public class FragmentViewPagerAdapter extends FragmentStateAdapter {
     //初始化
     public FragmentViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {

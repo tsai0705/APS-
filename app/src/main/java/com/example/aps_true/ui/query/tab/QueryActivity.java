@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +20,9 @@ import androidx.appcompat.app.AlertDialog;
 public class QueryActivity extends AppCompatActivity{
 
     private ImageButton backImageButton;
-    private Button moredateButton,moreordernumberButton,moreclientButton,submitButton;
+    private Button dateButton,order_numberButton,clientButton,submitButton;
     private Spinner processSpinner;
+    private EditText dateEditText,ordernumberEditText,clientEditText;
     private int choice = 0;
 
     @Override
@@ -53,23 +56,32 @@ public class QueryActivity extends AppCompatActivity{
         strList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-        moreordernumberButton.setOnClickListener(this::moreorderclick);
-        moreclientButton.setOnClickListener(this::moreclientclick);
-        moredateButton.setOnClickListener(this::moredateclick);
+        order_numberButton.setOnClickListener(this::orderclick);
+        clientButton.setOnClickListener(this::clientclick);
+        dateButton.setOnClickListener(this::dateclick);
         submitButton.setOnClickListener(this::submitclick);
 
+        backImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     protected void bindUI(){
         backImageButton = findViewById(R.id.query_back_ibtn);
-        moredateButton = findViewById(R.id.query_moredate_btn);
-        moreordernumberButton = findViewById(R.id.query_moreordernumber_btn);
-        moreclientButton = findViewById(R.id.query_moreclient_btn);
+        dateButton = findViewById(R.id.query_date_btn);
+        order_numberButton = findViewById(R.id.query_order_number_btn);
+        clientButton = findViewById(R.id.query_client_btn);
         submitButton = findViewById(R.id.query_submit_btn);
         processSpinner = findViewById(R.id.query_process_spinner);
+        dateEditText = findViewById(R.id.query_date_et);
+        ordernumberEditText = findViewById(R.id.query_order_number_et);
+        clientEditText = findViewById(R.id.query_client_et);
     }
 
-    protected void moreorderclick(View view){
+    protected void orderclick(View view){
 
         choice = 0; //預設選擇Item2(從0開始)
         //前關 本階 後關 裝配 銷售
@@ -87,16 +99,14 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-//                intent.putExtra("Ordernumber", items[choice]);
-//                startActivity(intent);
+                ordernumberEditText.setText(items[choice]);
             }
         });
         dialog.show(); // 顯示dialog
 
     }
 
-    protected void moreclientclick(View view){
+    protected void clientclick(View view){
 
         choice = 0; //預設選擇Item2(從0開始)
         //前關 本階 後關 裝配 銷售
@@ -114,15 +124,13 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-//                intent.putExtra("Clientnumber", items[choice]);
-//                startActivity(intent);
+                clientEditText.setText(items[choice]);
             }
         });
         dialog.show(); // 顯示dialog
     }
 
-    protected void moredateclick(View view){
+    protected void dateclick(View view){
         choice = 0; //預設選擇Item2(從0開始)
         //前關 本階 後關 裝配 銷售
         String[] items = {"2018-12-05", "2018-12-06", "2018-12-07", "2018-12-08", "沒找到=-="};
@@ -139,9 +147,7 @@ public class QueryActivity extends AppCompatActivity{
         dialog.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-//                intent.putExtra("Datenumber", items[choice]);
-//                startActivity(intent);
+                dateEditText.setText(items[choice]);
             }
         });
         dialog.show(); // 顯示dialog
@@ -151,4 +157,7 @@ public class QueryActivity extends AppCompatActivity{
         Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
         startActivity(intent);
     }
+
+
+
 }

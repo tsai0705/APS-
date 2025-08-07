@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.todayschedule;
+package com.example.aps_true.viewpager.todayschedule;
 
 import android.os.Bundle;
 
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 
-//銷售
-public class SaleActivity extends AppCompatActivity {
+//前關
+public class TD_QianguanActivity extends AppCompatActivity {
 
 
     @Override

@@ -11,7 +11,7 @@
 
     <!-- 編號 -->
     <TextView
-        android:id="@+id/recyclerview_serial_tv"
+        android:id="@+id/schedule_serial_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.6"
@@ -30,7 +30,7 @@
 
         <!-- 單號 -->
         <TextView
-            android:id="@+id/recyclerview_ordernumber_tv"
+            android:id="@+id/schedule_ordernumber_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1MO1812040031"
@@ -41,7 +41,7 @@
 
         <!-- 日期 -->
         <TextView
-            android:id="@+id/recyclerview_source_tv"
+            android:id="@+id/schedule_source_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1SO1811270009"
@@ -61,7 +61,7 @@
 
         <!-- 單號 -->
         <TextView
-            android:id="@+id/recyclerview_number_tv"
+            android:id="@+id/schedule_number_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|start"
@@ -71,7 +71,7 @@
 
         <!-- 日期 -->
         <TextView
-            android:id="@+id/recyclerview_number2_tv"
+            android:id="@+id/schedule_number2_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MATADOR"
@@ -90,7 +90,7 @@
 
         <!-- 單號 -->
         <TextView
-            android:id="@+id/recyclerview_number3_tv"
+            android:id="@+id/schedule_number3_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="      數量：3"
@@ -100,7 +100,7 @@
 
         <!-- 日期 -->
         <TextView
-            android:id="@+id/recyclerview_number4_tv"
+            android:id="@+id/schedule_number4_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="  結關日：2018-12-08"
@@ -112,35 +112,24 @@
 
     <!-- 時間 -->
     <TextView
-        android:id="@+id/recyclerview_time_tv"
+        android:id="@+id/schedule_time_tv"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="45dp"
         android:layout_weight="3"
-        android:text="上線日：2018-12-07"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:text="計畫開始:08:00"
+        android:textColor="#008000"
         android:textSize="16sp"
-        android:gravity="center" />
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/recyclerview_process_tv"
+        android:id="@+id/schedule_process_tv"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
         android:text="一群-點焊"
-        android:textColor="#008000"
         android:textStyle="bold"
         android:textSize="15sp"
-        android:gravity="center" />
-
-    <!-- 紅利點數 -->
-    <TextView
-        android:id="@+id/recyclerview_check_tv"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="生效"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:gravity="center" />
 
     <ImageView

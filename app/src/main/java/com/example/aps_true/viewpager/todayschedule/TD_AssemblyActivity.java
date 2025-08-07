@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.todayschedule;
+package com.example.aps_true.viewpager.todayschedule;
 
 import android.os.Bundle;
 
@@ -7,7 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 
-public class HouguanActivity extends AppCompatActivity {
+//裝配
+public class TD_AssemblyActivity extends AppCompatActivity {
 
 
     @Override
