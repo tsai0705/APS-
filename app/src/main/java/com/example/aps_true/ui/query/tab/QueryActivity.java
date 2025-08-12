@@ -33,13 +33,6 @@ public class QueryActivity extends AppCompatActivity{
 
         bindUI();
 
-        backImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         // 建立一組字串陣列，作為下拉選單項目
         final String[] str={"點焊"};
 

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.aps_true.R;
-import com.example.aps_true.ui.query.show.QianguanActivity;
-import com.example.aps_true.ui.query.tab.QueryActivity;
+import com.example.aps_true.ui.query.show.QueryTabActivity;
+import com.example.aps_true.ui.query.show.tab.ThislevelActivity;
 
 public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> {
     private Context context;
@@ -74,7 +74,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
 
         //跳轉單獨顯示頁面
         holder.serialTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, QianguanActivity.class);
+            Intent intent = new Intent(context, QueryTabActivity.class);
             context.startActivity(intent);
         });
 

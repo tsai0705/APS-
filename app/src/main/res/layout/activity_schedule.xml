@@ -18,13 +18,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="40dp">
 
             <View
                 android:id="@+id/schedule_color_v"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:background="#cccccc"
+                android:layout_height="40dp"
+                android:background="#E0E0E0"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

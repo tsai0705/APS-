@@ -25,11 +25,7 @@
         <activity android:name=".ui.query.tab.SettingActivity" />
         <activity android:name=".ui.query.tab.QueryActivity" />
         <activity android:name=".ui.query.main.QueryMainActivity" />
-        <activity android:name=".viewpager.todayschedule.TD_QianguanActivity" />
-        <activity android:name=".viewpager.todayschedule.TD_AssemblyActivity" />
-        <activity android:name=".viewpager.todayschedule.TD_ThisevelActivity" />
-        <activity android:name=".viewpager.todayschedule.TD_HouguanActivity" />
-        <activity android:name=".viewpager.todayschedule.TD_SaleActivity" />
+        <activity android:name=".ui.query.show.QueryTabActivity" />
     </application>
 
 </manifest>

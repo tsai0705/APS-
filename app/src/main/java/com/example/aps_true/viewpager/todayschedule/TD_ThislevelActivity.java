@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.aps_true.R;
 
 //本階
-public class TD_ThisevelActivity extends AppCompatActivity {
+public class TD_ThislevelActivity extends AppCompatActivity {
 
 
     @Override
