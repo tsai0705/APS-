@@ -11,9 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.aps_true.R;
 
-//本階
-public class ThislevelActivity extends Fragment {
-    public ThislevelActivity() {
+public class SaleFragment extends Fragment {
+    public SaleFragment() {
         // 必須的空建構子
     }
 
@@ -23,10 +22,9 @@ public class ThislevelActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_thislevel, container, false);
+        View view = inflater.inflate(R.layout.activity_sale, container, false);
 
         // 回傳 view
         return view;
     }
 }
-

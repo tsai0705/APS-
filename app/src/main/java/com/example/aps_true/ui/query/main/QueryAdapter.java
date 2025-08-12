@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.aps_true.R;
 import com.example.aps_true.ui.query.show.QueryTabActivity;
-import com.example.aps_true.ui.query.show.tab.ThislevelActivity;
 
 public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> {
     private Context context;

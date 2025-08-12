@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.aps_true.ui.query.show.tab.AssemblyActivity;
-import com.example.aps_true.ui.query.show.tab.HouguanActivity;
-import com.example.aps_true.ui.query.show.tab.QianguanActivity;
-import com.example.aps_true.ui.query.show.tab.SaleActivity;
-import com.example.aps_true.ui.query.show.tab.ThislevelActivity;
+import com.example.aps_true.ui.query.show.tab.AssemblyFragment;
+import com.example.aps_true.ui.query.show.tab.HouguanFragment;
+import com.example.aps_true.ui.query.show.tab.QianguanFragment;
+import com.example.aps_true.ui.query.show.tab.SaleFragment;
+import com.example.aps_true.ui.query.show.tab.ThislevelFragment;
 
 public class QueryViewPagerAdapter extends FragmentStateAdapter {
     //初始化
@@ -21,17 +21,17 @@ public class QueryViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         if (position == 0){
-            return new QianguanActivity();
+            return new QianguanFragment();
         }
         else if (position == 1){
-            return new ThislevelActivity();
+            return new ThislevelFragment();
         }else if (position == 2){
-            return new HouguanActivity();
+            return new HouguanFragment();
         }else if (position == 3){
-            return new AssemblyActivity();
+            return new AssemblyFragment();
         }
         else {
-            return new SaleActivity();
+            return new SaleFragment();
         }
     }
 

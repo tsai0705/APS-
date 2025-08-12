@@ -11,17 +11,19 @@ import androidx.fragment.app.Fragment;
 
 import com.example.aps_true.R;
 
-public class QianguanActivity extends Fragment {
-    public QianguanActivity() {
+//裝配
+public class AssemblyFragment extends Fragment {
+    public AssemblyFragment() {
         // 必須的空建構子
     }
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_qianguan, container, false);
+        View view = inflater.inflate(R.layout.activity_assembly, container, false);
 
         // 回傳 view
         return view;

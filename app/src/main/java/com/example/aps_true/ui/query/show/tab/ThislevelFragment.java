@@ -11,8 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.aps_true.R;
 
-public class HouguanActivity  extends Fragment {
-    public HouguanActivity() {
+//本階
+public class ThislevelFragment extends Fragment {
+    public ThislevelFragment() {
         // 必須的空建構子
     }
 
@@ -22,11 +23,10 @@ public class HouguanActivity  extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_houguan, container, false);
+        View view = inflater.inflate(R.layout.activity_thislevel, container, false);
 
         // 回傳 view
         return view;
     }
 }
-
 

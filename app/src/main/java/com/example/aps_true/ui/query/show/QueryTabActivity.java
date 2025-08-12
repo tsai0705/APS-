@@ -13,7 +13,7 @@ import com.example.aps_true.R;
 public class QueryTabActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private TabLayout tab;
-    private FragmentViewPagerAdapter adapter;
+    private QueryViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class QueryTabActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
         tab = findViewById(R.id.tab);
 
-        adapter = new FragmentViewPagerAdapter(this);
+        adapter = new QueryViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(1);
 
