@@ -32,7 +32,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/thislevel_back_ibtn"
+                android:id="@+id/thislevel_left_ibtn"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:contentDescription="返回上一頁"
+                android:focusable="true"
+                android:foregroundGravity="center_vertical"
+                android:src="@drawable/u129"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/thislevel_right_ibtn"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:background="@android:color/transparent"
@@ -47,14 +61,16 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="900dp"
-                android:layout_height="700dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.565"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/u158" />
+                app:srcCompat="@drawable/u127" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
