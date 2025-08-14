@@ -23,7 +23,7 @@
             <!-- 黑色背景條 -->
             <View
                 android:id="@+id/thislevel_querycolor_v"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#BEBEBE"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -62,8 +62,7 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="0dp"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.login_password_et);
         submitButton = findViewById(R.id.login_submit_btn);
         submitButton.setBackgroundTintList(null);
-        check();
 
         passwordEditText.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
@@ -52,19 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-        TextWatcher watcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                check();
-            }
-            @Override
-            public void afterTextChanged(Editable s) {}
-        };
-        accountEditText.addTextChangedListener(watcher);
-        passwordEditText.addTextChangedListener(watcher);
 
         if (loginData.getData().isEmpty()) {
             HashMap<String, String> admin = new HashMap<>();
@@ -93,10 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                 clear();
             } else {
                 clear();
-                Toast.makeText(this, "登入失敗", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "帳號密碼錯誤", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "請填寫完整", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "請完整填寫", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -105,13 +91,4 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText.setText("");
     }
 
-    private void check() {
-        String account = accountEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-
-        boolean isAllFilled = !account.isEmpty() && !password.isEmpty();
-        boolean isPassword = Pattern.matches("\\d{6,}", password);
-
-        submitButton.setEnabled(isAllFilled && isPassword);
-    }
 }

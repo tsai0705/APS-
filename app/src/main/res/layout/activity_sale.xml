@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/sale_right_ibtn"
+                android:id="@+id/sale_left_ibtn"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:background="@android:color/transparent"
@@ -40,16 +40,15 @@
                 android:contentDescription="返回上一頁"
                 android:focusable="true"
                 android:foregroundGravity="center_vertical"
-                android:src="@drawable/u128"
+                android:src="@drawable/u129"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="0dp"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

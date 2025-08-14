@@ -1,23 +1,22 @@
-package com.example.aps_true.ui.query.show.tab;
+package com.example.aps_true.viewpager.todayschedule.tab;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import androidx.viewpager2.widget.ViewPager2;
-import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.aps_true.R;
 
-public class HouguanFragment extends Fragment {
-    public HouguanFragment() {
+public class TD_HouguanFragment extends Fragment {
+    public TD_HouguanFragment() {
         // 必須的空建構子
     }
 
@@ -53,5 +52,6 @@ public class HouguanFragment extends Fragment {
         return view;
     }
 }
+
 
 

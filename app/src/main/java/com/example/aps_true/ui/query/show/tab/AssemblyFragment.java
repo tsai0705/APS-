@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
+import androidx.viewpager2.widget.ViewPager2;
+import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,16 +37,16 @@ public class AssemblyFragment extends Fragment {
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireActivity(), SaleFragment.class);
-                startActivity(intent);
+                ViewPager2 viewPager = requireActivity().findViewById(R.id.viewpager);
+                viewPager.setCurrentItem(4);
             }
         });
 
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireActivity(), HouguanFragment.class);
-                startActivity(intent);
+                ViewPager2 viewPager = requireActivity().findViewById(R.id.viewpager);
+                viewPager.setCurrentItem(2);
             }
         });
 

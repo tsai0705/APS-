@@ -17,6 +17,7 @@ public class QueryViewPagerAdapter extends FragmentStateAdapter {
         super(fragmentActivity);
     }
 
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {

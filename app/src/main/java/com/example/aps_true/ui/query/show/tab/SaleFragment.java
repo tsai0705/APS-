@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
+import androidx.viewpager2.widget.ViewPager2;
+import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -19,7 +22,7 @@ public class SaleFragment extends Fragment {
         // 必須的空建構子
     }
 
-    private ImageButton rightButton;
+    private ImageButton leftButton;
 
     @Nullable
     @Override
@@ -28,13 +31,13 @@ public class SaleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_sale, container, false);
 
-        rightButton = view.findViewById(R.id.sale_right_ibtn);
+        leftButton = view.findViewById(R.id.sale_left_ibtn);
 
-        rightButton.setOnClickListener(new View.OnClickListener() {
+        leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireActivity(), AssemblyFragment.class);
-                startActivity(intent);
+                ViewPager2 viewPager = requireActivity().findViewById(R.id.viewpager);
+                viewPager.setCurrentItem(3);
             }
         });
 

@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.show;
+package com.example.aps_true.viewpager.todayschedule;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.graphics.Color;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.aps_true.ui.query.show.QueryViewPagerAdapter;
 import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -14,9 +16,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.aps_true.R;
 
-public class QueryTabActivity extends AppCompatActivity {
+public class TodayMainActivity extends AppCompatActivity {
     private TextView numberTextView,number2TextView,number3TextView,number4TextView,timeTextView
-                    ,sumTextView,timestartTextView,timeendTextView,groupTextView,statusTextView;
+            ,sumTextView,timestartTextView,timeendTextView,groupTextView,statusTextView;
     private ImageButton backButton;
     private ViewPager2 viewPager;
     private TabLayout tab;
@@ -26,25 +28,25 @@ public class QueryTabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_querytab);
+        setContentView(R.layout.activity_todaymain);
 
         bindUI();
     }
 
     protected void bindUI(){
 
-        numberTextView = findViewById(R.id.querytab_number_tv);
-        number2TextView = findViewById(R.id.querytab_number2_tv);
-        number3TextView = findViewById(R.id.querytab_number3_tv);
-        number4TextView = findViewById(R.id.querytab_number4_tv);
-        sumTextView = findViewById(R.id.querytab_sum_tv);
-        timeTextView = findViewById(R.id.querytab_time_tv);
-        timestartTextView = findViewById(R.id.querytab_time_start_tv);
-        timeendTextView = findViewById(R.id.querytab_time_end_tv);
-        groupTextView = findViewById(R.id.querytab_group_tv);
-        statusTextView = findViewById(R.id.querytab_status_tv);
+        numberTextView = findViewById(R.id.todaymain_number_tv);
+        number2TextView = findViewById(R.id.todaymain_number2_tv);
+        number3TextView = findViewById(R.id.todaymain_number3_tv);
+        number4TextView = findViewById(R.id.todaymain_number4_tv);
+        sumTextView = findViewById(R.id.todaymain_sum_tv);
+        timeTextView = findViewById(R.id.todaymain_time_tv);
+        timestartTextView = findViewById(R.id.todaymain_time_start_tv);
+        timeendTextView = findViewById(R.id.todaymain_time_end_tv);
+        groupTextView = findViewById(R.id.todaymain_group_tv);
+        statusTextView = findViewById(R.id.todaymain_status_tv);
 
-        backButton = findViewById(R.id.querytab_back_ibtn);
+        backButton = findViewById(R.id.todaymain_back_ibtn);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

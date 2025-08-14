@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.aps_true.R;
-import com.example.aps_true.viewpager.todayschedule.TD_QianguanActivity;
-import com.example.aps_true.viewpager.schdule.ScheduleItem;
-import com.example.aps_true.viewpager.schdule.FragmentSchedule;
+import com.example.aps_true.viewpager.todayschedule.TodayMainActivity;
+import com.example.aps_true.viewpager.todayschedule.tab.TD_QianguanFragment;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<com.example.aps_true.viewpager.schdule.ScheduleAdapter.ViewHolder> {
     private Context context;
@@ -73,7 +72,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<com.example.aps_true.v
 
         //跳轉單獨顯示頁面
         holder.serialTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, TD_QianguanActivity.class);
+            Intent intent = new Intent(context, TodayMainActivity.class);
             context.startActivity(intent);
         });
 
