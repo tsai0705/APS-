@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 選中狀態 -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#008000"/> <!-- 綠色背景 -->
+            <stroke android:width="1dp" android:color="#008000"/> <!-- 綠色邊框 -->
+        </shape>
+    </item>
+
+    <!-- 未選中狀態 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white"/> <!-- 白色背景 -->
+            <stroke android:width="1dp" android:color="#008000"/> <!-- 綠色邊框 -->
+        </shape>
+    </item>
+</selector>
