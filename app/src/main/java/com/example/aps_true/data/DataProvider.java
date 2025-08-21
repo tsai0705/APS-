@@ -84,7 +84,7 @@ public class DataProvider {
         tabData.getData().add(sale);
     }
 
-    public static void setQueryData() {
+    public static void setQiangGuanData() {
         QueryData queryData = QueryData.getInstance();
 
         //前關
@@ -98,124 +98,6 @@ public class DataProvider {
         qianguan.put("storage", " ");
         qianguan.put("description", "　");
         queryData.getQueryData().add(qianguan);
-
-        //本階
-        HashMap<String, String> thislevel = new HashMap<>();
-        List<String> serials = new ArrayList<>();
-        for (int i = 1; i < 7; i++) {
-            serials.add(String.valueOf(i));
-        }
-
-        List<String> material = new ArrayList<>(
-                Arrays.asList("M1-ATN260011-22", "F260011ATN-21", "M1-F260011-1",
-                        "M1-F260011-3A", "M1-F260011-3B", "25-ATA-A-54111-8")
-        );
-
-        List<String> specifications = new ArrayList<>(
-                Arrays.asList(
-                        "ATN260011塑膠垃圾筒抽屜-抽頭 0.8*658.4*617.1MM；沖床組",
-                        "ATN260011垃圾筒系統櫃 超大抽身 0.8雙鋼珠 0.8*558*866 mm 世誠",
-                        "ATN260011垃圾筒系統櫃抽屜固定片 0.8*140*163.5mm；沖床組（1折）",
-                        "ATN260011/ATN340011 垃圾筒抽屜三角形固定片 1.0*200*18.2MM（左）；沖床組（1折）",
-                        "ATN260011/ATN340011 垃圾筒抽屜三角形固定片 1.0*200*18.2MM（右）；沖床組（1折）",
-                        "ATA-A-54111 抽屜L補強片/料加工 大邊")
-        );
-
-        List<String> unitdosage = new ArrayList<>();
-        for (int i = 1; i < 7; i++) {
-            if(i==3){
-                unitdosage.add("4.00");
-            }else if(i==6){
-                unitdosage.add("2.00");
-            }else {
-                unitdosage.add("1.00");
-            }
-        }
-
-        List<String> requiredamount = new ArrayList<>();
-        for (int i = 1; i < 7; i++) {
-            if (i == 3) {
-                requiredamount.add("12.00");
-            } else if (i == 6) {
-                requiredamount.add("6.00");
-            } else {
-                requiredamount.add("3.00");
-            }
-        }
-
-        List<String> description = new ArrayList<>();
-        for (int i = 1; i < 7; i++) {
-            if(i==2){
-                description.add("（400長）橫圓須補強 0.8*555*866");
-            }else {
-                description.add(" ");
-            }
-        }
-
-        thislevel.put("serial", String.join(",", serials));
-        thislevel.put("material", String.join(",", material));
-        thislevel.put("specifications", String.join(",", specifications));
-        thislevel.put("unitdosage", String.join(",", unitdosage));
-        thislevel.put("requiredamount", String.join(",", requiredamount));
-        thislevel.put("unit", "PCS");
-        thislevel.put("storage", " ");
-        thislevel.put("description", String.join(",", description));
-        queryData.getQueryData().add(thislevel);
-
-
-        //後關
-        HashMap<String, String> houguan = new HashMap<>();
-        List<String> hou_serials = new ArrayList<>();
-        for (int i = 1; i < 3; i++) {
-            hou_serials.add(String.valueOf(i));
-        }
-
-        List<String> hou_material = new ArrayList<>(
-                Arrays.asList("JA31035", "F260011ATN-2")
-        );
-
-        List<String> hou_specifications = new ArrayList<>(
-                Arrays.asList("砂漆灰色塗料EP340T VIGOR(國際色碼:RAL 7016)", "ATN260011 系統櫃(垃圾筒)-抽屜+垃圾筒固定片*4pcs")
-        );
-
-        List<String> hou_unitdosage = new ArrayList<>();
-        hou_unitdosage.add("0.32");
-        hou_unitdosage.add("1.00");
-
-
-        List<String> hou_requiredamount = new ArrayList<>();
-        hou_requiredamount.add("0.96");
-        hou_requiredamount.add("3.00");
-
-        List<String> hou_unit = new ArrayList<>();
-        hou_unit.add("公斤");
-        hou_unit.add("PCS");
-
-        List<String> hou_storage = new ArrayList<>();
-        hou_storage.add("常");
-        hou_storage.add(" ");
-
-        houguan.put("serial", String.join(",", hou_serials));
-        houguan.put("material",String.join(",", hou_material));
-        houguan.put("specifications", String.join(",", hou_specifications));
-        houguan.put("unitdosage", String.join(",", hou_unitdosage));
-        houguan.put("requiredamount", String.join(",", hou_requiredamount));
-        houguan.put("unit", String.join(",", hou_unit));
-        houguan.put("storage", String.join(",", hou_storage));
-        houguan.put("description", "H8-218A/T RAL7016 出貨時需附值證色板");
-        queryData.getQueryData().add(houguan);
-
-        //裝配
-        HashMap<String, String> assembly = new HashMap<>();
-        assembly.put("serial", "1");
-        assembly.put("material", "JA31035");
-        assembly.put("specifications", "砂漆灰色塗料EP340T VIGOR(國際色碼:RAL 7016)");
-        assembly.put("unitdosage", "EP338T砂漆淺灰/EP340T砂漆灰  系統櫃組合--26”下箱垃圾桶櫃");
-        assembly.put("requiredamount", "生產數量：3");
-        assembly.put("unit", "預計上線：2018-12-05");
-        assembly.put("storage", "計劃開始：08:00");
-        assembly.put("description", "計劃結束：08:05");
-        queryData.getQueryData().add(assembly);
     }
 
     public static void setThislevelData() {
@@ -286,6 +168,67 @@ public class DataProvider {
 
     }
 
+    public static void setHouGuanData() {
+        QueryData queryData = QueryData.getInstance();
+
+        //後關
+        HashMap<String, String> houguan = new HashMap<>();
+        List<String> hou_serials = new ArrayList<>();
+        for (int i = 1; i < 3; i++) {
+            hou_serials.add(String.valueOf(i));
+        }
+
+        List<String> hou_material = new ArrayList<>(
+                Arrays.asList("JA31035", "F260011ATN-2")
+        );
+
+        List<String> hou_specifications = new ArrayList<>(
+                Arrays.asList("砂漆灰色塗料EP340T VIGOR(國際色碼:RAL 7016)", "ATN260011 系統櫃(垃圾筒)-抽屜+垃圾筒固定片*4pcs")
+        );
+
+        List<String> hou_unitdosage = new ArrayList<>();
+        hou_unitdosage.add("0.32");
+        hou_unitdosage.add("1.00");
+
+
+        List<String> hou_requiredamount = new ArrayList<>();
+        hou_requiredamount.add("0.96");
+        hou_requiredamount.add("3.00");
+
+        List<String> hou_unit = new ArrayList<>();
+        hou_unit.add("公斤");
+        hou_unit.add("PCS");
+
+        List<String> hou_storage = new ArrayList<>();
+        hou_storage.add("常");
+        hou_storage.add(" ");
+
+        houguan.put("serial", String.join(",", hou_serials));
+        houguan.put("material",String.join(",", hou_material));
+        houguan.put("specifications", String.join(",", hou_specifications));
+        houguan.put("unitdosage", String.join(",", hou_unitdosage));
+        houguan.put("requiredamount", String.join(",", hou_requiredamount));
+        houguan.put("unit", String.join(",", hou_unit));
+        houguan.put("storage", String.join(",", hou_storage));
+        houguan.put("description", "H8-218A/T RAL7016 出貨時需附值證色板");
+        queryData.getQueryData().add(houguan);
+    }
+
+    public static void setAssemblyData() {
+        QueryData queryData = QueryData.getInstance();
+
+        //裝配
+        HashMap<String, String> assembly = new HashMap<>();
+        assembly.put("serial", "1");
+        assembly.put("material", "JA31035");
+        assembly.put("specifications", "砂漆灰色塗料EP340T VIGOR(國際色碼:RAL 7016)");
+        assembly.put("unitdosage", "EP338T砂漆淺灰/EP340T砂漆灰  系統櫃組合--26”下箱垃圾桶櫃");
+        assembly.put("requiredamount", "生產數量：3");
+        assembly.put("unit", "預計上線：2018-12-05");
+        assembly.put("storage", "計劃開始：08:00");
+        assembly.put("description", "計劃結束：08:05");
+        queryData.getQueryData().add(assembly);
+    }
     public static void setSaleData(){
 
     }

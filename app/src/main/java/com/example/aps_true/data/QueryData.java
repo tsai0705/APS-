@@ -93,7 +93,9 @@ public class QueryData {
     }
 
     public void clearQueryData() {
-        this.data = null; //設定目前 LoginData 實例裡 data 這個成員變數的內容
+        if (this.data != null) {
+            this.data.clear(); // 清空內容，但保持 data 不為 null
+        }
     }
 
 }

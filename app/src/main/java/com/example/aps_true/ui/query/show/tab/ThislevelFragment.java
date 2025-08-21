@@ -39,7 +39,6 @@ public class ThislevelFragment extends Fragment {
     private ImageButton rightButton,leftButton;
     private RecyclerView thislevelRecyclerView;
     private OrderAdapter adapter;
-    private QueryData queryData;
 
     @Nullable
     @Override
