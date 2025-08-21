@@ -31,20 +31,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/qianguan_left_ibtn"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:contentDescription="返回上一頁"
-                android:focusable="true"
-                android:foregroundGravity="center_vertical"
-                android:src="@drawable/u129"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
                 android:id="@+id/qianguan_right_ibtn"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -64,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintWidth_percent="0.7"
-                app:layout_constraintHeight_percent="0.9"
+                app:layout_constraintHeight_percent="0.98"
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintWidth_percent="0.7"
-                app:layout_constraintHeight_percent="0.9"
+                app:layout_constraintHeight_percent="0.98"
                 android:orientation="vertical"
                 tools:layout_editor_absoluteX="167dp"
                 tools:layout_editor_absoluteY="100dp"

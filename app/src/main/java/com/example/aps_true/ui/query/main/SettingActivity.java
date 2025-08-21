@@ -1,23 +1,12 @@
-package com.example.aps_true.ui.query.tab;
+package com.example.aps_true.ui.query.main;
 
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.aps_true.R;
-import com.example.aps_true.ui.main.MainActivity; // 補上 import
-import com.example.aps_true.viewpager.FragmentProduction;
-
-import java.util.HashMap;
-import java.util.regex.Pattern;
 
 public class SettingActivity extends AppCompatActivity{
 

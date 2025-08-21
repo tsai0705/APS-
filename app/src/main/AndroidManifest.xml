@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.APStrue">
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true">
+        <activity android:name=".ui.main.LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,10 +20,10 @@
 
         <!-- 註冊 MainActivity（用於跳轉） -->
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.query.tab.SettingActivity" />
-        <activity android:name=".ui.query.tab.QueryActivity" />
-        <activity android:name=".ui.query.main.QueryMainActivity" />
-        <activity android:name=".ui.query.show.QueryTabActivity" />
+        <activity android:name=".ui.query.main.SettingActivity" />
+        <activity android:name=".ui.query.main.QueryActivity" />
+        <activity android:name=".ui.query.main.QueryTabActivity" />
+        <activity android:name=".ui.query.main.recyclerview.QueryMainActivity"  />
         <activity android:name=".viewpager.todayschedule.TodayMainActivity" />
     </application>
 

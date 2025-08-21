@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.main;
+package com.example.aps_true.ui.query.main.recyclerview;
 
 import android.os.Bundle;
 
@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 import com.example.aps_true.R;
-import com.example.aps_true.ui.query.main.QueryAdapter;
-import com.example.aps_true.ui.query.main.QueryItem;
+
 import java.util.ArrayList;
 
 // recycleview 查詢結果

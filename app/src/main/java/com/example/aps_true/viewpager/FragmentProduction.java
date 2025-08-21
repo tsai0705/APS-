@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import com.example.aps_true.R;
-import com.example.aps_true.ui.query.tab.QueryActivity;
-import com.example.aps_true.ui.query.tab.SettingActivity;
+import com.example.aps_true.ui.query.main.QueryActivity;
+import com.example.aps_true.ui.query.main.SettingActivity;
 
 // 生產排程
 public class FragmentProduction extends Fragment {

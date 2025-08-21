@@ -36,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintWidth_percent="0.7"
-        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintHeight_percent="0.98"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintWidth_percent="0.7"
-        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintHeight_percent="0.98"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="167dp"
         tools:layout_editor_absoluteY="100dp"
@@ -81,142 +81,40 @@
             android:layout_height="0dp"
             app:layout_constraintWidth_percent="0.95"
             app:layout_constraintHeight_percent="0.95"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="sale_dottedline_v"
-            app:layout_constraintStart_toEndOf="sale_left_dottedline_v"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/sale_dottedline_v"
+            app:layout_constraintStart_toEndOf="@id/sale_left_dottedline_v"
             app:layout_constraintEnd_toStartOf="@id/sale_right_dottedline_v"
             app:layout_constraintBottom_toBottomOf="parent">
 
+            <TextView
+                android:id="@+id/sale_company_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="明昌國際工業股份有限公司"
+                android:textSize="22dp"
+                android:gravity="center_horizontal"
+                tools:layout_editor_absoluteX="611dp"
+                tools:layout_editor_absoluteY="163dp" />
+
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/sale_company_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="明昌國際工業股份有限公司"
-                    android:textSize="22dp"
-                    android:gravity="center_horizontal"
-                    tools:layout_editor_absoluteX="611dp"
-                    tools:layout_editor_absoluteY="163dp" />
-
-                <LinearLayout
+                    android:id="@+id/sale_manufacturing_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/sale_manufacturing_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="訂購憑單(一群-大馬)"
-                        android:textSize="22dp"
-                        tools:layout_editor_absoluteX="609dp"
-                        tools:layout_editor_absoluteY="208dp" />
-
-                    <View
-                        android:id="@+id/sale_bottomline_v"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <View
-                        android:id="@+id/sale_bottomline2_v"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/black"
-                        android:layout_marginTop="2dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sale_print_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.32"
-                        android:text="列印日期:"
-                        android:textSize="16dp"
-                        tools:layout_editor_absoluteX="189dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_printdate_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="2018/12/21"
-                        android:textSize="16dp"
-                        tools:layout_editor_absoluteX="189dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_orderfrom_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:gravity="end"
-                        android:textSize="16dp"
-                        android:text="來源訂單:"
-                        tools:layout_editor_absoluteX="804dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_order_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:gravity="start"
-                        android:textSize="16dp"
-                        android:text="1SO1811270009"
-                        tools:layout_editor_absoluteX="804dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_pagetv_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="end"
-                        android:textSize="16dp"
-                        android:text="頁碼:"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_page_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="end"
-                        android:textSize="16dp"
-                        android:text="1/1"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                </LinearLayout>
+                    android:text="訂購憑單(一群-大馬)"
+                    android:textSize="22dp"
+                    tools:layout_editor_absoluteX="609dp"
+                    tools:layout_editor_absoluteY="208dp" />
 
                 <View
-                    android:id="@+id/sale_line1_v"
+                    android:id="@+id/sale_bottomline_v"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/black"
@@ -225,206 +123,309 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
+                <View
+                    android:id="@+id/sale_bottomline2_v"
                     android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sale_print_tv"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.32"
+                    android:text="列印日期:"
+                    android:textSize="16dp"
+                    tools:layout_editor_absoluteX="189dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_printdate_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2018/12/21"
+                    android:textSize="16dp"
+                    tools:layout_editor_absoluteX="189dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_orderfrom_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="end"
+                    android:textSize="16dp"
+                    android:text="來源訂單:"
+                    tools:layout_editor_absoluteX="804dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_order_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="start"
+                    android:textSize="16dp"
+                    android:text="1SO1811270009"
+                    tools:layout_editor_absoluteX="804dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_pagetv_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="end"
+                    android:textSize="16dp"
+                    android:text="頁碼:"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_page_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="end"
+                    android:textSize="16dp"
+                    android:text="1/1"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/sale_line1_v"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sale_date_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.18"
+                    android:textSize="16dp"
+                    android:text="製令日期:"
+                    tools:layout_editor_absoluteX="804dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_orderdate_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="2018/11/27"
+                    tools:layout_editor_absoluteX="804dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_document_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.19"
+                    android:textSize="16dp"
+                    android:text="單據號碼:"
+                    android:gravity="end"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_documentnumber_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.28"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:text="  1MO1812040071"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sale_name_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:textSize="16dp"
+                    android:text="客戶名稱:"
+                    android:gravity="center_vertical"
+                    tools:layout_editor_absoluteX="189dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_clientserial_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.15"
+                    android:textSize="16dp"
+                    android:text="(M1315)"
+                    android:gravity="center"
+                    tools:layout_editor_absoluteX="189dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.28"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/sale_date_tv"
+                        android:id="@+id/sale_clientname_tv"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="0.18"
                         android:textSize="16dp"
-                        android:text="製令日期:"
+                        android:gravity="center_vertical"
+                        android:text="MATADOR  GmbH"
                         tools:layout_editor_absoluteX="804dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_orderdate_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="16dp"
-                        android:text="2018/11/27"
-                        tools:layout_editor_absoluteX="804dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_number_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.19"
-                        android:textSize="16dp"
-                        android:text="單據號碼:"
-                        android:gravity="end"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_ordernumber_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.28"
-                        android:textSize="16dp"
-                        android:gravity="start"
-                        android:text="  1MO1812040071"
-                        tools:layout_editor_absoluteX="1008dp"
                         tools:layout_editor_absoluteY="248dp" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/sale_clientorder_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:layout_weight="0.1"
+                    android:gravity="end"
+                    android:text="客戶訂單:"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_clientnumber_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:layout_weight="0.13"
+                    android:gravity="bottom"
+                    android:text="  6003028"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sale_staff_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.22"
+                    android:textSize="16dp"
+                    android:gravity="end"
+                    android:text="業務人員:"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_staffname_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:textSize="16dp"
+                    android:gravity="start"
+                    android:text="  (M3049) 嚴卉婷"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/sale_line2_v"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sale_serial_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical"
+                    android:textSize="16dp"
+                    android:text="序號"
+                    tools:layout_editor_absoluteX="804dp"
+                    tools:layout_editor_absoluteY="248dp" />
+
+                <TextView
+                    android:id="@+id/sale_material_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.4"
+                    android:gravity="center_vertical"
+                    android:textSize="16dp"
+                    android:text="材料編號"
+                    tools:layout_editor_absoluteX="1008dp"
+                    tools:layout_editor_absoluteY="248dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sale_partnum_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:textSize="16dp"
-                        android:text="客戶名稱:"
-                        android:gravity="center_vertical"
-                        tools:layout_editor_absoluteX="189dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_partnumber_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.15"
-                        android:textSize="16dp"
-                        android:text="(M1315)"
-                        android:gravity="center"
-                        tools:layout_editor_absoluteX="189dp"
-                        tools:layout_editor_absoluteY="248dp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.28"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/sale_part_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.18"
-                            android:textSize="16dp"
-                            android:gravity="center_vertical"
-                            android:text="MATADOR  GmbH"
-                            tools:layout_editor_absoluteX="804dp"
-                            tools:layout_editor_absoluteY="248dp" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/sale_start_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:textSize="16dp"
-                        android:layout_weight="0.1"
-                        android:gravity="end"
-                        android:text="客戶訂單:"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_startdate_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:textSize="16dp"
-                        android:layout_weight="0.13"
-                        android:gravity="bottom"
-                        android:text="  6003028"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sale_end_tv"
-                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.22"
-                        android:textSize="16dp"
-                        android:gravity="end"
-                        android:text="業務人員:"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_enddate_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:textSize="16dp"
-                        android:gravity="start"
-                        android:text="  2019/01/11"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/sale_line2_v"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sale_serial_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:gravity="center_vertical"
-                        android:textSize="16dp"
-                        android:text="序號"
-                        tools:layout_editor_absoluteX="804dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <TextView
-                        android:id="@+id/sale_material_tv"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.4"
-                        android:gravity="center_vertical"
-                        android:textSize="16dp"
-                        android:text="材料編號"
-                        tools:layout_editor_absoluteX="1008dp"
-                        tools:layout_editor_absoluteY="248dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/grey"
-                        android:orientation="horizontal">
+                        android:layout_weight="2.2"
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/assembly_serial_tv"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="0.4"
                                 android:gravity="center"
                                 android:textSize="16dp"
                                 android:text="序號"
@@ -432,9 +433,10 @@
                                 tools:layout_editor_absoluteY="248dp" />
 
                             <TextView
-                                android:id="@+id/assembly_material_tv"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/assembly_customer_number_tv"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1.2"
                                 android:gravity="center_vertical"
                                 android:textSize="16dp"
                                 android:text="產品編號/客戶編號"
@@ -443,71 +445,290 @@
 
                         </LinearLayout>
 
+                        <View
+                            android:id="@+id/sale_bottomline3_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginEnd="3dp"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/sale_specifications_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.3"
-                            android:textSize="16dp"
-                            android:text="品名規格"
-                            android:gravity="start"
-                            tools:layout_editor_absoluteX="804dp"
-                            tools:layout_editor_absoluteY="248dp" />
+                        <View
+                            android:id="@+id/sale_bottomline4_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginEnd="3dp"
+                            android:background="@color/black"
+                            android:layout_marginTop="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/sale_unitdosage_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.6"
-                            android:textSize="16dp"
-                            android:text="數量"
-                            android:gravity="start"
-                            tools:layout_editor_absoluteX="1008dp"
-                            tools:layout_editor_absoluteY="248dp" />
+                    </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/sale_requiredamount_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.6"
-                            android:textSize="16dp"
-                            android:text="單位"
-                            android:gravity="start"
-                            tools:layout_editor_absoluteX="804dp"
-                            tools:layout_editor_absoluteY="248dp" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/sale_unit_tv"
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:textSize="16dp"
-                            android:text="未出數量"
-                            android:gravity="start"
-                            tools:layout_editor_absoluteX="1008dp"
-                            tools:layout_editor_absoluteY="248dp" />
+                            android:background="@color/grey"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/sale_storage_tv"
-                            android:layout_width="0dp"
+                            <TextView
+                                android:id="@+id/sale_specifications_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:textSize="16dp"
+                                android:text="品名規格"
+                                android:gravity="start"
+                                tools:layout_editor_absoluteX="804dp"
+                                tools:layout_editor_absoluteY="248dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/sale_bottomline5_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sale_bottomline6_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginTop="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:textSize="16dp"
-                            android:text="預交日期"
-                            android:gravity="center"
-                            tools:layout_editor_absoluteX="804dp"
-                            tools:layout_editor_absoluteY="248dp" />
+                            android:background="@color/grey"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/sale_quantity_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.6"
+                                android:gravity="end"
+                                android:layout_marginEnd="3dp"
+                                android:textSize="16dp"
+                                android:text="數量"
+                                tools:layout_editor_absoluteX="1008dp"
+                                tools:layout_editor_absoluteY="248dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/sale_bottomline7_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sale_bottomline8_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginTop="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/sale_unit_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16dp"
+                                android:text="單位"
+                                android:gravity="center"
+                                tools:layout_editor_absoluteX="804dp"
+                                tools:layout_editor_absoluteY="248dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/sale_bottomline9_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sale_bottomline10_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="3dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/sale_notshipped_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16dp"
+                                android:text="未出數量"
+                                android:gravity="center"
+                                tools:layout_editor_absoluteX="1008dp"
+                                tools:layout_editor_absoluteY="248dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/sale_bottomline11_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sale_bottomline12_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginTop="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/grey"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/sale_predate_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16dp"
+                                android:text="預交日期"
+                                android:gravity="center"
+                                tools:layout_editor_absoluteX="804dp"
+                                tools:layout_editor_absoluteY="248dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/sale_bottomline13_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/sale_bottomline14_v"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginTop="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"/>
 
 
         </LinearLayout>

@@ -263,60 +263,48 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginEnd="40dp"
-                    android:background="@drawable/tab_border"
-                    android:padding="1dp"
-                    android:orientation="vertical">
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:contentDescription="功能切換"
+                    app:tabTextColor="@color/green"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabBackground="@drawable/tab_background_selector"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabGravity="fill"
+                    app:tabMaxWidth="0dp">
 
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tab"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="1dp"
-                        android:layout_marginEnd="1dp"
-                        android:contentDescription="功能切換"
-                        app:tabTextColor="@color/green"
-                        app:tabSelectedTextColor="@color/white"
-                        app:tabBackground="@drawable/tab_background_selector"
-                        app:tabIndicatorHeight="0dp"
-                        app:tabGravity="fill"
-                        app:tabMaxWidth="0dp">
+                    <!-- 添加 TabItem -->
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="前關製令" />
 
-                        <!-- 添加 TabItem -->
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="前關製令" />
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="本階製令"/>
 
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:text="本階製令"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="後關製令"/>
 
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="後關製令"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="裝配製令"/>
 
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="裝配製令"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="銷售訂單"/>
 
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="銷售訂單"/>
-
-                    </com.google.android.material.tabs.TabLayout>
-
-                </LinearLayout>
+                </com.google.android.material.tabs.TabLayout>
 
 
             </LinearLayout>

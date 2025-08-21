@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.login;
+package com.example.aps_true.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;

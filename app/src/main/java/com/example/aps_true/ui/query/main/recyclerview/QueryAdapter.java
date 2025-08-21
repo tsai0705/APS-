@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.main;
+package com.example.aps_true.ui.query.main.recyclerview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.aps_true.R;
-import com.example.aps_true.ui.query.show.QueryTabActivity;
+import com.example.aps_true.ui.query.main.QueryTabActivity;
 
 public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> {
     private Context context;

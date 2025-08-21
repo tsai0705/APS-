@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.main;
+package com.example.aps_true.ui.query.main.recyclerview;
 
 public class QueryItem {
     private int serial;

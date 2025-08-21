@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.show;
+package com.example.aps_true.ui.query.main;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,8 +6,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.graphics.Color;
 import androidx.viewpager2.widget.ViewPager2;
-import com.example.aps_true.ui.main.TabData;
-import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
+import com.example.aps_true.data.TabData;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import androidx.annotation.NonNull;

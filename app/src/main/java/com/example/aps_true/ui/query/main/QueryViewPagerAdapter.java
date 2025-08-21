@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.show;
+package com.example.aps_true.ui.query.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

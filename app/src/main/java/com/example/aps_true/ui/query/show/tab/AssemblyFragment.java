@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -23,6 +25,7 @@ public class AssemblyFragment extends Fragment {
     }
 
     private ImageButton rightButton,leftButton;
+    private RecyclerView listRecyclerView;
 
     @Nullable
     @Override
@@ -33,6 +36,7 @@ public class AssemblyFragment extends Fragment {
 
         rightButton = view.findViewById(R.id.assembly_right_ibtn);
         leftButton = view.findViewById(R.id.assembly_left_ibtn);
+        listRecyclerView = view.findViewById(R.id.assembly_list_rcv);
 
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query.tab;
+package com.example.aps_true.ui.query.main;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,12 +7,12 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.aps_true.R;
-import com.example.aps_true.ui.query.main.QueryMainActivity;
+import com.example.aps_true.ui.query.main.recyclerview.QueryMainActivity;
+
 import android.widget.ArrayAdapter;// 用來設定 Spinner 的資料來源
 import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
@@ -150,7 +150,6 @@ public class QueryActivity extends AppCompatActivity{
         Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
         startActivity(intent);
     }
-
 
 
 }
