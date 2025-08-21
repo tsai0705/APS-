@@ -6,117 +6,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 工具列：最上面 -->
-    <com.google.android.flexbox.FlexboxLayout
-        android:id="@+id/toolbar_layout"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:flexDirection="column">
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/thislevel_graycolor_v"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#BEBEBE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/thislevel_left_ibtn"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="返回上一頁"
+            android:focusable="true"
+            android:foregroundGravity="center_vertical"
+            android:src="@drawable/u129"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/thislevel_right_ibtn"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:contentDescription="返回上一頁"
+            android:focusable="true"
+            android:foregroundGravity="center_vertical"
+            android:src="@drawable/u128"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 白底 -->
+        <View
+            android:id="@+id/thislevel_white_v"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.75"
+            app:layout_constraintHeight_percent="0.98"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.75"
+            app:layout_constraintHeight_percent="0.98"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="167dp"
+            tools:layout_editor_absoluteY="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <!-- 上方虛線 -->
             <View
-                android:id="@+id/thislevel_graycolor_v"
+                android:id="@+id/thislevel_dottedline_v"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/dashed_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <!-- 左側虛線 -->
+            <com.example.aps_true.ui.DividerView
+                android:id="@+id/thislevel_leftline_v"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#BEBEBE"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/thislevel_left_ibtn"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:contentDescription="返回上一頁"
-                android:focusable="true"
-                android:foregroundGravity="center_vertical"
-                android:src="@drawable/u129"
+                app:layout_constraintWidth_percent="0.05"
+                app:dashGap="3dp"
+                app:dashLength="5dp"
+                app:dashThickness="1dp"
+                app:divider_line_color="@color/grey"
+                app:divider_orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@android:color/transparent" />
 
-            <ImageButton
-                android:id="@+id/thislevel_right_ibtn"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:contentDescription="返回上一頁"
-                android:focusable="true"
-                android:foregroundGravity="center_vertical"
-                android:src="@drawable/u128"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- 白底 -->
-            <View
-                android:id="@+id/thislevel_white_v"
+            <!-- 主要內容 -->
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintWidth_percent="0.75"
-                app:layout_constraintHeight_percent="0.98"
-                android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintWidth_percent="0.75"
-                app:layout_constraintHeight_percent="0.98"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_percent="0.92"
                 android:orientation="vertical"
-                tools:layout_editor_absoluteX="167dp"
-                tools:layout_editor_absoluteY="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toEndOf="@+id/thislevel_leftline_v"
+                app:layout_constraintEnd_toStartOf="@+id/thislevel_rightline_v"
+                app:layout_constraintTop_toBottomOf="@+id/thislevel_dottedline_v"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-                <!-- 上方虛線 -->
-                <View
-                    android:id="@+id/thislevel_dottedline_v"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@drawable/dashed_line"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <!-- 左側虛線 -->
-                <com.example.aps_true.ui.DividerView
-                    android:id="@+id/thislevel_leftline_v"
-                    android:layout_width="35dp"
-                    android:layout_height="match_parent"
-                    app:dashGap="3dp"
-                    app:dashLength="5dp"
-                    app:dashThickness="1dp"
-                    app:divider_line_color="@color/grey"
-                    app:divider_orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:background="@android:color/transparent" />
-
-                <!-- 主要內容 -->
                 <LinearLayout
                     android:id="@+id/thislevel"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginEnd="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/thislevel_rightline_v"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.95"
                     app:layout_constraintStart_toEndOf="@id/thislevel_leftline_v"
                     app:layout_constraintTop_toBottomOf="@id/thislevel_dottedline_v"
@@ -586,35 +586,36 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/thislevel_recyclerview_rcv"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-
                     </LinearLayout>
 
 
                 </LinearLayout>
 
-                <!-- 右側虛線 -->
-                <com.example.aps_true.ui.DividerView
-                    android:id="@+id/thislevel_rightline_v"
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent"
-                    app:divider_line_color="@color/grey"
-                    app:dashThickness="1dp"
-                    app:dashLength="5dp"
-                    app:dashGap="3dp"
-                    tools:background="@android:color/transparent"
-                    app:divider_orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/thislevel_recyclerview_rcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- 右側虛線 -->
+            <com.example.aps_true.ui.DividerView
+                android:id="@+id/thislevel_rightline_v"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintWidth_percent="0.03"
+                app:divider_line_color="@color/grey"
+                app:dashThickness="1dp"
+                app:dashLength="5dp"
+                app:dashGap="3dp"
+                tools:background="@android:color/transparent"
+                app:divider_orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.flexbox.FlexboxLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

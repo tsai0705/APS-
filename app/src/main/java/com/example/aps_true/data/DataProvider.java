@@ -12,7 +12,6 @@ public class DataProvider {
 
     public static void initializeAllData() {
         setTabData();
-        setQueryData();
         setSaleData();
     }
 
@@ -217,6 +216,74 @@ public class DataProvider {
         assembly.put("storage", "計劃開始：08:00");
         assembly.put("description", "計劃結束：08:05");
         queryData.getQueryData().add(assembly);
+    }
+
+    public static void setThislevelData() {
+        QueryData queryData = QueryData.getInstance();
+
+        //本階
+        HashMap<String, String> thislevel = new HashMap<>();
+        List<String> serials = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            serials.add(String.valueOf(i));
+        }
+
+        List<String> material = new ArrayList<>(
+                Arrays.asList("M1-ATN260011-22", "F260011ATN-21", "M1-F260011-1",
+                        "M1-F260011-3A", "M1-F260011-3B", "25-ATA-A-54111-8")
+        );
+
+        List<String> specifications = new ArrayList<>(
+                Arrays.asList(
+                        "ATN260011塑膠垃圾筒抽屜-抽頭 0.8*658.4*617.1MM；沖床組",
+                        "ATN260011垃圾筒系統櫃 超大抽身 0.8雙鋼珠 0.8*558*866 mm 世誠",
+                        "ATN260011垃圾筒系統櫃抽屜固定片 0.8*140*163.5mm；沖床組（1折）",
+                        "ATN260011/ATN340011 垃圾筒抽屜三角形固定片 1.0*200*18.2MM（左）；沖床組（1折）",
+                        "ATN260011/ATN340011 垃圾筒抽屜三角形固定片 1.0*200*18.2MM（右）；沖床組（1折）",
+                        "ATA-A-54111 抽屜L補強片/料加工 大邊")
+        );
+
+        List<String> unitdosage = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            if(i==3){
+                unitdosage.add("4.00");
+            }else if(i==6){
+                unitdosage.add("2.00");
+            }else {
+                unitdosage.add("1.00");
+            }
+        }
+
+        List<String> requiredamount = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            if (i == 3) {
+                requiredamount.add("12.00");
+            } else if (i == 6) {
+                requiredamount.add("6.00");
+            } else {
+                requiredamount.add("3.00");
+            }
+        }
+
+        List<String> description = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            if(i==2){
+                description.add("（400長）橫圓須補強 0.8*555*866");
+            }else {
+                description.add(" ");
+            }
+        }
+
+        thislevel.put("serial", String.join(",", serials));
+        thislevel.put("material", String.join(",", material));
+        thislevel.put("specifications", String.join(",", specifications));
+        thislevel.put("unitdosage", String.join(",", unitdosage));
+        thislevel.put("requiredamount", String.join(",", requiredamount));
+        thislevel.put("unit", "PCS");
+        thislevel.put("storage", " ");
+        thislevel.put("description", String.join(",", description));
+        queryData.getQueryData().add(thislevel);
+
     }
 
     public static void setSaleData(){

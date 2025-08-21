@@ -92,6 +92,9 @@ public class QueryData {
         this.data = data; //設定目前 LoginData 實例裡 data 這個成員變數的內容
     }
 
+    public void clearQueryData() {
+        this.data = null; //設定目前 LoginData 實例裡 data 這個成員變數的內容
+    }
 
 }
 
