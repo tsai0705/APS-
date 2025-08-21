@@ -96,8 +96,8 @@ public class DataProvider {
         qianguan.put("unitdosage", "1.00");
         qianguan.put("requiredamount", "3.00");
         qianguan.put("unit", "PCS");
-        qianguan.put("storage", null);
-        qianguan.put("description", null);
+        qianguan.put("storage", " ");
+        qianguan.put("description", "　");
         queryData.getQueryData().add(qianguan);
 
         //本階
@@ -159,7 +159,7 @@ public class DataProvider {
         thislevel.put("unitdosage", String.join(",", unitdosage));
         thislevel.put("requiredamount", String.join(",", requiredamount));
         thislevel.put("unit", "PCS");
-        thislevel.put("storage", null);
+        thislevel.put("storage", " ");
         thislevel.put("description", String.join(",", description));
         queryData.getQueryData().add(thislevel);
 

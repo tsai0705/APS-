@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
             <ImageButton
                 android:id="@+id/querytab_back_ibtn"
                 android:layout_width="75dp"
-                android:layout_height="70dp"
+                android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 android:contentDescription="返回上一頁"
@@ -51,11 +51,12 @@
             <TextView
                 android:id="@+id/querytab_query_tv"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="100dp"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:text="進度表查詢"
                 app:layout_constraintBottom_toBottomOf="@+id/querytab_querycolor_v"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,7 @@
             <ImageView
                 android:id="@+id/querytab_avatar_iv"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/u8"
                 app:layout_constraintEnd_toStartOf="@id/querytab_username_tv"
                 app:layout_constraintTop_toTopOf="parent"
@@ -75,14 +76,12 @@
             <!-- 圓圈 -->
             <ImageView
                 android:id="@+id/querytab_badge_iv"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/u9"
                 app:layout_constraintEnd_toStartOf="@id/querytab_username_tv"
                 app:layout_constraintTop_toTopOf="@id/querytab_avatar_iv"
-                android:translationX="-13dp"
-                android:translationY="6dp"
-                />
+                android:translationX="-16dp"/>
 
             <!-- 使用者名稱 -->
             <TextView
@@ -90,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:text="羅正修"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -107,7 +106,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintWidth_percent="1"
-        app:layout_constraintHeight_percent="0.26"
+        app:layout_constraintHeight_percent="0.22"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -179,7 +178,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.38"
-                            android:paddingTop="10dp"
+                            android:gravity="center_vertical"
                             android:textColor="@color/green"
                             android:textStyle="bold"
                             android:text="F260011ATN-2" />
@@ -191,7 +190,7 @@
                             android:layout_weight="0.62"
                             android:layout_marginEnd="2dp"
                             android:paddingBottom="5dp"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             android:textStyle="bold"
                             android:gravity="center_vertical"
                             android:text="ATN260011  系統櫃(垃圾筒) -抽屜+垃圾筒固定片*4pcs" />
@@ -285,7 +284,7 @@
                     android:layout_weight="0.2"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
                     android:contentDescription="功能切換"
                     app:tabTextColor="@color/green"
                     app:tabSelectedTextColor="@color/white"

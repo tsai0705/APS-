@@ -63,7 +63,7 @@
                 android:id="@+id/thislevel_white_v"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintWidth_percent="0.7"
+                app:layout_constraintWidth_percent="0.75"
                 app:layout_constraintHeight_percent="0.98"
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +74,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintWidth_percent="0.7"
+                app:layout_constraintWidth_percent="0.75"
                 app:layout_constraintHeight_percent="0.98"
                 android:orientation="vertical"
                 tools:layout_editor_absoluteX="167dp"
@@ -87,34 +87,40 @@
                 <View
                     android:id="@+id/thislevel_dottedline_v"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:background="@drawable/dashed_line"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <!-- 左側虛線 -->
-                <View
-                    android:id="@+id/thislevel_left_dottedline_v"
-                    android:layout_width="30dp"
+                <com.example.aps_true.ui.DividerView
+                    android:id="@+id/thislevel_leftline_v"
+                    android:layout_width="35dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/dashed_line"
+                    app:dashGap="3dp"
+                    app:dashLength="5dp"
+                    app:dashThickness="1dp"
+                    app:divider_line_color="@color/grey"
+                    app:divider_orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    tools:background="@android:color/transparent" />
 
                 <!-- 主要內容 -->
                 <LinearLayout
+                    android:id="@+id/thislevel"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:layout_constraintWidth_percent="0.95"
-                    app:layout_constraintHeight_percent="0.95"
                     android:orientation="horizontal"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/thislevel_rightline_v"
+                    app:layout_constraintHeight_percent="0.95"
+                    app:layout_constraintStart_toEndOf="@id/thislevel_leftline_v"
                     app:layout_constraintTop_toBottomOf="@id/thislevel_dottedline_v"
-                    app:layout_constraintStart_toEndOf="@id/thislevel_left_dottedline_v"
-                    app:layout_constraintEnd_toStartOf="@id/thislevel_right_dottedline_v"
-                    app:layout_constraintBottom_toBottomOf="parent">
-
+                    app:layout_constraintWidth_percent="0.95">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -127,9 +133,9 @@
                             android:id="@+id/thislevel_company_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
                             android:text="明昌國際工業股份有限公司"
-                            android:textSize="15dp"
-                            android:gravity="center_horizontal" />
+                            android:textSize="15dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -158,8 +164,8 @@
                                 android:id="@+id/thislevel_bottomline2_v"
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="@color/black"
                                 android:layout_marginTop="1dp"
+                                android:background="@color/black"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -177,8 +183,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.15"
-                                android:textSize="12dp"
                                 android:text="列印日期:"
+                                android:textSize="12dp"
                                 tools:layout_editor_absoluteX="189dp"
                                 tools:layout_editor_absoluteY="248dp" />
 
@@ -218,8 +224,8 @@
                                 android:id="@+id/thislevel_pagetv_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.1"
                                 android:layout_marginEnd="10dp"
+                                android:layout_weight="0.1"
                                 android:gravity="end"
                                 android:text="頁次:"
                                 android:textSize="12dp"
@@ -291,7 +297,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.75"
                                 android:text="1MO1812040031"
-                                android:textSize="12dp"                                    tools:layout_editor_absoluteX="1008dp"
+                                android:textSize="12dp"
+                                tools:layout_editor_absoluteX="1008dp"
                                 tools:layout_editor_absoluteY="248dp" />
 
                         </LinearLayout>
@@ -485,9 +492,9 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="2.3"
+                                        android:gravity="center"
                                         android:text="品名規格"
                                         android:textSize="12dp"
-                                        android:gravity="center"
                                         tools:layout_editor_absoluteX="804dp"
                                         tools:layout_editor_absoluteY="248dp" />
 
@@ -496,9 +503,9 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="0.6"
+                                        android:gravity="start"
                                         android:text="單位用量"
                                         android:textSize="12dp"
-                                        android:gravity="start"
                                         tools:layout_editor_absoluteX="1008dp"
                                         tools:layout_editor_absoluteY="248dp" />
 
@@ -507,9 +514,9 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="0.6"
+                                        android:gravity="start"
                                         android:text="需領用量"
                                         android:textSize="12dp"
-                                        android:gravity="start"
                                         tools:layout_editor_absoluteX="804dp"
                                         tools:layout_editor_absoluteY="248dp" />
 
@@ -518,9 +525,9 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="0.5"
+                                        android:gravity="start"
                                         android:text="單位"
                                         android:textSize="12dp"
-                                        android:gravity="start"
                                         tools:layout_editor_absoluteX="1008dp"
                                         tools:layout_editor_absoluteY="248dp" />
 
@@ -529,9 +536,9 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="0.3"
+                                        android:gravity="center"
                                         android:text="儲位"
                                         android:textSize="12dp"
-                                        android:gravity="center"
                                         tools:layout_editor_absoluteX="804dp"
                                         tools:layout_editor_absoluteY="248dp" />
 
@@ -557,9 +564,9 @@
                                         android:id="@+id/thislevel_description_tv"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
+                                        android:gravity="center"
                                         android:text="產品說明"
                                         android:textSize="12dp"
-                                        android:gravity="center"
                                         tools:layout_editor_absoluteX="804dp"
                                         tools:layout_editor_absoluteY="248dp" />
 
@@ -590,14 +597,18 @@
                 </LinearLayout>
 
                 <!-- 右側虛線 -->
-                <View
-                    android:id="@+id/thislevel_right_dottedline_v"
-                    android:layout_width="20dp"
+                <com.example.aps_true.ui.DividerView
+                    android:id="@+id/thislevel_rightline_v"
+                    android:layout_width="25dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/dashed_line"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:divider_line_color="@color/grey"
+                    app:dashThickness="1dp"
+                    app:dashLength="5dp"
+                    app:dashGap="3dp"
+                    tools:background="@android:color/transparent"
+                    app:divider_orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,13 +29,10 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.q
         return new com.example.aps_true.ui.query.show.tab.recyclerview.OrderAdapter.ViewHolder(view);
     }
 
-
-    public void updateData(List<OrderItem> newData) {
-        this.dataList.clear();
-        this.dataList.addAll(newData);
+    public void updateData(ArrayList<OrderItem> newData) {
+        this.dataList = newData;
         notifyDataSetChanged();
     }
-
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
