@@ -267,30 +267,51 @@
     </string-array>
 
 
+    <string-array name="sale_product_number">
+        <item>ATN260011-06</item>
+    </string-array>
 
     <string-array name="sale_customer_number">
-        <item>12-N005-1</item>
-        <item>12-ATN-02</item>
-        <item>12-N004</item>
-        <item>J1-EP338T-F2600118ATN-1</item>
-        <item>J1-EP340T-F2600118ATN-3</item>
+        <item>00815224</item>
     </string-array>
 
     <string-array name="sale_specifications">
-        <item>M1-ATN260011-22</item>
-        <item>F260011ATN-21</item>
-        <item>M1-F260011-1</item>
-        <item>M1-F260011-3A</item>
-        <item>M1-F260011-3B</item>
-        <item>25-ATA-A-54111-8</item>
+        <item>EP338T砂漆淺灰/EP340T砂漆灰 系統櫃組合--26”下箱垃圾桶櫃</item>
+    </string-array>
+
+    <string-array name="sale_quantity">
+        <item>3.00</item>
     </string-array>
 
     <string-array name="sale_unit">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>SET</item>
+    </string-array>
+
+    <string-array name="sale_notshipped">
+        <item>3.00</item>
+    </string-array>
+
+    <string-array name="sale_predeliverydate">
+        <item>2019/01/29</item>
+    </string-array>
+
+    <string-array name="sale_note">
+        <item>10.烤漆顏色:箱身 選用EP338T砂漆淺灰月片,垃圾桶抽屜EP340T砂漆灰
+              20.結構: 26”垃圾桶、深度500MM、天蓋不沖鎖頭
+              塑膠垃圾桶x2、內掀式門片、17”45MM雙回歸鋼珠、
+              鐵板厚度:箱身:0.8MM、門片:0.8MM
+              OSM調整腳固定座為焊死,腳座往內移動、調整腳需鎖上
+              箱體遮片孔位拉上拉帽、兩側邊各沖4孔拉帽孔
+              30.附件:木板螺絲一包,前遮片(676MM),前遮片螺絲包、
+              40.包裝:PE袋+保麗龍+無底牛五外箱+底蓋(冰箱式包法)
+              50.麥頭:
+              正麥:
+              Men's Kitchen by MATADOR板手圖—客戶專用版
+              Art. Code: 8152 2604
+              QTY: 1 SET
+              N.W.: 32 KGS
+              G.W.: 36.56 KGS
+              CUFT.: 15.4'
+              </item>
     </string-array>
 </resources>

@@ -70,9 +70,9 @@ public class QianguanFragment extends Fragment {
         );
 
         // 依照 index 逐一建立 OrderItem
-        for (int i = 1; i < maxLength; i++) {
+        for (int i = 0; i < maxLength; i++) {
             OrderItem item = new OrderItem(
-                    String.valueOf(i),
+                    String.valueOf(i+1),
                     material[i],
                     specifications[i],
                     unitdosage[i],
