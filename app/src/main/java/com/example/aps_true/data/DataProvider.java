@@ -12,7 +12,6 @@ public class DataProvider {
 
     public static void initializeAllData() {
         setTabData();
-        setSaleData();
     }
 
     public static void setTabData() {
@@ -95,8 +94,8 @@ public class DataProvider {
         qianguan.put("unitdosage", "1.00");
         qianguan.put("requiredamount", "3.00");
         qianguan.put("unit", "PCS");
-        qianguan.put("storage", " ");
-        qianguan.put("description", "　");
+        qianguan.put("storage", "");
+        qianguan.put("description", "");
         queryData.getQueryData().add(qianguan);
     }
 
@@ -152,7 +151,7 @@ public class DataProvider {
             if(i==2){
                 description.add("（400長）橫圓須補強 0.8*555*866");
             }else {
-                description.add(" ");
+                description.add("");
             }
         }
 
@@ -162,7 +161,7 @@ public class DataProvider {
         thislevel.put("unitdosage", String.join(",", unitdosage));
         thislevel.put("requiredamount", String.join(",", requiredamount));
         thislevel.put("unit", "PCS");
-        thislevel.put("storage", " ");
+        thislevel.put("storage", "");
         thislevel.put("description", String.join(",", description));
         queryData.getQueryData().add(thislevel);
 
@@ -201,7 +200,7 @@ public class DataProvider {
 
         List<String> hou_storage = new ArrayList<>();
         hou_storage.add("常");
-        hou_storage.add(" ");
+        hou_storage.add("");
 
         houguan.put("serial", String.join(",", hou_serials));
         houguan.put("material",String.join(",", hou_material));
@@ -219,14 +218,55 @@ public class DataProvider {
 
         //裝配
         HashMap<String, String> assembly = new HashMap<>();
-        assembly.put("serial", "1");
-        assembly.put("material", "JA31035");
-        assembly.put("specifications", "砂漆灰色塗料EP340T VIGOR(國際色碼:RAL 7016)");
-        assembly.put("unitdosage", "EP338T砂漆淺灰/EP340T砂漆灰  系統櫃組合--26”下箱垃圾桶櫃");
-        assembly.put("requiredamount", "生產數量：3");
-        assembly.put("unit", "預計上線：2018-12-05");
-        assembly.put("storage", "計劃開始：08:00");
-        assembly.put("description", "計劃結束：08:05");
+        List<String> serials = new ArrayList<>();
+        for (int i = 1; i < 6; i++) {
+            serials.add(String.valueOf(i));
+        }
+
+        List<String> material = new ArrayList<>(
+                Arrays.asList("12-N005-1", "12-ATN-02", "12-N004",
+                        "J1-EP338T-F2600118ATN-1", "J1-EP340T-F2600118ATN-3")
+        );
+
+        List<String> specifications = new ArrayList<>(
+                Arrays.asList(
+                        "(固定送一廠)銓威 N005-01專用木板螺絲包(4顆/包)五彩 (批)",
+                        "門擋軸螺絲包(門擋軸 M6牙+尼帽M6 錏色)舜泓",
+                        "(固定送一廠) OSM前遮片螺絲包 (大扁十字平尾螺絲+華司M6*12錏黑/2入)",
+                        "EP338T砂漆淺灰-ATN260011 系統櫃-垃圾桶櫃箱身 (60.9')塗裝",
+                        "EP338T砂漆淺灰-ATN260011 系統櫃-門片 (3.1')塗裝")
+        );
+
+        List<String> unit = new ArrayList<>();
+        for (int i = 1; i < 6; i++) {
+            if (i <= 3) {
+                unit.add("包");
+            } else {
+                unit.add("PCS");
+            }
+        }
+
+        List<String> description = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            if(i == 1){
+                description.add("木工螺絲(外六角華司面尖角附PE套墊#12*3/4)-4顆");
+            } else if (i == 2) {
+                description.add("門軸攻一邊牙 6m/m*20m/m 電錏 @4");
+            } else if (i == 3) {
+                description.add("(大扁十字平尾螺絲+華司M6*12錏黑/2入)(平華司6*16*1鉦黑/2入)");
+            } else {
+                description.add("");
+            }
+        }
+
+        assembly.put("serial", String.join(",", serials));
+        assembly.put("material", String.join(",", material));
+        assembly.put("specifications", String.join(",", specifications));
+        assembly.put("unitdosage", "1.00");
+        assembly.put("requiredamount", "3.00");
+        assembly.put("unit", String.join(",", unit));
+        assembly.put("storage", "");
+        assembly.put("description", String.join(",", description));
         queryData.getQueryData().add(assembly);
     }
     public static void setSaleData(){

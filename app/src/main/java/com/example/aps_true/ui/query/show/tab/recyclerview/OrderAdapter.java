@@ -2,14 +2,18 @@ package com.example.aps_true.ui.query.show.tab.recyclerview;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import com.example.aps_true.R;
+import com.example.aps_true.data.DataProvider;
+import com.example.aps_true.data.QueryData;
 import com.example.aps_true.ui.query.main.QueryTabActivity;
 import com.example.aps_true.ui.query.main.recyclerview.QueryItem;
 
@@ -49,6 +53,7 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.q
             unitTextView = itemView.findViewById(R.id.order_unit_tv);
             storageTextView = itemView.findViewById(R.id.order_storage_tv);
             descriptionTextView = itemView.findViewById(R.id.order_description_tv);
+
         }
     }
 
@@ -63,6 +68,14 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.q
         holder.unitTextView.setText(String.valueOf(item.getUnit()));
         holder.storageTextView.setText(String.valueOf(item.getStorage()));
         holder.descriptionTextView.setText(String.valueOf(item.getDescription()));
+
+        // 根據 item 的 description 來設定背景色
+        String desc = item.getDescription();
+        if (!desc.equals("")) {
+            holder.descriptionTextView.setBackgroundColor(Color.parseColor("#FFC0C0C0"));
+        } else {
+            holder.descriptionTextView.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+        }
     }
 
     @Override
