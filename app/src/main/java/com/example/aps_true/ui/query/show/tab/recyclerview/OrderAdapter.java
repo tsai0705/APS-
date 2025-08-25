@@ -1,7 +1,6 @@
 package com.example.aps_true.ui.query.show.tab.recyclerview;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
 import com.example.aps_true.R;
-import com.example.aps_true.data.DataProvider;
-import com.example.aps_true.data.QueryData;
-import com.example.aps_true.ui.query.main.QueryTabActivity;
-import com.example.aps_true.ui.query.main.recyclerview.QueryItem;
 
 public class OrderAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.query.show.tab.recyclerview.OrderAdapter.ViewHolder> {
     private Context context;

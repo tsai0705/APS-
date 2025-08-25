@@ -23,7 +23,6 @@ public class QueryTabActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private TabLayout tab;
     private QueryViewPagerAdapter adapter;
-    private TabData tabData = TabData.getInstance(); // 呼叫類別的靜態方法產生單例
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,25 +99,23 @@ public class QueryTabActivity extends AppCompatActivity {
     }
 
     protected void Choose(Integer choose){
-        if (!tabData.getData().isEmpty()) {
-            HashMap<String, String> data = tabData.getData().get(choose);
-            numberTextView.setText(data.get("number"));
-            number2TextView.setText(data.get("number2"));
-            number3TextView.setText(data.get("number3"));
-            number4TextView.setText(data.get("number4"));
-            sumTextView.setText(data.get("sum"));
-            timeTextView.setText(data.get("time"));
-            timestartTextView.setText(data.get("time_start"));
-            timeendTextView.setText(data.get("time_end"));
-            groupTextView.setText(data.get("group"));
-            statusTextView.setText(data.get("status"));
+        numberTextView.setText(getResources().getStringArray(R.array.tab_number)[choose]);
+        number2TextView.setText(getResources().getStringArray(R.array.tab_number2)[choose]);
+        number3TextView.setText(getResources().getStringArray(R.array.tab_number3)[choose]);
+        number4TextView.setText(getResources().getStringArray(R.array.tab_number4)[choose]);
+        sumTextView.setText(getResources().getStringArray(R.array.tab_sum)[choose]);
+        timeTextView.setText(getResources().getStringArray(R.array.tab_time)[choose]);
+        timestartTextView.setText(getResources().getStringArray(R.array.tab_timestart)[choose]);
+        timeendTextView.setText(getResources().getStringArray(R.array.tab_timeend)[choose]);
+        groupTextView.setText(getResources().getStringArray(R.array.tab_group)[choose]);
+        statusTextView.setText(getResources().getStringArray(R.array.tab_status)[choose]);
 
-            // 狀態顏色
-            if (choose == 0) {
-                statusTextView.setTextColor(Color.rgb(255, 0, 0));
-            } else {
-                statusTextView.setTextColor(Color.rgb(0, 128, 0));
-            }
+        // 狀態顏色
+        if (choose == 0) {
+            statusTextView.setTextColor(Color.rgb(255, 0, 0));
+        } else {
+            statusTextView.setTextColor(Color.rgb(0, 128, 0));
         }
+
     }
 }

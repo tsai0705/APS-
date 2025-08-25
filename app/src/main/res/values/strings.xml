@@ -1,9 +1,296 @@
 <resources>
     <string name="app_name">APS-true</string>
 
-    <string-array name="tab_data">
-        <item>宜蘭縣</item>
-
+    <string-array name="tab_number">
+        <item>1MO1812040071</item>
+        <item>1MO1812040031</item>
+        <item>1MO1812040025</item>
+        <item>1MO1812040005</item>
+        <item>1SO1811270009</item>
     </string-array>
 
+    <string-array name="tab_number2">
+        <item>1SO1811270009</item>
+        <item>1SO1811270009</item>
+        <item>1SO1811270009</item>
+        <item>1SO1811270009</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="tab_number3">
+        <item>M1-ATN260011-1</item>
+        <item>F260011ATN-2</item>
+        <item>J1-EP340T-F260011ATN-2</item>
+        <item>ATN260011-06</item>
+        <item>客戶名稱：(M1315) MATADOR  GmbH</item>
+    </string-array>
+
+    <string-array name="tab_number4">
+        <item>ATN260011 垃圾筒系統櫃門片0.8*613.7*236.3mm-沖床組(6折)</item>
+        <item>ATN260011  系統櫃(垃圾筒) -抽屜+垃圾筒固定片*4pcs</item>
+        <item>ATN260011  系統櫃(垃圾筒) -抽屜+垃圾筒固定片*4pcs</item>
+        <item>EP338T砂漆淺灰/EP340T砂漆灰  系統櫃組合--26”下箱垃圾桶櫃</item>
+        <item>客戶訂單：6003028</item>
+    </string-array>
+
+    <string-array name="tab_sum">
+        <item>生產數量：3</item>
+        <item>生產數量：3</item>
+        <item>生產數量：3</item>
+        <item>生產數量：3</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="tab_time">
+        <item>預計上線：2018-12-05</item>
+        <item>預計上線：2018-12-06</item>
+        <item>預計上線：2018-12-07</item>
+        <item>預計上線：2018-12-05</item>
+        <item>業務人員：(M3049) 嚴卉婷</item>
+    </string-array>
+
+    <string-array name="tab_timestart">
+        <item>計劃開始：15:30</item>
+        <item>計劃開始：08:00</item>
+        <item>計劃開始：09:30</item>
+        <item>計劃開始：08:00</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="tab_timeend">
+        <item>計劃結束：15:45</item>
+        <item>計劃結束：08:05</item>
+        <item>計劃結束：09:50</item>
+        <item>計劃結束：08:05</item>
+        <item> </item>
+    </string-array>
+
+    <string-array name="tab_group">
+        <item>一群-沖床</item>
+        <item>一群-點焊</item>
+        <item>一群-塗裝</item>
+        <item>一群-裝配</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="tab_status">
+        <item>結案</item>
+        <item>生效</item>
+        <item>生效</item>
+        <item>生效</item>
+        <item>生效</item>
+    </string-array>
+
+    <string-array name="qianguan_material">
+        <item>L25-ATN260011-1</item>
+    </string-array>
+
+    <string-array name="thislevel_material">
+        <item>M1-ATN260011-22</item>
+        <item>F260011ATN-21</item>
+        <item>M1-F260011-1</item>
+        <item>M1-F260011-3A</item>
+        <item>M1-F260011-3B</item>
+        <item>25-ATA-A-54111-8</item>
+    </string-array>
+
+    <string-array name="houguan_material">
+        <item>JA31035</item>
+        <item>F260011ATN-2</item>
+    </string-array>
+
+    <string-array name="assembly_material">
+        <item>12-N005-1</item>
+        <item>12-ATN-02</item>
+        <item>12-N004</item>
+        <item>J1-EP338T-F2600118ATN-1</item>
+        <item>J1-EP340T-F2600118ATN-3</item>
+    </string-array>
+
+    <string-array name="qianguan_specifications">
+        <item>ATN260011 垃圾筒系統櫃門片0.8*613.7*236.3mm(M1-ATN260011-1)-雷射課</item>
+    </string-array>
+
+    <string-array name="thislevel_specifications">
+        <item>ATN260011塑膠垃圾筒抽屜-抽頭 0.8*658.4*617.1MM；沖床組</item>
+        <item>ATN260011垃圾筒系統櫃 超大抽身 0.8雙鋼珠 0.8*558*866 mm 世誠</item>
+        <item>ATN260011垃圾筒系統櫃抽屜固定片 0.8*140*163.5mm；沖床組（1折）</item>
+        <item>ATN260011/ATN340011 垃圾筒抽屜三角形固定片 1.0*200*18.2MM（左）；沖床組（1折）</item>
+        <item>ATN260011/ATN340011 垃圾筒抽屜三角形固定片 1.0*200*18.2MM（右）；沖床組（1折）</item>
+        <item>ATA-A-54111 抽屜L補強片/料加工 大邊</item>
+    </string-array>
+
+    <string-array name="houguan_specifications">
+        <item>砂漆灰色塗料EP340T VIGOR(國際色碼:RAL 7016)</item>
+        <item>ATN260011 系統櫃(垃圾筒)-抽屜+垃圾筒固定片*4pcs</item>
+    </string-array>
+
+    <string-array name="assembly_specifications">
+        <item>(固定送一廠)銓威 N005-01專用木板螺絲包(4顆/包)五彩 (批)</item>
+        <item>門擋軸螺絲包(門擋軸 M6牙+尼帽M6 錏色)舜泓</item>
+        <item>(固定送一廠) OSM前遮片螺絲包 (大扁十字平尾螺絲+華司M6*12錏黑/2入)</item>
+        <item>EP338T砂漆淺灰-ATN260011 系統櫃-垃圾桶櫃箱身 (60.9)塗裝</item>
+        <item>EP338T砂漆淺灰-ATN260011 系統櫃-門片 (3.1)塗裝</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="qianguan_unitdosage">
+        <item>1.00</item>
+    </string-array>
+
+    <string-array name="thislevel_unitdosage">
+        <item>1.00</item>
+        <item>1.00</item>
+        <item>4.00</item>
+        <item>1.00</item>
+        <item>1.00</item>
+        <item>2.00</item>
+    </string-array>
+
+    <string-array name="houguan_unitdosage">
+        <item>0.32</item>
+        <item>1.00</item>
+    </string-array>
+
+    <string-array name="assembly_unitdosage">
+        <item>1.00</item>
+        <item>1.00</item>
+        <item>1.00</item>
+        <item>1.00</item>
+        <item>1.00</item>
+    </string-array>
+
+    <string-array name="qianguan_requiredamount">
+        <item>3.00</item>
+    </string-array>
+
+    <string-array name="thislevel_requiredamount">
+        <item>3.00</item>
+        <item>3.00</item>
+        <item>12.00</item>
+        <item>3.00</item>
+        <item>3.00</item>
+        <item>6.00</item>
+    </string-array>
+
+    <string-array name="houguan_requiredamount">
+        <item>0.96</item>
+        <item>3.00</item>
+    </string-array>
+
+    <string-array name="assembly_requiredamount">
+        <item>3.00</item>
+        <item>3.00</item>
+        <item>3.00</item>
+        <item>3.00</item>
+        <item>3.00</item>
+    </string-array>
+
+    <string-array name="qianguan_unit">
+        <item>PCS</item>
+    </string-array>
+
+    <string-array name="thislevel_unit">
+        <item>PCS</item>
+        <item>PCS</item>
+        <item>PCS</item>
+        <item>PCS</item>
+        <item>PCS</item>
+        <item>PCS</item>
+    </string-array>
+
+    <string-array name="houguan_unit">
+        <item>公斤</item>
+        <item>PCS</item>
+    </string-array>
+
+    <string-array name="assembly_unit">
+        <item>包</item>
+        <item>包</item>
+        <item>包</item>
+        <item>PCS</item>
+        <item>PCS</item>
+    </string-array>
+
+    <string-array name="qianguan_storage">
+        <item></item>
+    </string-array>
+
+    <string-array name="thislevel_storage">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+    <string-array name="houguan_storage">
+        <item>常</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="assembly_storage">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+    <string-array name="qianguan_description">
+        <item></item>
+    </string-array>
+
+    <string-array name="thislevel_description">
+        <item></item>
+        <item>（400長）橫圓須補強 0.8*555*866</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+    <string-array name="houguan_description">
+        <item>H8-218A/T
+        RAL7016
+        出貨時需附衝擊色板</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="assembly_description">
+        <item>木工螺絲(外六角華司面尖角附PE套墊#12*3/4)-4顆</item>
+        <item>門軸攻一邊牙 6m/m*20m/m 電錏 @4</item>
+        <item>(大扁十字平尾螺絲+華司M6*12錏黑/2入)(平華司6*16*1鉦黑/2入)</item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+
+
+    <string-array name="sale_customer_number">
+        <item>12-N005-1</item>
+        <item>12-ATN-02</item>
+        <item>12-N004</item>
+        <item>J1-EP338T-F2600118ATN-1</item>
+        <item>J1-EP340T-F2600118ATN-3</item>
+    </string-array>
+
+    <string-array name="sale_specifications">
+        <item>M1-ATN260011-22</item>
+        <item>F260011ATN-21</item>
+        <item>M1-F260011-1</item>
+        <item>M1-F260011-3A</item>
+        <item>M1-F260011-3B</item>
+        <item>25-ATA-A-54111-8</item>
+    </string-array>
+
+    <string-array name="sale_unit">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 </resources>

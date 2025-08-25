@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.aps_true.data.DataProvider;
+
 import com.example.aps_true.R;
 import com.example.aps_true.data.LoginData;
 
@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
             }
             if (found) {
                 Intent intent = new Intent(this, MainActivity.class);
-                someMethod();
                 startActivity(intent);
                 clear();
             } else {
@@ -87,9 +86,5 @@ public class LoginActivity extends AppCompatActivity {
     private void clear() {
         accountEditText.setText("");
         passwordEditText.setText("");
-    }
-
-    public void someMethod() {
-        DataProvider.initializeAllData();
     }
 }

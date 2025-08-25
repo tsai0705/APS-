@@ -1,6 +1,5 @@
 package com.example.aps_true.ui.query.show.tab;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-import com.example.aps_true.data.DataProvider;
+
 import com.example.aps_true.data.QueryData;
 import com.example.aps_true.ui.query.show.tab.recyclerview.OrderAdapter;
 import com.example.aps_true.ui.query.show.tab.recyclerview.OrderItem;
@@ -50,44 +49,36 @@ public class HouguanFragment extends Fragment {
 
         ArrayList<OrderItem> datalist = new ArrayList<>();
 
-        // 取得資料清單
-        QueryData.getInstance().clearQueryData();
-        DataProvider.setHouGuanData();
-        ArrayList<HashMap<String, String>> rawDataList = QueryData.getInstance().getQueryData();
+        String[] material = getResources().getStringArray(R.array.houguan_material);
+        String[] specifications = getResources().getStringArray(R.array.houguan_specifications);
+        String[] unitdosage = getResources().getStringArray(R.array.houguan_unitdosage);
+        String[] requiredamount = getResources().getStringArray(R.array.houguan_requiredamount);
+        String[] unit = getResources().getStringArray(R.array.houguan_unit);
+        String[] storage = getResources().getStringArray(R.array.houguan_storage);
+        String[] description = getResources().getStringArray(R.array.houguan_description);
 
-        for (HashMap<String, String> map : rawDataList) {
-            // 把每個欄位拆分成陣列
-            // 如果map.get() 不為 null，根據,分割，如果為null,new String[]{""};
-            String[] serials = map.get("serial") != null ? map.get("serial").split(",") : new String[]{""};
-            String[] materials = map.get("material") != null ? map.get("material").split(",") : new String[]{""};
-            String[] specs = map.get("specifications") != null ? map.get("specifications").split(",") : new String[]{""};
-            String[] unitdosages = map.get("unitdosage") != null ? map.get("unitdosage").split(",") : new String[]{""};
-            String[] requireds = map.get("requiredamount") != null ? map.get("requiredamount").split(",") : new String[]{""};
-            String[] units = map.get("unit") != null ? map.get("unit").split(",") : new String[]{""};
-            String[] storages = map.get("storage") != null ? map.get("storage").split(",") : new String[]{""};
-            String[] descriptions = map.get("description") != null ? map.get("description").split(",") : new String[]{""};
+        // 最小長度，避免陣列長度不一致
+        int maxLength = Math.min(
+                Math.min(material.length, specifications.length),
+                Math.min(
+                        Math.min(unitdosage.length, requiredamount.length),
+                        Math.min(unit.length, Math.min(storage.length, description.length))
+                )
+        );
 
-            // 找出最大的長度，一個一個比較
-            int maxLength = Math.max(
-                    serials.length, Math.max(materials.length,
-                            Math.max(specs.length, Math.max(unitdosages.length,
-                                    Math.max(requireds.length, Math.max(units.length,
-                                            Math.max(storages.length, descriptions.length)))))));
-
-            // 依照 index 逐一建立 OrderItem
-            for (int i = 0; i < maxLength; i++) {
-                OrderItem item = new OrderItem(
-                        i < serials.length ? serials[i].trim() : "",
-                        i < materials.length ? materials[i].trim() : "",
-                        i < specs.length ? specs[i].trim() : "",
-                        i < unitdosages.length ? unitdosages[i].trim() : "",
-                        i < requireds.length ? requireds[i].trim() : "",
-                        i < units.length ? units[i].trim() : "",
-                        i < storages.length ? storages[i].trim() : "",
-                        i < descriptions.length ? descriptions[i].trim() : ""
-                );
-                datalist.add(item);
-            }
+        // 依照 index 逐一建立 OrderItem
+        for (int i = 1; i < maxLength; i++) {
+            OrderItem item = new OrderItem(
+                    String.valueOf(i),
+                    material[i],
+                    specifications[i],
+                    unitdosage[i],
+                    requiredamount[i],
+                    unit[i],
+                    storage[i],
+                    description[i]
+            );
+            datalist.add(item);
         }
 
         adapter.updateData(datalist);
