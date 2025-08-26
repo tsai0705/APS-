@@ -183,7 +183,7 @@
                                 android:id="@+id/sale_print_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.1"
+                                android:layout_weight="0.08"
                                 android:text="列印日期:"
                                 android:textSize="12dp"
                                 tools:layout_editor_absoluteX="189dp"
@@ -193,7 +193,7 @@
                                 android:id="@+id/sale_printdate_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.56"
                                 android:text="2018/12/21"
                                 android:textSize="12dp"
                                 tools:layout_editor_absoluteX="189dp"
@@ -243,7 +243,7 @@
                                 android:id="@+id/sale_date_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.13"
+                                android:layout_weight="0.11"
                                 android:text="訂購日期:"
                                 android:textSize="12dp"
                                 tools:layout_editor_absoluteX="804dp"
@@ -274,7 +274,7 @@
                                 android:id="@+id/sale_ordernumber_tv"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.25"
+                                android:layout_weight="0.24"
                                 android:layout_marginStart="5dp"
                                 android:text="1SO1811270009"
                                 android:textSize="12dp"
@@ -406,7 +406,7 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:id="@+id/assembly_serial_tv"
+                                        android:id="@+id/sale_serial_tv"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="0.4"
@@ -417,7 +417,7 @@
                                         tools:layout_editor_absoluteY="248dp" />
 
                                     <TextView
-                                        android:id="@+id/assembly_customer_number_tv"
+                                        android:id="@+id/sale_customer_number_tv"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1.2"

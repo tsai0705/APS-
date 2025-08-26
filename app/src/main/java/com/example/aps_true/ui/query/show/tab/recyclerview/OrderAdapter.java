@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-
 import com.example.aps_true.R;
 
 public class OrderAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.query.show.tab.recyclerview.OrderAdapter.ViewHolder> {

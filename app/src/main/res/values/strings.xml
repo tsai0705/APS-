@@ -29,39 +29,39 @@
         <item>ATN260011 垃圾筒系統櫃門片0.8*613.7*236.3mm-沖床組(6折)</item>
         <item>ATN260011  系統櫃(垃圾筒) -抽屜+垃圾筒固定片*4pcs</item>
         <item>ATN260011  系統櫃(垃圾筒) -抽屜+垃圾筒固定片*4pcs</item>
-        <item>EP338T砂漆淺灰/EP340T砂漆灰  系統櫃組合--26”下箱垃圾桶櫃</item>
-        <item>客戶訂單：6003028</item>
+        <item>EP338T砂漆淺灰/EP340T砂漆灰  系統櫃組合--26"下箱垃圾桶櫃</item>
+        <item>客戶訂單:6003028</item>
     </string-array>
 
     <string-array name="tab_sum">
-        <item>生產數量：3</item>
-        <item>生產數量：3</item>
-        <item>生產數量：3</item>
-        <item>生產數量：3</item>
+        <item>生產數量:3</item>
+        <item>生產數量:3</item>
+        <item>生產數量:3</item>
+        <item>生產數量:3</item>
         <item></item>
     </string-array>
 
     <string-array name="tab_time">
-        <item>預計上線：2018-12-05</item>
-        <item>預計上線：2018-12-06</item>
-        <item>預計上線：2018-12-07</item>
-        <item>預計上線：2018-12-05</item>
-        <item>業務人員：(M3049) 嚴卉婷</item>
+        <item>預計上線:2018-12-05</item>
+        <item>預計上線:2018-12-06</item>
+        <item>預計上線:2018-12-07</item>
+        <item>預計上線:2018-12-05</item>
+        <item>業務人員:(M3049) 嚴卉婷</item>
     </string-array>
 
     <string-array name="tab_timestart">
-        <item>計劃開始：15:30</item>
-        <item>計劃開始：08:00</item>
-        <item>計劃開始：09:30</item>
-        <item>計劃開始：08:00</item>
+        <item>計劃開始:15:30</item>
+        <item>計劃開始:08:00</item>
+        <item>計劃開始:09:30</item>
+        <item>計劃開始:08:00</item>
         <item></item>
     </string-array>
 
     <string-array name="tab_timeend">
-        <item>計劃結束：15:45</item>
-        <item>計劃結束：08:05</item>
-        <item>計劃結束：09:50</item>
-        <item>計劃結束：08:05</item>
+        <item>計劃結束:15:45</item>
+        <item>計劃結束:08:05</item>
+        <item>計劃結束:09:50</item>
+        <item>計劃結束:08:05</item>
         <item> </item>
     </string-array>
 
@@ -252,9 +252,7 @@
     </string-array>
 
     <string-array name="houguan_description">
-        <item>H8-218A/T
-        RAL7016
-        出貨時需附衝擊色板</item>
+        <item>H8-218A/T&#10;RAL7016&#10;出貨時需附衝擊色板</item>
         <item></item>
     </string-array>
 
@@ -266,7 +264,6 @@
         <item></item>
     </string-array>
 
-
     <string-array name="sale_product_number">
         <item>ATN260011-06</item>
     </string-array>
@@ -276,7 +273,7 @@
     </string-array>
 
     <string-array name="sale_specifications">
-        <item>EP338T砂漆淺灰/EP340T砂漆灰 系統櫃組合--26”下箱垃圾桶櫃</item>
+        <item>EP338T砂漆淺灰/EP340T砂漆灰 系統櫃組合--26"下箱垃圾桶櫃</item>
     </string-array>
 
     <string-array name="sale_quantity">
@@ -296,22 +293,21 @@
     </string-array>
 
     <string-array name="sale_note">
-        <item>10.烤漆顏色:箱身 選用EP338T砂漆淺灰月片,垃圾桶抽屜EP340T砂漆灰
-              20.結構: 26”垃圾桶、深度500MM、天蓋不沖鎖頭
-              塑膠垃圾桶x2、內掀式門片、17”45MM雙回歸鋼珠、
-              鐵板厚度:箱身:0.8MM、門片:0.8MM
-              OSM調整腳固定座為焊死,腳座往內移動、調整腳需鎖上
-              箱體遮片孔位拉上拉帽、兩側邊各沖4孔拉帽孔
-              30.附件:木板螺絲一包,前遮片(676MM),前遮片螺絲包、
-              40.包裝:PE袋+保麗龍+無底牛五外箱+底蓋(冰箱式包法)
-              50.麥頭:
-              正麥:
-              Men's Kitchen by MATADOR板手圖—客戶專用版
-              Art. Code: 8152 2604
-              QTY: 1 SET
-              N.W.: 32 KGS
-              G.W.: 36.56 KGS
-              CUFT.: 15.4'
-              </item>
+    <item>10.烤漆顏色:箱身 選用EP338T砂漆淺灰月片,垃圾桶抽屜EP340T砂漆灰&#10;
+        20.結構: 26"垃圾桶、深度500MM、天蓋不沖鎖頭&#10;
+        塑膠垃圾桶x2、內掀式門片、17"45MM雙回歸鋼珠、&#10;
+        鐵板厚度:箱身:0.8MM、門片:0.8MM&#10;
+        OSM調整腳固定座為焊死,腳座往內移動、調整腳需鎖上&#10;
+        箱體遮片孔位拉上拉帽、兩側邊各沖4孔拉帽孔&#10;
+        30.附件:木板螺絲一包,前遮片(676MM),前遮片螺絲包、&#10;
+        40.包裝:PE袋+保麗龍+無底牛五外箱+底蓋(冰箱式包法)&#10;
+        50.麥頭:&#10;
+        正麥:&#10;
+        Men\'s Kitchen by MATADOR板手圖-客戶專用版&#10;
+        Art. Code: 8152 2604&#10;
+        QTY: 1 SET&#10;
+        N.W.: 32 KGS&#10;
+        G.W.: 36.56 KGS&#10;
+        CUFT.: 15.4\'</item>
     </string-array>
 </resources>
