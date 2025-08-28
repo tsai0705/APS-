@@ -1,27 +1,27 @@
 package com.example.aps_true.ui.query.main;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.content.Intent;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.aps_true.R;
-import com.example.aps_true.ui.query.main.recyclerview.QueryMainActivity;
-
-import android.widget.ArrayAdapter;// 用來設定 Spinner 的資料來源
-import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.aps_true.R;
+import com.example.aps_true.ui.query.QuerySpinner;
+import com.example.aps_true.ui.query.main.recyclerview.QueryMainActivity;
 
 public class QueryActivity extends AppCompatActivity{
 
     private ImageButton backImageButton;
     private Button dateButton,order_numberButton,clientButton,submitButton;
-    private Spinner processSpinner;
+    private QuerySpinner processSpinner;
     private EditText dateEditText,ordernumberEditText,clientEditText;
     private int choice = 0;
 
@@ -33,21 +33,22 @@ public class QueryActivity extends AppCompatActivity{
 
         bindUI();
 
-        // 建立一組字串陣列，作為下拉選單項目
-        final String[] str={"點焊"};
-
-        // 建立 ArrayAdapter，連結字串陣列與 Spinner
+        final String[] str = {"點焊"};
         ArrayAdapter<String> strList = new ArrayAdapter<>(
                 QueryActivity.this,
-                android.R.layout.simple_spinner_item, // 注意：此為 Spinner 預設項目的樣式
+                android.R.layout.simple_spinner_item,
                 str
         );
 
-        processSpinner.setAdapter(strList);// 設定 Spinner 的資料來源為strList
+        processSpinner.setAdapter(strList);
+        strList.setDropDownViewResource(R.layout.options_spinner);
 
-        // 設定下拉選單列表項目的顯示樣式
-        strList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        // 點擊監聽空白處
+        View rootView = findViewById(android.R.id.content);
+        rootView.setOnClickListener(v -> {
+            // 點擊空白處時，如果 Spinner 沒有被選中，設置為細框
+            processSpinner.setBackgroundResource(R.drawable.process_button);
+        });
 
         order_numberButton.setOnClickListener(this::orderclick);
         clientButton.setOnClickListener(this::clientclick);

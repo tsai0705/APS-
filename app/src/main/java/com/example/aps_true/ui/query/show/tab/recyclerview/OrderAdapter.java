@@ -65,7 +65,7 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.q
         // 根據 item 的 description 來設定背景色
         String desc = item.getDescription();
         if (!desc.equals("")) {
-            holder.descriptionTextView.setBackgroundColor(Color.parseColor("#FFC0C0C0"));
+            holder.descriptionTextView.setBackgroundColor(Color.parseColor("#F0F0F0"));
         } else {
             holder.descriptionTextView.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
         }
