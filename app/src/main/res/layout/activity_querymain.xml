@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 工具列 -->
+    <!-- 工具列：最上面 -->
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,13 +19,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="match_parent">
 
             <!-- 黑色背景條 -->
             <View
-                android:id="@+id/query_logincolor_v"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:id="@+id/querymain_querycolor_v"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:background="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +33,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/query_back_ibtn"
+                android:id="@+id/querymain_back_ibtn"
                 android:layout_width="75dp"
-                android:layout_height="70dp"
+                android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 android:contentDescription="返回上一頁"
@@ -48,45 +49,47 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/query_query_tv"
+                android:id="@+id/querymain_query_tv"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="100dp"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16dp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:text="進度表查詢"
-                app:layout_constraintBottom_toBottomOf="@id/query_logincolor_v"
+                app:layout_constraintBottom_toBottomOf="@+id/querymain_querycolor_v"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- 大頭貼 -->
             <ImageView
-                android:id="@+id/query_avatar_iv"
+                android:id="@+id/querymain_avatar_iv"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/u8"
-                app:layout_constraintEnd_toStartOf="@id/query_username_tv"
+                app:layout_constraintEnd_toStartOf="@id/querymain_username_tv"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="8dp"/>
 
+            <!-- 圓圈 -->
             <ImageView
-                android:id="@+id/query_badge_iv"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:id="@+id/querymain_badge_iv"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/u9"
-                app:layout_constraintEnd_toStartOf="@id/query_username_tv"
-                app:layout_constraintTop_toTopOf="@id/query_avatar_iv"
-                android:translationX="-13dp"
-                android:translationY="6dp"
-                />
+                app:layout_constraintEnd_toStartOf="@id/querymain_username_tv"
+                app:layout_constraintTop_toTopOf="@id/querymain_avatar_iv"
+                android:translationX="-16dp"/>
 
+            <!-- 使用者名稱 -->
             <TextView
-                android:id="@+id/query_username_tv"
+                android:id="@+id/querymain_username_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:text="羅正修"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

@@ -5,25 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 工具列 -->
-    <LinearLayout
+    <!-- 工具列：最上面 -->
+    <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:flexDirection="column">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="match_parent">
 
             <!-- 黑色背景條 -->
             <View
-                android:id="@+id/main_logincolor_v"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:id="@+id/querytab_querycolor_v"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:background="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,7 @@
             <ImageView
                 android:id="@+id/main_avatar_iv"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/u8"
                 app:layout_constraintEnd_toStartOf="@id/main_username_tv"
                 app:layout_constraintTop_toTopOf="parent"
@@ -44,14 +45,12 @@
             <!-- 圓圈 -->
             <ImageView
                 android:id="@+id/main_badge_iv"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/u9"
                 app:layout_constraintEnd_toStartOf="@id/main_username_tv"
                 app:layout_constraintTop_toTopOf="@id/main_avatar_iv"
-                android:translationX="-13dp"
-                android:translationY="6dp"
-                />
+                android:translationX="-16dp"/>
 
             <!-- 使用者名稱 -->
             <TextView
@@ -59,15 +58,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:text="羅正修"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="24dp"
                 android:gravity="center_vertical"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+
+    </com.google.android.flexbox.FlexboxLayout>
 
     <!-- 主內容區 -->
     <LinearLayout

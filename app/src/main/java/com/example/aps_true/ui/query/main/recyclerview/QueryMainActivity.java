@@ -27,7 +27,7 @@ public class QueryMainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_querymain);
 
-        backImageButton = findViewById(R.id.query_back_ibtn);
+        backImageButton = findViewById(R.id.querymain_back_ibtn);
         resultRecyclerView = findViewById(R.id.querymain_result_rv);
 
         Intent intent = getIntent();
