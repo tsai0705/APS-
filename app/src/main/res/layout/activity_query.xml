@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.example.aps_true.ui.query.QuerySpinner
+                <com.example.aps_true.ui.QuerySpinner
                     android:id="@+id/query_process_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

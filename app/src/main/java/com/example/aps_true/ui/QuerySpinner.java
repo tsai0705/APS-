@@ -1,4 +1,4 @@
-package com.example.aps_true.ui.query;
+package com.example.aps_true.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

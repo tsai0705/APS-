@@ -14,7 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
-import com.example.aps_true.ui.query.QuerySpinner;
+import com.example.aps_true.ui.QuerySpinner;
 import com.example.aps_true.ui.query.main.recyclerview.QueryMainActivity;
 
 public class QueryActivity extends AppCompatActivity{

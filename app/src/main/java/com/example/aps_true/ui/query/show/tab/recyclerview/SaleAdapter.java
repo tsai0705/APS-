@@ -1,14 +1,16 @@
 package com.example.aps_true.ui.query.show.tab.recyclerview;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
+
 import com.example.aps_true.R;
+
+import java.util.ArrayList;
 
 public class SaleAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.query.show.tab.recyclerview.SaleAdapter.ViewHolder> {
     private Context context;
@@ -33,7 +35,7 @@ public class SaleAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.qu
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView serialTextView, product_numberTextView,customer_number, specificationsTextView,
-                quantityTextView, unitTextView, notshippedTextView, predeliverydateTextView,noteTextview;
+                quantityTextView, unitTextView, notshippedTextView, predeliverydateTextView,noteTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -45,8 +47,7 @@ public class SaleAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.qu
             unitTextView = itemView.findViewById(R.id.sales_unit_tv);
             notshippedTextView = itemView.findViewById(R.id.sales_notshipped_tv);
             predeliverydateTextView = itemView.findViewById(R.id.sales_predate_tv);
-            noteTextview = itemView.findViewById(R.id.sales_note_tv);
-
+            noteTextView = itemView.findViewById(R.id.sales_note_tv);
         }
     }
 
@@ -61,7 +62,7 @@ public class SaleAdapter extends RecyclerView.Adapter<com.example.aps_true.ui.qu
         holder.unitTextView.setText(String.valueOf(item.getUnit()));
         holder.notshippedTextView.setText(String.valueOf(item.getNotshipped()));
         holder.predeliverydateTextView.setText(String.valueOf(item.getPredeliverydate()));
-        holder.noteTextview.setText(String.valueOf(item.getNote()));
+        holder.noteTextView.setText(String.valueOf(item.getNote()));
     }
 
     @Override

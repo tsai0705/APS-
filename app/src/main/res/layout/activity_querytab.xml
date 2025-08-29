@@ -103,9 +103,8 @@
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/layout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintWidth_percent="1"
         app:layout_constraintHeight_percent="0.22"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         app:layout_constraintStart_toStartOf="parent"
@@ -335,6 +334,7 @@
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.63"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/layout"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -346,7 +346,6 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
     </LinearLayout>
 
