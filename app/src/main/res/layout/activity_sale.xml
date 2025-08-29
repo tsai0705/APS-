@@ -256,8 +256,8 @@
                             android:id="@+id/sale_ordernumber_tv"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.24"
-                            android:layout_marginStart="5dp"
+                            android:layout_weight="0.23"
+                            android:layout_marginStart="3dp"
                             android:text="1SO1811270009"
                             android:textSize="12dp"
                             tools:layout_editor_absoluteX="1008dp"
@@ -284,7 +284,7 @@
                             android:id="@+id/sale_partnumber_tv"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.18"
+                            android:layout_weight="0.25"
                             android:text="(M1315)"
                             android:textSize="12dp"
                             tools:layout_editor_absoluteX="189dp"
@@ -293,14 +293,13 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.44"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/sale_part_tv"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.2"
                                 android:text="MATADOR  GmbH"
                                 android:textSize="12dp"
                                 tools:layout_editor_absoluteX="804dp"
@@ -312,8 +311,9 @@
                             android:id="@+id/sale_start_tv"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.1"
+                            android:layout_weight="0.12"
                             android:text="客戶訂單:"
+                            android:gravity="end"
                             android:textSize="12dp"
                             tools:layout_editor_absoluteX="1008dp"
                             tools:layout_editor_absoluteY="248dp" />
@@ -323,8 +323,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.25"
-                            android:layout_marginStart="5dp"
                             android:text="6003028"
+                            android:paddingStart="5dp"
                             android:textSize="12dp"
                             tools:layout_editor_absoluteX="1008dp"
                             tools:layout_editor_absoluteY="248dp" />
@@ -340,7 +340,7 @@
                             android:id="@+id/sale_end_tv"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.85"
+                            android:layout_weight="0.9"
                             android:gravity="end"
                             android:text="業務人員:"
                             android:textSize="12dp"
@@ -352,8 +352,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.24"
-                            android:text="(M3049) 嚴卉婷"
+                            android:text="(M3049)       嚴卉婷"
                             android:layout_marginStart="5dp"
+                            android:gravity=""
                             android:textSize="12dp"
                             tools:layout_editor_absoluteX="1008dp"
                             tools:layout_editor_absoluteY="248dp" />
@@ -378,7 +379,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2.2"
+                            android:layout_weight="1.8"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -402,7 +403,7 @@
                                     android:id="@+id/sale_customer_number_tv"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="1.2"
+                                    android:layout_weight="1"
                                     android:gravity="center_vertical"
                                     android:textSize="12dp"
                                     android:text="產品編號/客戶編號"

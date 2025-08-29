@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,7 +54,7 @@ public class FragmentSchedule extends Fragment {
                 number2 = "祥雲工具股份有限公司";
             }
             ScheduleItem item = new ScheduleItem(serial, order_number[serial - 1], source[serial - 1], number[serial - 1], number2, number3[serial - 1],
-                    number4[0], time[0], process[0]);
+                    number4[0], time[serial - 1], process[0]);
             datalist.add(item);
         }
         adapter.updateData(datalist);
