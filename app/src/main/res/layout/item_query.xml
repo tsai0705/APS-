@@ -151,7 +151,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        app:srcCompat="@drawable/u34" />
+        app:srcCompat="@drawable/outline_arrow_forward_ios_24" />
 
 
 </LinearLayout>
