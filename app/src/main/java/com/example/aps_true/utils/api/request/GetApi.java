@@ -1,10 +1,16 @@
 package com.example.aps_true.utils.api.request;
 
+import com.example.aps_true.utils.api.response.AssemblyResponse;
+import com.example.aps_true.utils.api.response.HouguanResponse;
+import com.example.aps_true.utils.api.response.LoginResponse;
+import com.example.aps_true.utils.api.response.QianguanResponse;
 import com.example.aps_true.utils.api.response.SaleResponse;
+import com.example.aps_true.utils.api.response.ThislevelResponse;
+
+import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -15,60 +21,69 @@ import retrofit2.http.Query;
 //Retrofit 會依照這個接口自動生成網路請求
 
 public interface GetApi {
-    // 透過GET請求呼叫API端點
-    //接在baseUrl後面的
-
-    // 登入
-    @POST("api/auth/login")
-    @FormUrlEncoded
-    Observable<SaleResponse> getlogin(
-            @Field("account") String account,
-            @Field("password") String password
+    @POST("auth/login")
+    Observable<Response<LoginResponse>> getToken(
+            @Query("account") String account,
+            @Query("password") String password
     );
 
-    // 登出
-    @POST("api/auth/logout")
-    @FormUrlEncoded
-    Observable<SaleResponse> getlogout(
-            @Field("Token") String Token
+    // 登入人員資訊
+    @GET("auth/")
+    Observable<LoginResponse> getLoginData(
+            @Query("token") String token
+    );
+
+    // 查詢客戶名稱
+    @GET("app-search-customer")
+    Observable<Response<List<DataResponse>>> getCustomer(
+            @Query("customer_name") String customer_name,
+            @Query("token") String token
+    );
+
+    // 查詢訂單單號
+    @GET("app-search-so")
+    Observable<Response<List<DataResponse>>> getOrder(
+            @Query("so_id") String so_id,
+            @Query("token") String token
     );
 
     // 前關
-    @GET("get-prev-manufacture")
-    Observable<SaleResponse> getQianGuan(
-            @Query("so_id") String so_id,   // 訂單單號(SO)
-            @Query("item_id") String item_id,   // 零件代號
-            @Query("Token") String Token
+    @GET("get-manufacture")
+    Observable<Response<List<QianguanResponse>>> getQianguan(
+            @Query("customer") String customer,
+            @Query("sale_order") String sale_order,
+            @Query("token") String token
     );
 
     // 本階
     @GET("get-current-stage-com")
-    Observable<SaleResponse> getThisLevel(
-            @Query("item_id") String item_id,   // 零件代號
-            @Query("Token") String Token
+    Observable<Response<List<ThislevelResponse>>> getThislevel(
+            @Query("item_id") String item_id,
+            @Query("token") String token
     );
 
-    // 後關
+    // 後關*
     @GET("get-next-part")
-    Observable<SaleResponse> getHouGuan(
-            @Query("so_id") String so_id,   // 訂單單號(SO)
-            @Query("id") String id,   // 零件代號
-            @Query("Token") String Token
+    Observable<Response<List<HouguanResponse>>> getHouguan(
+            @Query("sale_order") String sale_order,
+            @Query("id") String id,
+            @Query("token") String token
     );
 
-    // 裝配
+    // 裝配*
     @GET("get-so-data")
-    Observable<SaleResponse> getAssembly(
-            @Query("sale_order") String sale_order,   // 訂單單號(SO)
-            @Query("item") String item,   // 零件代號
-            @Query("Token") String Token
+    Observable<Response<List<AssemblyResponse>>> getAssembly(
+            @Query("sale_order") String sale_order,
+            @Query("item") String item,
+            @Query("token") String token
     );
 
+    // 訂單單號
     @GET("get-sale-order")
-    Observable<SaleResponse> getSaleOrder(
-            @Query("sale_order") String sale_order,   // 訂單單號(SO)
-            @Query("customer") String customer,   // 客戶名稱
-            @Query("online_date") String online_date,   // 上線日期
-            @Query("Token") String Token
+    Observable<Response<List<SaleResponse>>> getSale(
+            @Query("sale_order") String so_id,
+            @Query("customer") String customer,
+            @Query("online_date") String online_date,
+            @Query("token") String token
     );
 }

@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     // 建立 Retrofit 實例，設定 baseUrl 和 JSON 轉換器並用於呼叫氣象 API
-    public Retrofit myWeatherApi() {
+    public Retrofit ApsApi() {
         return new Retrofit.Builder()
                 // 設定 API 的根網址 (base URL)，所有的接口請求會以此為基準
                 .baseUrl("https://web.nutc-imac.com:6789/api/")
