@@ -7,21 +7,20 @@
     android:layout_height="match_parent">
 
     <!-- 工具列：最上面 -->
-    <com.google.android.flexbox.FlexboxLayout
+    <LinearLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:flexDirection="column">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- 黑色背景條 -->
             <View
                 android:id="@+id/todaymain_querycolor_v"
                 android:layout_width="match_parent"
@@ -62,7 +61,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- 大頭貼 -->
             <ImageView
                 android:id="@+id/todaymain_avatar_iv"
                 android:layout_width="30dp"
@@ -73,7 +71,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="8dp"/>
 
-            <!-- 圓圈 -->
             <ImageView
                 android:id="@+id/todaymain_badge_iv"
                 android:layout_width="15dp"
@@ -83,7 +80,6 @@
                 app:layout_constraintTop_toTopOf="@id/todaymain_avatar_iv"
                 android:translationX="-16dp"/>
 
-            <!-- 使用者名稱 -->
             <TextView
                 android:id="@+id/todaymain_username_tv"
                 android:layout_width="wrap_content"
@@ -99,18 +95,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.flexbox.FlexboxLayout>
+    </LinearLayout>
 
-    <com.google.android.flexbox.FlexboxLayout
+    <LinearLayout
         android:id="@+id/layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintWidth_percent="1"
         app:layout_constraintHeight_percent="0.22"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:flexDirection="column">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -324,11 +320,9 @@
 
             </LinearLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.flexbox.FlexboxLayout>
-
+    </LinearLayout>
 
     <!-- 主內容區 -->
     <LinearLayout
@@ -341,12 +335,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- ViewPager2 -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
     </LinearLayout>
 

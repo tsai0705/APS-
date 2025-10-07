@@ -7,6 +7,7 @@ public class LoginData {
     private static LoginData instance; // 單例實例變數，用來保存唯一的 LoginData 物件
     private String account; // 用戶名
     private String password; // 密碼
+    private String token;
     private ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
     private LoginData() {}  // 私有建構子，外部不能用 new LoginData() 新建物件，強制只能透過 getInstance() 取得唯一實例
 
@@ -42,6 +43,13 @@ public class LoginData {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
     public ArrayList<HashMap<String, String>> getData() {
         return data; //取得目前 LoginData 實例裡 data 這個成員變數的內容
     }

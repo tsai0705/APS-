@@ -1,8 +1,10 @@
 package com.example.aps_true.utils.api.request;
 
 import com.example.aps_true.utils.api.response.AssemblyResponse;
+import com.example.aps_true.utils.api.response.CustomerResponse;
 import com.example.aps_true.utils.api.response.HouguanResponse;
 import com.example.aps_true.utils.api.response.LoginResponse;
+import com.example.aps_true.utils.api.response.OrderResponse;
 import com.example.aps_true.utils.api.response.QianguanResponse;
 import com.example.aps_true.utils.api.response.SaleResponse;
 import com.example.aps_true.utils.api.response.ThislevelResponse;
@@ -22,10 +24,11 @@ import retrofit2.http.Query;
 
 public interface GetApi {
     @POST("auth/login")
-    Observable<Response<LoginResponse>> getToken(
+    Observable<LoginResponse> getToken(
             @Query("account") String account,
             @Query("password") String password
     );
+
 
     // 登入人員資訊
     @GET("auth/")
@@ -35,14 +38,14 @@ public interface GetApi {
 
     // 查詢客戶名稱
     @GET("app-search-customer")
-    Observable<Response<List<DataResponse>>> getCustomer(
+    Observable<Response<List<CustomerResponse>>> getCustomer(
             @Query("customer_name") String customer_name,
             @Query("token") String token
     );
 
     // 查詢訂單單號
     @GET("app-search-so")
-    Observable<Response<List<DataResponse>>> getOrder(
+    Observable<Response<List<OrderResponse>>> getOrder(
             @Query("so_id") String so_id,
             @Query("token") String token
     );
