@@ -17,14 +17,8 @@ import com.example.aps_true.data.LoginData;
 import com.example.aps_true.data.TabData;
 import com.example.aps_true.utils.api.request.ApiClient;
 import com.example.aps_true.utils.api.request.GetApi;
-import com.example.aps_true.utils.api.response.CustomerResponse;
-import com.example.aps_true.utils.api.response.OrderResponse;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FragmentSchedule extends Fragment {
     private RecyclerView resultRecyclerView;
@@ -55,46 +49,46 @@ public class FragmentSchedule extends Fragment {
 
 
 
-        loadData();
+        // loadData();
         return view;
     }
 
-    protected void loadData() {
-        ArrayList<ScheduleItem> datalist = new ArrayList<>();
-        String token = loginData.getToken();
-        getApi.getOrder("", token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        response -> {  // response 是 Response<List<OrderResponse>>
-                            List<OrderResponse> soList = response.body();  // ← 取得實際的 List
-
-                            if (soList != null && !soList.isEmpty()) {
-                                for (OrderResponse so : soList) {
-                                    TabData.getInstance().setSo(so.getSoId());
-                                }
-                            }
-                        }
-                );
-
-        String so_id = com.example.aps_true.data.TabData.getInstance().getSo();
-
-        getApi.getCustomer("", token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        response -> {  // response 是 Response<List<OrderResponse>>
-                            List<CustomerResponse> customerList = response.body();  // ← 取得實際的 List
-
-                            if (customerList != null && !customerList.isEmpty()) {
-                                for (CustomerResponse customer : customerList) {
-                                    TabData.getInstance().setCustomer(customer.getCustomer_name());
-                                }
-                            }
-                        }
-                );
-
-        adapter.updateData(datalist);
-    }
+//    protected void loadData() {
+//        ArrayList<ScheduleItem> datalist = new ArrayList<>();
+//        String token = loginData.getToken();
+//        getApi.getOrder("", token)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                        response -> {  // response 是 Response<List<OrderResponse>>
+//                            List<OrderResponse> soList = response.body();  // ← 取得實際的 List
+//
+//                            if (soList != null && !soList.isEmpty()) {
+//                                for (OrderResponse so : soList) {
+//                                    TabData.getInstance().setSo(so.getSoId());
+//                                }
+//                            }
+//                        }
+//                );
+//
+//        String so_id = com.example.aps_true.data.TabData.getInstance().getSo();
+//
+//        getApi.getCustomer("", token)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                        response -> {  // response 是 Response<List<OrderResponse>>
+//                            List<CustomerResponse> customerList = response.body();  // ← 取得實際的 List
+//
+//                            if (customerList != null && !customerList.isEmpty()) {
+//                                for (CustomerResponse customer : customerList) {
+//                                    TabData.getInstance().setCustomer(customer.getCustomer_name());
+//                                }
+//                            }
+//                        }
+//                );
+//
+//        adapter.updateData(datalist);
+//    }
 
 }

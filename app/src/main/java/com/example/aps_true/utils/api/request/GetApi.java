@@ -38,14 +38,14 @@ public interface GetApi {
 
     // 查詢客戶名稱
     @GET("app-search-customer")
-    Observable<Response<List<CustomerResponse>>> getCustomer(
+    Observable<List<CustomerResponse>> getCustomer(
             @Query("customer_name") String customer_name,
             @Query("token") String token
     );
 
     // 查詢訂單單號
     @GET("app-search-so")
-    Observable<Response<List<OrderResponse>>> getOrder(
+    Observable<List<OrderResponse>> getOrder(
             @Query("so_id") String so_id,
             @Query("token") String token
     );

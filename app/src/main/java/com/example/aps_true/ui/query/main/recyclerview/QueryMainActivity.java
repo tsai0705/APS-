@@ -1,6 +1,5 @@
 package com.example.aps_true.ui.query.main.recyclerview;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -36,7 +35,8 @@ public class QueryMainActivity extends AppCompatActivity {
         backImageButton = findViewById(R.id.querymain_back_ibtn);
         resultRecyclerView = findViewById(R.id.querymain_result_rv);
 
-        Intent intent = getIntent();
+        String clientname = getIntent().getStringExtra("client");
+        String soid = getIntent().getStringExtra("soid");
 
         // RecyclerView 設定
         resultRecyclerView.setLayoutManager(new LinearLayoutManager(this));
