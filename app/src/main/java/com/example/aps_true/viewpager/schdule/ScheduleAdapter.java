@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
+
 import com.example.aps_true.R;
 import com.example.aps_true.viewpager.todayschedule.TodayMainActivity;
-import com.example.aps_true.viewpager.todayschedule.tab.TD_QianguanFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<com.example.aps_true.viewpager.schdule.ScheduleAdapter.ViewHolder> {
     private Context context;

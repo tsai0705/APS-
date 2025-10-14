@@ -8,12 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
+import com.example.aps_true.data.LoginData;
 import com.example.aps_true.ui.QuerySpinner;
 import com.example.aps_true.ui.query.main.recyclerview.QueryMainActivity;
 
@@ -23,6 +25,8 @@ public class QueryActivity extends AppCompatActivity{
     private Button dateButton,order_numberButton,clientButton,submitButton;
     private QuerySpinner processSpinner;
     private EditText dateEditText,ordernumberEditText,clientEditText;
+    private TextView usernameTextview;
+    private LoginData loginData = LoginData.getInstance(); //連接LoginData
     private int choice = 0;
 
     @Override
@@ -30,6 +34,9 @@ public class QueryActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_query);
+
+        usernameTextview = findViewById(R.id.query_username_tv);
+        usernameTextview.setText(loginData.getName());
 
         bindUI();
 

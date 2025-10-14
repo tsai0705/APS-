@@ -1,74 +1,318 @@
 package com.example.aps_true.utils.api.response;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.List;
 
-//資料類別（Data Model）
-//用來對應API回傳的JSON結構，並提供方便取用資料的方法
-//Retrofit 用 Gson 會自動將 JSON 轉成這個類別的物件。
-
 public class SaleResponse {
-    public Records records; //Api資料，records後面是{}，也就是class類別，所以要建立一個records的class
-    public class Records{ //records底下的location，他後面是先[]才是{}，意思是location裡面的資料是用list[]包起來，再更裡面的資料是class{}類別
-        public Integer id;
-        public String date; // 上線日期
-        public String type;
-        public String so_id;
-        public String item_id;
-        public String item_name;
-        public String qty;
-        public String customer;  // 客戶名稱
-        public List<sale_order> sale_order;//這裡代表在List裡面放入Location的物件，後面表示這個變數名稱為location，而Location是class，所以就是用List去包class，就可以完成上述的順序
-        public List<parent_parts> parent_parts;
+
+    @SerializedName("records")
+    private Records records;
+
+    public Records getRecords() {
+        return records;
     }
 
-    public class sale_order{
-        public Integer id;
-        public String so_id; // 訂單單號(SO)
-        public String item;
-        public String customer_name;
-        public Integer qty;
-        public Date container_date;
-        public Date bill_date;
-        public String org_id;
-        public String current_state;
-        public String customer_order;
-        public String person_id;
-        public String material_spec;
-        public String sunit_id;
-        public Integer untrans_qty;
-        public String cu_remark;
+    public void setRecords(Records records) {
+        this.records = records;
     }
 
-    public class parent_parts{
-        public Integer id;
-        public String material_id;
-        public String bomkey_name;
-        public String unit_id;
-        public String techroutekey_id;
-        public Integer fetch_type;
-        public List<downstream_child> downstream_child;
+    // ========== 內部類別 ==========
+
+    public static class Records {
+        @SerializedName("id")
+        private Integer id;
+
+        @SerializedName("date")
+        private String date; // 上線日期
+
+        @SerializedName("type")
+        private String type;
+
+        @SerializedName("so_id")
+        private String soId;
+
+        @SerializedName("item_id")
+        private String itemId;
+
+        @SerializedName("item_name")
+        private String itemName;
+
+        @SerializedName("qty")
+        private String qty;
+
+        @SerializedName("customer")
+        private String customer; // 客戶名稱
+
+        @SerializedName("sale_order")
+        private List<SaleOrder> saleOrder;
+
+        @SerializedName("parent_parts")
+        private List<ParentParts> parentParts;
+
+        // Getters and Setters
+        public Integer getId() { return id; }
+        public void setId(Integer id) { this.id = id; }
+
+        public String getDate() { return date; }
+        public void setDate(String date) { this.date = date; }
+
+        public String getType() { return type; }
+        public void setType(String type) { this.type = type; }
+
+        public String getSoId() { return soId; }
+        public void setSoId(String soId) { this.soId = soId; }
+
+        public String getItemId() { return itemId; }
+        public void setItemId(String itemId) { this.itemId = itemId; }
+
+        public String getItemName() { return itemName; }
+        public void setItemName(String itemName) { this.itemName = itemName; }
+
+        public String getQty() { return qty; }
+        public void setQty(String qty) { this.qty = qty; }
+
+        public String getCustomer() { return customer; }
+        public void setCustomer(String customer) { this.customer = customer; }
+
+        public List<SaleOrder> getSaleOrder() { return saleOrder; }
+        public void setSaleOrder(List<SaleOrder> saleOrder) { this.saleOrder = saleOrder; }
+
+        public List<ParentParts> getParentParts() { return parentParts; }
+        public void setParentParts(List<ParentParts> parentParts) { this.parentParts = parentParts; }
     }
 
-    public class downstream_child{
-        public Integer id;
-        public Integer row_no;
-        public Integer row_id;
-        public String unit_id;
-        public String unit_qty;
-        public String nuse_qty;
-        public String base_qty;
-        public String remark;
-        public String item_id;
-        public List<parent> parent;
+    public static class SaleOrder {
+        @SerializedName("id")
+        private Integer id;
+
+        @SerializedName("so_id")
+        private String soId; // 訂單單號(SO)
+
+        @SerializedName("item")
+        private String item;
+
+        @SerializedName("customer_name")
+        private String customerName;
+
+        @SerializedName("qty")
+        private Integer qty;
+
+        @SerializedName("container_date")
+        private Date containerDate;
+
+        @SerializedName("bill_date")
+        private Date billDate;
+
+        @SerializedName("org_id")
+        private String orgId;
+
+        @SerializedName("current_state")
+        private String currentState;
+
+        @SerializedName("customer_order")
+        private String customerOrder;
+
+        @SerializedName("person_id")
+        private String personId;
+
+        @SerializedName("material_spec")
+        private String materialSpec;
+
+        @SerializedName("sunit_id")
+        private String sunitId;
+
+        @SerializedName("untrans_qty")
+        private Integer untransQty;
+
+        @SerializedName("cu_remark")
+        private String cuRemark;
+
+        // Getters and Setters
+        public Integer getId() { return id; }
+        public void setId(Integer id) { this.id = id; }
+
+        public String getSoId() { return soId; }
+        public void setSoId(String soId) { this.soId = soId; }
+
+        public String getItem() { return item; }
+        public void setItem(String item) { this.item = item; }
+
+        public String getCustomerName() { return customerName; }
+        public void setCustomerName(String customerName) { this.customerName = customerName; }
+
+        public Integer getQty() { return qty; }
+        public void setQty(Integer qty) { this.qty = qty; }
+
+        public Date getContainerDate() { return containerDate; }
+        public void setContainerDate(Date containerDate) { this.containerDate = containerDate; }
+
+        public Date getBillDate() { return billDate; }
+        public void setBillDate(Date billDate) { this.billDate = billDate; }
+
+        public String getOrgId() { return orgId; }
+        public void setOrgId(String orgId) { this.orgId = orgId; }
+
+        public String getCurrentState() { return currentState; }
+        public void setCurrentState(String currentState) { this.currentState = currentState; }
+
+        public String getCustomerOrder() { return customerOrder; }
+        public void setCustomerOrder(String customerOrder) { this.customerOrder = customerOrder; }
+
+        public String getPersonId() { return personId; }
+        public void setPersonId(String personId) { this.personId = personId; }
+
+        public String getMaterialSpec() { return materialSpec; }
+        public void setMaterialSpec(String materialSpec) { this.materialSpec = materialSpec; }
+
+        public String getSunitId() { return sunitId; }
+        public void setSunitId(String sunitId) { this.sunitId = sunitId; }
+
+        public Integer getUntransQty() { return untransQty; }
+        public void setUntransQty(Integer untransQty) { this.untransQty = untransQty; }
+
+        public String getCuRemark() { return cuRemark; }
+        public void setCuRemark(String cuRemark) { this.cuRemark = cuRemark; }
     }
 
-    public class parent{
-        public String id;
-        public String material_id;
-        public String bomkey_name;
-        public String unit_id;
-        public String fetch_type;
+    public static class ParentParts {
+        @SerializedName("id")
+        private Integer id;
+
+        @SerializedName("material_id")
+        private String materialId;
+
+        @SerializedName("bomkey_name")
+        private String bomkeyName;
+
+        @SerializedName("unit_id")
+        private String unitId;
+
+        @SerializedName("techroutekey_id")
+        private String techroutekeyId;
+
+        @SerializedName("fetch_type")
+        private Integer fetchType;
+
+        @SerializedName("downstream_child")
+        private List<DownstreamChild> downstreamChild;
+
+        // Getters and Setters
+        public Integer getId() { return id; }
+        public void setId(Integer id) { this.id = id; }
+
+        public String getMaterialId() { return materialId; }
+        public void setMaterialId(String materialId) { this.materialId = materialId; }
+
+        public String getBomkeyName() { return bomkeyName; }
+        public void setBomkeyName(String bomkeyName) { this.bomkeyName = bomkeyName; }
+
+        public String getUnitId() { return unitId; }
+        public void setUnitId(String unitId) { this.unitId = unitId; }
+
+        public String getTechroutekeyId() { return techroutekeyId; }
+        public void setTechroutekeyId(String techroutekeyId) { this.techroutekeyId = techroutekeyId; }
+
+        public Integer getFetchType() { return fetchType; }
+        public void setFetchType(Integer fetchType) { this.fetchType = fetchType; }
+
+        public List<DownstreamChild> getDownstreamChild() { return downstreamChild; }
+        public void setDownstreamChild(List<DownstreamChild> downstreamChild) { this.downstreamChild = downstreamChild; }
     }
 
+    public static class DownstreamChild {
+        @SerializedName("id")
+        private Integer id;
+
+        @SerializedName("row_no")
+        private Integer rowNo;
+
+        @SerializedName("row_id")
+        private Integer rowId;
+
+        @SerializedName("unit_id")
+        private String unitId;
+
+        @SerializedName("unit_qty")
+        private String unitQty;
+
+        @SerializedName("nuse_qty")
+        private String nuseQty;
+
+        @SerializedName("base_qty")
+        private String baseQty;
+
+        @SerializedName("remark")
+        private String remark;
+
+        @SerializedName("item_id")
+        private String itemId;
+
+        @SerializedName("parent")
+        private List<Parent> parent;
+
+        // Getters and Setters
+        public Integer getId() { return id; }
+        public void setId(Integer id) { this.id = id; }
+
+        public Integer getRowNo() { return rowNo; }
+        public void setRowNo(Integer rowNo) { this.rowNo = rowNo; }
+
+        public Integer getRowId() { return rowId; }
+        public void setRowId(Integer rowId) { this.rowId = rowId; }
+
+        public String getUnitId() { return unitId; }
+        public void setUnitId(String unitId) { this.unitId = unitId; }
+
+        public String getUnitQty() { return unitQty; }
+        public void setUnitQty(String unitQty) { this.unitQty = unitQty; }
+
+        public String getNuseQty() { return nuseQty; }
+        public void setNuseQty(String nuseQty) { this.nuseQty = nuseQty; }
+
+        public String getBaseQty() { return baseQty; }
+        public void setBaseQty(String baseQty) { this.baseQty = baseQty; }
+
+        public String getRemark() { return remark; }
+        public void setRemark(String remark) { this.remark = remark; }
+
+        public String getItemId() { return itemId; }
+        public void setItemId(String itemId) { this.itemId = itemId; }
+
+        public List<Parent> getParent() { return parent; }
+        public void setParent(List<Parent> parent) { this.parent = parent; }
+    }
+
+    public static class Parent {
+        @SerializedName("id")
+        private String id;
+
+        @SerializedName("material_id")
+        private String materialId;
+
+        @SerializedName("bomkey_name")
+        private String bomkeyName;
+
+        @SerializedName("unit_id")
+        private String unitId;
+
+        @SerializedName("fetch_type")
+        private String fetchType;
+
+        // Getters and Setters
+        public String getId() { return id; }
+        public void setId(String id) { this.id = id; }
+
+        public String getMaterialId() { return materialId; }
+        public void setMaterialId(String materialId) { this.materialId = materialId; }
+
+        public String getBomkeyName() { return bomkeyName; }
+        public void setBomkeyName(String bomkeyName) { this.bomkeyName = bomkeyName; }
+
+        public String getUnitId() { return unitId; }
+        public void setUnitId(String unitId) { this.unitId = unitId; }
+
+        public String getFetchType() { return fetchType; }
+        public void setFetchType(String fetchType) { this.fetchType = fetchType; }
+    }
 }

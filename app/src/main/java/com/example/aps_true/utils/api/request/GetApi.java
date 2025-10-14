@@ -1,6 +1,7 @@
 package com.example.aps_true.utils.api.request;
 
 import com.example.aps_true.utils.api.response.AssemblyResponse;
+import com.example.aps_true.utils.api.response.AuthResponse;
 import com.example.aps_true.utils.api.response.CustomerResponse;
 import com.example.aps_true.utils.api.response.HouguanResponse;
 import com.example.aps_true.utils.api.response.LoginResponse;
@@ -24,15 +25,14 @@ import retrofit2.http.Query;
 
 public interface GetApi {
     @POST("auth/login")
-    Observable<LoginResponse> getToken(
+    Observable<Response<LoginResponse>> getToken(
             @Query("account") String account,
             @Query("password") String password
     );
 
-
     // 登入人員資訊
     @GET("auth/")
-    Observable<LoginResponse> getLoginData(
+    Observable<AuthResponse> getLoginData(
             @Query("token") String token
     );
 

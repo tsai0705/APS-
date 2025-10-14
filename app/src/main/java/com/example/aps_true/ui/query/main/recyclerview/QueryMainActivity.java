@@ -1,17 +1,19 @@
 package com.example.aps_true.ui.query.main.recyclerview;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
-import android.view.View;
-import android.widget.ImageButton;
 
 import com.example.aps_true.R;
+import com.example.aps_true.data.LoginData;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,8 @@ import java.util.ArrayList;
 public class QueryMainActivity extends AppCompatActivity {
     private ImageButton backImageButton;
     private RecyclerView resultRecyclerView;
+    private TextView usernameTextview;
+    private LoginData loginData = LoginData.getInstance(); //連接LoginData
     private QueryAdapter adapter;
 
     @Override
@@ -27,6 +31,8 @@ public class QueryMainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_querymain);
 
+        usernameTextview = findViewById(R.id.querymain_username_tv);
+        usernameTextview.setText(loginData.getName());
         backImageButton = findViewById(R.id.querymain_back_ibtn);
         resultRecyclerView = findViewById(R.id.querymain_result_rv);
 

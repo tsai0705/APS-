@@ -6,10 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +20,6 @@ import com.example.aps_true.ui.query.show.tab.recyclerview.SaleItem;
 
 import java.util.ArrayList;
 
-//銷售
 public class TD_SaleFragment extends Fragment {
     public TD_SaleFragment() {
         // 必須的空建構子
@@ -59,6 +56,25 @@ public class TD_SaleFragment extends Fragment {
         String[] predeliverydate = getResources().getStringArray(R.array.sale_predeliverydate);
         String[] note = getResources().getStringArray(R.array.sale_note);
 
+        // 處理換行和縮進
+        String[] processedNote = new String[note.length];
+        for (int i = 0; i < note.length; i++) {
+            String noteText = note[i];
+
+            // 處理換行和縮進
+            String[] lines = noteText.split("\\\\n");
+            StringBuilder finalText = new StringBuilder();
+
+            for (String line : lines) {
+                // 處理縮進
+                String processedLine = line.replace("\t", "        "); // 8個空格
+                finalText.append(processedLine).append("\n");
+            }
+
+            processedNote[i] = finalText.toString().trim(); // 移除最後多餘的換行
+        }
+
+
         // 最小長度，避免陣列長度不一致
         int maxLength = Math.min(product_number.length,
                 Math.min(customer_number.length,
@@ -66,7 +82,7 @@ public class TD_SaleFragment extends Fragment {
                                 Math.min(notshipped.length,
                                         Math.min(quantity.length,
                                                 Math.min(unit.length,
-                                                        Math.min(note.length, predeliverydate.length)
+                                                        Math.min(processedNote.length, predeliverydate.length)
                                                 )
                                         )
                                 )
@@ -84,7 +100,7 @@ public class TD_SaleFragment extends Fragment {
                     unit[i],
                     notshipped[i],
                     predeliverydate[i],
-                    note[i]
+                    processedNote[i]
             );
             datalist.add(item);
         }

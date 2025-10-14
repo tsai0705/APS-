@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 public class TabData {
     private static TabData instance; // 單例實例變數，用來保存唯一的 LoginData 物件
-    private String number;
-    private String number2;
-    private String number3;
-    private String number4;
+    private String mo;
+    private String so;
+    private String item;
+    private String customer_name;
     private String sum;
     private String time;
     private String time_start;
@@ -34,36 +34,37 @@ public class TabData {
 
 
     // getter 和 setter 方法
-    public String getNumber() {
-        return number;
+
+    public String getMo() {
+        return mo;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setMo(String mo) {
+        this.mo = mo;
     }
 
-    public String getNumber2() {
-        return number2;
+    public String getSo() {
+        return so;
     }
 
-    public void setNumber2(String number2) {
-        this.number2 = number2;
+    public void setSo(String so) {
+        this.so = so;
     }
 
-    public String getNumber3() {
-        return number3;
+    public String getItem() {
+        return item;
     }
 
-    public void setNumber3(String number3) {
-        this.number3 = number3;
+    public void setItem(String item) {
+        this.item = item;
     }
 
-    public String getNumber4() {
-        return number4;
+    public String getCustomer() {
+        return customer_name;
     }
 
-    public void setNumber4(String number4) {
-        this.number4 = number4;
+    public void setCustomer(String customer_name) {
+        this.customer_name = customer_name;
     }
 
     public String getSum() { return sum; }

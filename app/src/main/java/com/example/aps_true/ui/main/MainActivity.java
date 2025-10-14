@@ -1,19 +1,25 @@
 package com.example.aps_true.ui.main;
 
 import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.aps_true.R;
+import com.example.aps_true.data.LoginData;
 import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import androidx.annotation.NonNull;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.aps_true.R;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private TabLayout tab;
+    private TextView name;
     private FragmentViewPagerAdapter adapter;
+    private LoginData loginData = LoginData.getInstance(); //連接LoginData
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +33,13 @@ public class MainActivity extends AppCompatActivity {
     protected void bindUI(){
         viewPager = findViewById(R.id.viewpager);
         tab = findViewById(R.id.tab);
+        name = findViewById(R.id.main_username_tv);
 
         adapter = new FragmentViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(1);
+
+        name.setText(loginData.getName());
 
         // 使用 TabLayoutMediator 綁定 TabLayout 和 ViewPager2，並加上 contentDescription
         new TabLayoutMediator(tab, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {

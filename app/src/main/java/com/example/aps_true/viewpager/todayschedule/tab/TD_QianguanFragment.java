@@ -6,10 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +20,6 @@ import com.example.aps_true.ui.query.show.tab.recyclerview.OrderItem;
 
 import java.util.ArrayList;
 
-//前關
 public class TD_QianguanFragment extends Fragment {
     public TD_QianguanFragment() {
         // 必須的空建構子

@@ -1,21 +1,22 @@
 package com.example.aps_true.viewpager.todayschedule;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.graphics.Color;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.aps_true.R;
+import com.example.aps_true.data.LoginData;
 import com.example.aps_true.data.TabData;
 import com.example.aps_true.ui.query.main.QueryViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import androidx.annotation.NonNull;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.aps_true.R;
-
-import java.util.HashMap;
 
 public class TodayMainActivity extends AppCompatActivity {
     private TextView numberTextView,number2TextView,number3TextView,number4TextView,timeTextView
@@ -25,6 +26,8 @@ public class TodayMainActivity extends AppCompatActivity {
     private TabLayout tab;
     private QueryViewPagerAdapter adapter;
     private TabData tabData = TabData.getInstance(); // 呼叫類別的靜態方法產生單例
+    private TextView usernameTextview;
+    private LoginData loginData = LoginData.getInstance(); //連接LoginData
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class TodayMainActivity extends AppCompatActivity {
     protected void bindUI(){
         //用來高效組合多行或多段字串，最後用 sb.toString() 取得完整內容
         StringBuilder sb = new StringBuilder();
+
+        usernameTextview = findViewById(R.id.todaymain_username_tv);
+        usernameTextview.setText(loginData.getName());
 
         numberTextView = findViewById(R.id.todaymain_number_tv);
         number2TextView = findViewById(R.id.todaymain_number2_tv);

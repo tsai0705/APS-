@@ -1,20 +1,20 @@
 package com.example.aps_true.ui.query.main;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.graphics.Color;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
-import com.example.aps_true.data.TabData;
+
+import com.example.aps_true.R;
+import com.example.aps_true.data.LoginData;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import androidx.annotation.NonNull;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.aps_true.R;
-
-import java.util.HashMap;
 
 public class QueryTabActivity extends AppCompatActivity {
     private TextView numberTextView,number2TextView,number3TextView,number4TextView,timeTextView
@@ -23,12 +23,18 @@ public class QueryTabActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private TabLayout tab;
     private QueryViewPagerAdapter adapter;
+    private TextView usernameTextview;
+    private LoginData loginData = LoginData.getInstance(); //連接LoginData
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_querytab);
+
+        usernameTextview = findViewById(R.id.querytab_username_tv);
+        usernameTextview.setText(loginData.getName());
+
         bindUI();
     }
 
