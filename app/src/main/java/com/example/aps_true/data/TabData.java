@@ -5,11 +5,12 @@ import java.util.HashMap;
 
 public class TabData {
     private static TabData instance; // 單例實例變數，用來保存唯一的 LoginData 物件
-    private String mo;
-    private String so;
-    private String item;
-    private String customer_name;
-    private String sum;
+    private ArrayList<String> mo = new ArrayList<>();
+    private ArrayList<String> so = new ArrayList<>();
+    private ArrayList<String> item = new ArrayList<>();
+    private ArrayList<String> customer_name= new ArrayList<>();
+    private ArrayList<String> qty = new ArrayList<>();
+    private ArrayList<String> date = new ArrayList<>();
     private String time;
     private String time_start;
     private String time_end;
@@ -35,42 +36,48 @@ public class TabData {
 
     // getter 和 setter 方法
 
-    public String getMo() {
-        return mo;
+    public ArrayList<String> getMo() {
+        return mo == null ? new ArrayList<>() : mo;
     }
 
-    public void setMo(String mo) {
+    public void setMo(ArrayList<String> mo) {
         this.mo = mo;
     }
 
-    public String getSo() {
-        return so;
+    public ArrayList<String> getSo() {
+        return so == null ? new ArrayList<>() : so;
     }
 
-    public void setSo(String so) {
+    public void setSo(ArrayList<String> so) {
         this.so = so;
     }
 
-    public String getItem() {
-        return item;
+    public ArrayList<String> getItem() {
+        return item == null ? new ArrayList<>() : item;
     }
 
-    public void setItem(String item) {
+    public void setItem(ArrayList<String> item) {
         this.item = item;
     }
 
-    public String getCustomer() {
+    public ArrayList<String> getCustomer() {
         return customer_name;
     }
 
-    public void setCustomer(String customer_name) {
+    public void setCustomer(ArrayList<String> customer_name) {
         this.customer_name = customer_name;
     }
 
-    public String getSum() { return sum; }
+    public ArrayList<String> getQty() { return qty; }
 
-    public void setSum(String sum) {
-        this.sum = sum;
+    public void setQty(ArrayList<String> qty) {
+        this.qty = qty;
+    }
+
+    public ArrayList<String> getDate() { return date; }
+
+    public void setDate(ArrayList<String> date) {
+        this.date = date;
     }
 
     public String getTime() { return time; }

@@ -5,6 +5,7 @@ import com.example.aps_true.utils.api.response.AuthResponse;
 import com.example.aps_true.utils.api.response.CustomerResponse;
 import com.example.aps_true.utils.api.response.HouguanResponse;
 import com.example.aps_true.utils.api.response.LoginResponse;
+import com.example.aps_true.utils.api.response.ManufactureResponse;
 import com.example.aps_true.utils.api.response.OrderResponse;
 import com.example.aps_true.utils.api.response.QianguanResponse;
 import com.example.aps_true.utils.api.response.SaleResponse;
@@ -50,6 +51,13 @@ public interface GetApi {
             @Query("token") String token
     );
 
+    // 查詢製令單號
+    @GET("app-search-mo")
+    Observable<List<ManufactureResponse>> getMo(
+            @Query("mo_id") String mo_id,
+            @Query("token") String token
+    );
+
     // 前關
     @GET("get-manufacture")
     Observable<Response<List<QianguanResponse>>> getQianguan(
@@ -83,7 +91,7 @@ public interface GetApi {
 
     // 訂單單號
     @GET("get-sale-order")
-    Observable<Response<List<SaleResponse>>> getSale(
+    Observable<List<SaleResponse>> getSale(
             @Query("sale_order") String so_id,
             @Query("customer") String customer,
             @Query("online_date") String online_date,

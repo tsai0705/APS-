@@ -13,10 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 import com.example.aps_true.data.LoginData;
+import com.example.aps_true.data.TabData;
 import com.example.aps_true.utils.api.request.ApiClient;
 import com.example.aps_true.utils.api.request.GetApi;
 import com.example.aps_true.utils.api.response.AuthResponse;
 import com.example.aps_true.utils.api.response.LoginResponse;
+import com.example.aps_true.utils.api.response.ManufactureResponse;
+import com.example.aps_true.utils.api.response.SaleResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.observers.DisposableObserver;
@@ -27,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText accountEditText, passwordEditText;
     private Button submitButton;
     private LoginData loginData = LoginData.getInstance(); //連接LoginData
+    private TabData tabData = TabData.getInstance();
     private ApiClient apiClient;
     private GetApi getApi;
     @Override
@@ -99,11 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                                             Log.d("getLoginData", "請求完成");
                                         }
                                     });
-
-
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            clear();
                         }
                         else {
                             Log.e("getToken", "登入錯誤");

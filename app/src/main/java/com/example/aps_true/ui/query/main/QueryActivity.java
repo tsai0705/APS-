@@ -11,7 +11,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -19,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aps_true.R;
 import com.example.aps_true.data.LoginData;
+import com.example.aps_true.data.TabData;
 import com.example.aps_true.ui.QuerySpinner;
 import com.example.aps_true.ui.query.main.recyclerview.QueryMainActivity;
 import com.example.aps_true.utils.api.request.ApiClient;
@@ -26,6 +26,7 @@ import com.example.aps_true.utils.api.request.GetApi;
 import com.example.aps_true.utils.api.response.CustomerResponse;
 import com.example.aps_true.utils.api.response.OrderResponse;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -41,10 +42,11 @@ public class QueryActivity extends AppCompatActivity{
     private EditText dateEditText,ordernumberEditText,clientEditText;
     private TextView usernameTextview;
     private LoginData loginData = LoginData.getInstance(); //連接LoginData
+    private TabData tabData = TabData.getInstance();
     private ApiClient apiClient;
     private GetApi getApi;
     private String soid = "";
-    private String client = "";
+    private String clientname = "";
 
     private int choice = 0;
 
@@ -120,19 +122,48 @@ public class QueryActivity extends AppCompatActivity{
                             Log.d("getOrder", "收到訂單: " + order.getSoId());
                         }
 
-                        // 轉成字串陣列給 Dialog 用
-                        String[] soIds = new String[responseList.size()];
-                        for (int i = 0; i < responseList.size(); i++) {
-                            soIds[i] = responseList.get(i).getSoId();
+                        ArrayList<String> so = new ArrayList<>();
+                        String ordernumber = ordernumberEditText.getText().toString();
+                        if (ordernumber != null && !ordernumber.isEmpty()){
+                            // order是responseList裡的每個 OrderResponse 物件
+                            for (OrderResponse order : responseList) {
+                                String soId = order.getSoId();
+                                // 篩選是否包含在ordernumberEditText輸入的文字
+                                if (soId.contains(ordernumber)) {
+                                    so.add(soId);
+                                }
+                            }
+                        }else {
+                            for (OrderResponse order : responseList) {
+                                String soId = order.getSoId();
+                                so.add(soId);
+                            }
                         }
 
-                        dialog.setSingleChoiceItems(soIds, choice, (dialogInterface, i) -> choice = i);
+                        // 轉成字串陣列給 Dialog 用
+                        String[] soIds = so.toArray(new String[0]);
+
+                        // 如果沒有任何 soId，顯示提示
+                        if (soIds.length == 0) {
+                            new AlertDialog.Builder(QueryActivity.this)
+                                    .setMessage("查無符合的訂單編號！")
+                                    .setPositiveButton("確定", null)
+                                    .show();
+                            return;
+                        }
+
+
+                        //宣告一個 reference(choiceHolder) 不能變的 int 陣列（內容可以變）
+                        final int[] choiceHolder = {choice};
+                        // choiceHolder[0] : 預設選項
+                        // (dialogInterface, i) -> choiceHolder[0] = i：當使用者選擇其中一項時，把 index 存進 choiceHolder[0]
+                        dialog.setSingleChoiceItems(soIds, choiceHolder[0], (dialogInterface, i) -> choiceHolder[0] = i);
 
                         dialog.setPositiveButton("確定", (dialogInterface, i) -> {
-                            ordernumberEditText.setText(soIds[choice]);
-                            String soid = soIds[choice];
+                            ordernumberEditText.setText(soIds[choiceHolder[0]]);
+                            soid = soIds[choiceHolder[0]];
                         });
-
+                        tabData.setSo(so);
                         dialog.show();
                     }
 
@@ -146,26 +177,8 @@ public class QueryActivity extends AppCompatActivity{
                         Log.d("getOrder", "請求完成");
                     }
                 });
+
     }
-
-
-    // 顯示訂單選擇對話框
-    private void showOrderDialog(String[] items) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(QueryActivity.this);
-        dialog.setTitle("選擇訂單號");
-
-        dialog.setSingleChoiceItems(items, choice, (dialogInterface, i) -> {
-            choice = i;
-        });
-
-        dialog.setPositiveButton("確定", (dialogInterface, i) -> {
-            ordernumberEditText.setText(items[choice]);
-        });
-
-        dialog.setNegativeButton("取消", null);
-        dialog.show();
-    }
-
 
     // 客戶
     protected void clientclick(View view){
@@ -183,19 +196,42 @@ public class QueryActivity extends AppCompatActivity{
                             Log.d("getCustomer", "收到訂單: " + customer.getCustomer_name());
                         }
 
-                        // 轉成字串陣列給 Dialog 用
-                        String[] customers = new String[responseList.size()];
-                        for (int i = 0; i < responseList.size(); i++) {
-                            customers[i] = responseList.get(i).getCustomer_name();
+                        ArrayList<String> clientName = new ArrayList<>();
+                        String client = clientEditText.getText().toString();
+                        if (client != null && !client.isEmpty()){
+                            for (CustomerResponse customer : responseList ) {
+                                String customerName = customer.getCustomer_name();
+                                if (customerName.contains(client)){
+                                    clientName.add(customerName);
+                                }
+                            }
+                        }else {
+                            for (CustomerResponse customer : responseList ) {
+                                String customerName = customer.getCustomer_name();
+                                clientName.add(customerName);
+                            }
                         }
 
+                        // 轉成字串陣列給 Dialog 用
+                        String[] customers = clientName.toArray(new String[0]);
+
+                        // 如果沒有任何customer，顯示提示
+                        if (customers.length == 0) {
+                            new AlertDialog.Builder(QueryActivity.this)
+                                    .setMessage("查無符合的客戶名稱！")
+                                    .setPositiveButton("確定", null)
+                                    .show();
+                            return;
+                        }
+
+                        final int[] choiceHolder = {choice};
                         dialog.setSingleChoiceItems(customers, choice, (dialogInterface, i) -> choice = i);
 
                         dialog.setPositiveButton("確定", (dialogInterface, i) -> {
-                            clientEditText.setText(customers[choice]);
-                            String client = customers[choice];
+                            clientEditText.setText(customers[choiceHolder[0]]);
+                            clientname = customers[choiceHolder[0]];
                         });
-
+                        tabData.setCustomer(clientName);
                         dialog.show();
                     }
 
@@ -221,7 +257,6 @@ public class QueryActivity extends AppCompatActivity{
                 StringBuilder result = new StringBuilder();
                 //m+1:在Android（Java）的Calendar和DatePicker中，月份從0開始計數而不是從1開始。
                 result.append(y).append("-").append(m+1).append("-").append(d);
-                Toast.makeText(QueryActivity.this, result, Toast.LENGTH_SHORT).show();
                 dateEditText.setText(result.toString());
             }
         },calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
@@ -231,7 +266,7 @@ public class QueryActivity extends AppCompatActivity{
 
     protected void submitclick(View view){
         Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
-        intent.putExtra("client", client);
+        intent.putExtra("client", clientname);
         intent.putExtra("soid", soid);
         startActivity(intent);
     }

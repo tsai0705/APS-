@@ -10,6 +10,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.aps_true.R;
 import com.example.aps_true.data.LoginData;
+import com.example.aps_true.data.TabData;
+import com.example.aps_true.utils.api.request.ApiClient;
+import com.example.aps_true.utils.api.request.GetApi;
 import com.example.aps_true.viewpager.FragmentViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -20,12 +23,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView name;
     private FragmentViewPagerAdapter adapter;
     private LoginData loginData = LoginData.getInstance(); //連接LoginData
+    private TabData tabData = TabData.getInstance();
+    private ApiClient apiClient;
+    private GetApi getApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        apiClient = new ApiClient();
+        getApi = apiClient.ApsApi().create(GetApi.class);
 
         bindUI();
     }
