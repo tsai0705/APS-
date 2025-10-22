@@ -135,10 +135,12 @@ public class QueryActivity extends AppCompatActivity{
                                 }
                             }
                         }else {
+                            // 顯示全部
                             for (OrderResponse order : responseList) {
                                 String soId = order.getSoId();
                                 so.add(soId);
                             }
+                            // 全部添加
                             tabData.setSo(so);
                         }
 
@@ -163,9 +165,12 @@ public class QueryActivity extends AppCompatActivity{
 
                         dialog.setPositiveButton("確定", (dialogInterface, i) -> {
                             ordernumberEditText.setText(soIds[choiceHolder[0]]);
-                            soid = soIds[choiceHolder[0]];
+                            ArrayList<String> soid = new ArrayList<>();
+                            soid.add(soIds[choiceHolder[0]]);
+                            ArrayList<String> soClear = new ArrayList<>();
+                            tabData.setSo(soClear);
+                            tabData.setSo(soid);
                         });
-                        tabData.setSo(so);
                         ArrayList<String> soIdList = tabData.getSo();
                         Log.d("getSo", "so size=" + soIdList.size());
                         dialog.show();
@@ -185,7 +190,7 @@ public class QueryActivity extends AppCompatActivity{
     }
 
     // 客戶
-    protected void clientclick(View view){
+     protected void clientclick(View view){
         choice = 0;
         AlertDialog.Builder dialog = new AlertDialog.Builder(QueryActivity.this);
 
@@ -214,6 +219,8 @@ public class QueryActivity extends AppCompatActivity{
                                 String customerName = customer.getCustomer_name();
                                 clientName.add(customerName);
                             }
+                            // 全部添加
+                            tabData.setCustomer(clientName);
                         }
 
                         // 轉成字串陣列給 Dialog 用
@@ -233,9 +240,12 @@ public class QueryActivity extends AppCompatActivity{
 
                         dialog.setPositiveButton("確定", (dialogInterface, i) -> {
                             clientEditText.setText(customers[choiceHolder[0]]);
-                            clientname = customers[choiceHolder[0]];
+                            ArrayList<String> clientname = new ArrayList<>();
+                            clientname.add(customers[choiceHolder[0]]);
+                            ArrayList<String> customerClear = new ArrayList<>();
+                            tabData.setCustomer(customerClear);
+                            tabData.setCustomer(clientname);
                         });
-                        tabData.setCustomer(clientName);
                         ArrayList<String> customerList = tabData.getCustomer();
                         Log.d("getCustomer", "customer size=" + customerList.size());
                         dialog.show();
@@ -276,8 +286,9 @@ public class QueryActivity extends AppCompatActivity{
         Log.d("getSo", "so size=" + soIdList.size());
         ArrayList<String> customerList = tabData.getCustomer();
         Log.d("getCustomer", "customer size=" + customerList.size());
-        intent.putExtra("client", clientname);
-        intent.putExtra("soid", soid);
+        intent.putExtra("total", soIdList.size());
+        ordernumberEditText.setText("");
+        clientEditText.setText("");
         startActivity(intent);
     }
 

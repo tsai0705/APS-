@@ -11,17 +11,11 @@ public class SaleResponse {
         @SerializedName("date")
         private String date; // 上線日期
 
-        @SerializedName("type")
-        private String type;
-
         @SerializedName("so_id")
         private String soId;
 
         @SerializedName("item_id")
         private String itemId;
-
-        @SerializedName("item_name")
-        private String itemName;
 
         @SerializedName("qty")
         private String qty;
@@ -41,19 +35,11 @@ public class SaleResponse {
 
         public String getDate() { return date; }
         public void setDate(String date) { this.date = date; }
-
-        public String getType() { return type; }
-        public void setType(String type) { this.type = type; }
-
         public String getSoId() { return soId; }
         public void setSoId(String soId) { this.soId = soId; }
 
         public String getItemId() { return itemId; }
         public void setItemId(String itemId) { this.itemId = itemId; }
-
-        public String getItemName() { return itemName; }
-        public void setItemName(String itemName) { this.itemName = itemName; }
-
         public String getQty() { return qty; }
         public void setQty(String qty) { this.qty = qty; }
 
@@ -85,32 +71,8 @@ public class SaleResponse {
         @SerializedName("container_date")
         private Date containerDate;
 
-        @SerializedName("bill_date")
-        private Date billDate;
-
-        @SerializedName("org_id")
-        private String orgId;
-
-        @SerializedName("current_state")
-        private String currentState;
-
         @SerializedName("customer_order")
         private String customerOrder;
-
-        @SerializedName("person_id")
-        private String personId;
-
-        @SerializedName("material_spec")
-        private String materialSpec;
-
-        @SerializedName("sunit_id")
-        private String sunitId;
-
-        @SerializedName("untrans_qty")
-        private Integer untransQty;
-
-        @SerializedName("cu_remark")
-        private String cuRemark;
 
         // Getters and Setters
         public Integer getId() { return id; }
@@ -130,33 +92,8 @@ public class SaleResponse {
 
         public Date getContainerDate() { return containerDate; }
         public void setContainerDate(Date containerDate) { this.containerDate = containerDate; }
-
-        public Date getBillDate() { return billDate; }
-        public void setBillDate(Date billDate) { this.billDate = billDate; }
-
-        public String getOrgId() { return orgId; }
-        public void setOrgId(String orgId) { this.orgId = orgId; }
-
-        public String getCurrentState() { return currentState; }
-        public void setCurrentState(String currentState) { this.currentState = currentState; }
-
         public String getCustomerOrder() { return customerOrder; }
         public void setCustomerOrder(String customerOrder) { this.customerOrder = customerOrder; }
-
-        public String getPersonId() { return personId; }
-        public void setPersonId(String personId) { this.personId = personId; }
-
-        public String getMaterialSpec() { return materialSpec; }
-        public void setMaterialSpec(String materialSpec) { this.materialSpec = materialSpec; }
-
-        public String getSunitId() { return sunitId; }
-        public void setSunitId(String sunitId) { this.sunitId = sunitId; }
-
-        public Integer getUntransQty() { return untransQty; }
-        public void setUntransQty(Integer untransQty) { this.untransQty = untransQty; }
-
-        public String getCuRemark() { return cuRemark; }
-        public void setCuRemark(String cuRemark) { this.cuRemark = cuRemark; }
     }
 
     public static class ParentParts {

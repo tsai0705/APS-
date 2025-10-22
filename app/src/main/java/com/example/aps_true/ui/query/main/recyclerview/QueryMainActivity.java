@@ -33,7 +33,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class QueryMainActivity extends AppCompatActivity {
     private ImageButton backImageButton;
     private RecyclerView resultRecyclerView;
-    private TextView usernameTextview;
+    private TextView usernameTextview ,totalTextview;
     private boolean moLoaded = false, saleLoaded = false;
     private int SaleRequests = 0;
     private LoginData loginData = LoginData.getInstance();
@@ -41,8 +41,6 @@ public class QueryMainActivity extends AppCompatActivity {
     private QueryAdapter adapter;
     private ApiClient apiClient;
     private GetApi getApi;
-
-    // 存放資料
     private ArrayList<ManufactureResponse> moList = new ArrayList<>();
     private ArrayList<SaleResponse> saleList = new ArrayList<>();
     private ArrayList<String> soIdList = tabData.getSo();
@@ -56,6 +54,7 @@ public class QueryMainActivity extends AppCompatActivity {
         apiClient = new ApiClient();
         getApi = apiClient.ApsApi().create(GetApi.class);
 
+        totalTextview = findViewById(R.id.querymain_total_tv);
         usernameTextview = findViewById(R.id.querymain_username_tv);
         usernameTextview.setText(loginData.getName());
         backImageButton = findViewById(R.id.querymain_back_ibtn);
@@ -66,12 +65,6 @@ public class QueryMainActivity extends AppCompatActivity {
         resultRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         adapter = new QueryAdapter(this, new ArrayList<>());
         resultRecyclerView.setAdapter(adapter);
-
-        // 預設清除資料
-//        moList.clear();
-//        saleList.clear();
-//        soIdList.clear();
-//        customerList.clear();
 
         getData();
 
@@ -212,17 +205,29 @@ public class QueryMainActivity extends AppCompatActivity {
             Log.d("loadData", "第 " + i + " 筆: soId=" + sale.getSoId() + " itemId=" + sale.getItemId());
 
             String moId = (i < moList.size()) ? moList.get(i).getMoId() : "未配對";
-
             String soId = sale.getSoId() != null ? sale.getSoId() : "";
             String itemId = sale.getItemId() != null ? sale.getItemId() : "";
-            String customer = sale.getCustomer() != null ? sale.getCustomer() : "";
-            String qty = sale.getQty() != null ? "數量" + sale.getQty() : "數量-";
-            String date = sale.getDate() != null ? "上線日：" + sale.getDate() : "上線日：-";
-
+            String customer = "";
+            String qty = "數量: -";
             String containerDate = "結關日：-";
+            String date = sale.getDate() != null ? "上線日：" + sale.getDate() : "上線日：-";
 
             List<SaleResponse.SaleOrder> soList = sale.getSaleOrder();
             if (soList != null && !soList.isEmpty()) {
+                SaleResponse.SaleOrder firstOrder = soList.get(0);
+                if (firstOrder.getCustomerName() != null) {
+                    customer = firstOrder.getCustomerName();
+                    Log.d("loadData", "✅ 取得 customer: " + customer);
+                } else {
+                    Log.w("loadData", "⚠️ customer_name 為 null");
+                }
+
+                if (firstOrder.getQty() != null) {
+                    qty = "數量: " + firstOrder.getQty();
+                    Log.d("loadData", "✅ 取得 qty: " + qty);
+                } else {
+                    Log.w("loadData", "⚠️ qty 為 null");
+                }
                 Date cd = soList.get(0).getContainerDate();
                 if (cd != null) {
                     containerDate = "結關日：" + sdf.format(cd);
@@ -242,11 +247,13 @@ public class QueryMainActivity extends AppCompatActivity {
                     check[0]
             );
             datalist.add(item);
-            Log.d("loadData", "第 " + i + " 筆加入成功，datalist size=" + datalist.size());
+            Log.d("loadData", "第 " + i + " 筆，moid:" + moId + "，soid:" + soId + "，itemid:" + itemId +
+                    "，customer:" + customer + "，qty:" + qty + "，container:" + containerDate + "，date:" + date);
         }
 
 
         Log.d("loadData", "最終 datalist size=" + datalist.size());
+        totalTextview.setText("共"+datalist.size()+"筆");
 
         if (datalist.isEmpty()) {
             Toast.makeText(this, "查無資料", Toast.LENGTH_SHORT).show();
