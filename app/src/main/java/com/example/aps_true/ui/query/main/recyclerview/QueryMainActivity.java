@@ -34,7 +34,7 @@ public class QueryMainActivity extends AppCompatActivity {
     private ImageButton backImageButton;
     private RecyclerView resultRecyclerView;
     private TextView usernameTextview;
-    private boolean moLoaded = false, orderLoaded = false, saleLoaded = false;
+    private boolean moLoaded = false, saleLoaded = false;
     private int SaleRequests = 0;
     private LoginData loginData = LoginData.getInstance();
     private TabData tabData = TabData.getInstance();
@@ -45,8 +45,7 @@ public class QueryMainActivity extends AppCompatActivity {
     // 存放資料
     private ArrayList<ManufactureResponse> moList = new ArrayList<>();
     private ArrayList<SaleResponse> saleList = new ArrayList<>();
-    private ArrayList<String> soIdList = new ArrayList<>();
-    private ArrayList<String> customerList = new ArrayList<>();
+    private ArrayList<String> soIdList = tabData.getSo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +67,12 @@ public class QueryMainActivity extends AppCompatActivity {
         adapter = new QueryAdapter(this, new ArrayList<>());
         resultRecyclerView.setAdapter(adapter);
 
+        // 預設清除資料
+//        moList.clear();
+//        saleList.clear();
+//        soIdList.clear();
+//        customerList.clear();
+
         getData();
 
         backImageButton.setOnClickListener(v -> finish());
@@ -75,12 +80,7 @@ public class QueryMainActivity extends AppCompatActivity {
 
     private void getData(){
         // 設置為未存取
-        moLoaded = orderLoaded = saleLoaded = false;
-        // 清除資料
-        moList.clear();
-        saleList.clear();
-        soIdList.clear();
-        customerList.clear();
+        moLoaded = saleLoaded = false;
         SaleRequests = 0;
 
         // mo
@@ -122,8 +122,8 @@ public class QueryMainActivity extends AppCompatActivity {
     }
 
     private void getSaleData() {
-        soIdList = tabData.getSo();
-        customerList = tabData.getCustomer();
+        Log.d("getSo", "so size=" + soIdList.size());
+        String customer = "";
         String onlineDate = "";
 
         // 最大長度
@@ -134,7 +134,6 @@ public class QueryMainActivity extends AppCompatActivity {
 
         for (int i = 0; i < maxQuery; i++) {
             String soId = soIdList.get(i);
-            String customer = customerList.get(i);
 
             getApi.getSale(soId, customer, onlineDate, loginData.getToken())
                     .subscribeOn(Schedulers.io())
@@ -177,8 +176,16 @@ public class QueryMainActivity extends AppCompatActivity {
 
     // 確認已抓取全部資料
     private void checkDataReady() {
-        Log.d("checkDataReady", "mo=" + moLoaded + " order=" + orderLoaded + " sale=" + saleLoaded);
-        if (moLoaded && orderLoaded && saleLoaded) {
+        Log.d("checkDataReady", "mo=" + moLoaded + " sale=" + saleLoaded + " SaleRequests=" + SaleRequests);
+
+        // 當 MO 載入完成，且 Sale 尚未開始載入
+        if (moLoaded && !saleLoaded && SaleRequests == 0) {
+            Log.d("checkDataReady", "MO 已載入，開始載入 Sale 資料");
+            getSaleData();
+        }
+        // 當兩者都載入完成
+        else if (moLoaded && saleLoaded) {
+            Log.d("checkDataReady", "所有資料已載入完成，開始處理");
             loadData();
         }
     }
@@ -187,78 +194,57 @@ public class QueryMainActivity extends AppCompatActivity {
         ArrayList<QueryItem> datalist = new ArrayList<>();
         String[] process = {"一群-點焊"};
         String[] check = {"生效"};
+        // 格式化日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
         Log.d("loadData", "mo count=" + moList.size() + " sale count=" + saleList.size());
 
-        if (saleList.isEmpty()) {
-            Log.w("loadData", "saleList 為空，只顯示 mo");
-            // 若沒有 sale 資料，只顯示 mo
-            for (int i = 0; i < moList.size(); i++) {
-                ManufactureResponse mo = moList.get(i);
-                QueryItem item = new QueryItem(
-                        i + 1,
-                        mo.getMoId() != null ? mo.getMoId() : "",
-                        "未指定",
-                        "未指定",
-                        "未指定",
-                        "數量-",
-                        "結關日：-",
-                        "上線日：-",
-                        process[0],
-                        check[0]
-                );
-                datalist.add(item);
+        Log.d("loadData", "有 sale 資料，開始處理");
+        for (int i = 0; i < saleList.size(); i++) {
+            SaleResponse sale = saleList.get(i);
+            Log.d("loadData", "處理第 " + i + " 筆 sale");
+
+            if (sale == null) {
+                Log.w("loadData", "第 " + i + " 筆 rec 為 null，跳過");
+                continue;
             }
-        } else {
-            Log.d("loadData", "有 sale 資料，開始處理");
-            // 有 sale 資料，以 sale 為主顯示
-            for (int i = 0; i < saleList.size(); i++) {
-                SaleResponse sale = saleList.get(i);
-                Log.d("loadData", "處理第 " + i + " 筆 sale");
 
-                SaleResponse.Records rec = sale.getRecords();
-                if (rec == null) {
-                    Log.w("loadData", "第 " + i + " 筆 rec 為 null，跳過");
-                    continue;
+            Log.d("loadData", "第 " + i + " 筆: soId=" + sale.getSoId() + " itemId=" + sale.getItemId());
+
+            String moId = (i < moList.size()) ? moList.get(i).getMoId() : "未配對";
+
+            String soId = sale.getSoId() != null ? sale.getSoId() : "";
+            String itemId = sale.getItemId() != null ? sale.getItemId() : "";
+            String customer = sale.getCustomer() != null ? sale.getCustomer() : "";
+            String qty = sale.getQty() != null ? "數量" + sale.getQty() : "數量-";
+            String date = sale.getDate() != null ? "上線日：" + sale.getDate() : "上線日：-";
+
+            String containerDate = "結關日：-";
+
+            List<SaleResponse.SaleOrder> soList = sale.getSaleOrder();
+            if (soList != null && !soList.isEmpty()) {
+                Date cd = soList.get(0).getContainerDate();
+                if (cd != null) {
+                    containerDate = "結關日：" + sdf.format(cd);
                 }
-
-                Log.d("loadData", "第 " + i + " 筆: soId=" + rec.getSoId() + " itemId=" + rec.getItemId());
-
-                // 嘗試配對 mo（用 index 或其他邏輯）
-                String moId = (i < moList.size()) ? moList.get(i).getMoId() : "未配對";
-
-                String soId = rec.getSoId() != null ? rec.getSoId() : "";
-                String itemId = rec.getItemId() != null ? rec.getItemId() : "";
-                String customer = rec.getCustomer() != null ? rec.getCustomer() : "";
-                String qty = rec.getQty() != null ? "數量" + rec.getQty() : "數量-";
-                String date = rec.getDate() != null ? "上線日：" + rec.getDate() : "上線日：-";
-
-                String containerDate = "結關日：-";
-                List<SaleResponse.SaleOrder> soList = rec.getSaleOrder();
-                if (soList != null && !soList.isEmpty()) {
-                    Date cd = soList.get(0).getContainerDate();
-                    if (cd != null) {
-                        containerDate = "結關日：" + sdf.format(cd);
-                    }
-                }
-
-                QueryItem item = new QueryItem(
-                        i + 1,
-                        moId,
-                        soId,
-                        itemId,
-                        customer,
-                        qty,
-                        containerDate,
-                        date,
-                        process[0],
-                        check[0]
-                );
-                datalist.add(item);
-                Log.d("loadData", "第 " + i + " 筆加入成功，datalist size=" + datalist.size());
             }
+
+            QueryItem item = new QueryItem(
+                    i + 1,
+                    moId,
+                    soId,
+                    itemId,
+                    customer,
+                    qty,
+                    containerDate,
+                    date,
+                    process[0],
+                    check[0]
+            );
+            datalist.add(item);
+            Log.d("loadData", "第 " + i + " 筆加入成功，datalist size=" + datalist.size());
         }
+
 
         Log.d("loadData", "最終 datalist size=" + datalist.size());
 

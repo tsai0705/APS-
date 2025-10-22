@@ -5,21 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 public class SaleResponse {
-
-    @SerializedName("records")
-    private Records records;
-
-    public Records getRecords() {
-        return records;
-    }
-
-    public void setRecords(Records records) {
-        this.records = records;
-    }
-
-    // ========== 內部類別 ==========
-
-    public static class Records {
         @SerializedName("id")
         private Integer id;
 
@@ -80,7 +65,6 @@ public class SaleResponse {
 
         public List<ParentParts> getParentParts() { return parentParts; }
         public void setParentParts(List<ParentParts> parentParts) { this.parentParts = parentParts; }
-    }
 
     public static class SaleOrder {
         @SerializedName("id")
@@ -249,7 +233,7 @@ public class SaleResponse {
         private String itemId;
 
         @SerializedName("parent")
-        private List<Parent> parent;
+        private Parent parent;
 
         // Getters and Setters
         public Integer getId() { return id; }
@@ -279,8 +263,8 @@ public class SaleResponse {
         public String getItemId() { return itemId; }
         public void setItemId(String itemId) { this.itemId = itemId; }
 
-        public List<Parent> getParent() { return parent; }
-        public void setParent(List<Parent> parent) { this.parent = parent; }
+        public Parent getParent() { return parent; }
+        public void setParent(Parent parent) { this.parent = parent; }
     }
 
     public static class Parent {

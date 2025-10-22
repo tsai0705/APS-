@@ -47,6 +47,7 @@ public class QueryActivity extends AppCompatActivity{
     private GetApi getApi;
     private String soid = "";
     private String clientname = "";
+//    private ArrayList<String> soIdList = new ArrayList<>();
 
     private int choice = 0;
 
@@ -138,6 +139,7 @@ public class QueryActivity extends AppCompatActivity{
                                 String soId = order.getSoId();
                                 so.add(soId);
                             }
+                            tabData.setSo(so);
                         }
 
                         // 轉成字串陣列給 Dialog 用
@@ -164,6 +166,8 @@ public class QueryActivity extends AppCompatActivity{
                             soid = soIds[choiceHolder[0]];
                         });
                         tabData.setSo(so);
+                        ArrayList<String> soIdList = tabData.getSo();
+                        Log.d("getSo", "so size=" + soIdList.size());
                         dialog.show();
                     }
 
@@ -232,6 +236,8 @@ public class QueryActivity extends AppCompatActivity{
                             clientname = customers[choiceHolder[0]];
                         });
                         tabData.setCustomer(clientName);
+                        ArrayList<String> customerList = tabData.getCustomer();
+                        Log.d("getCustomer", "customer size=" + customerList.size());
                         dialog.show();
                     }
 
@@ -266,6 +272,10 @@ public class QueryActivity extends AppCompatActivity{
 
     protected void submitclick(View view){
         Intent intent = new Intent(QueryActivity.this, QueryMainActivity.class);
+        ArrayList<String> soIdList = tabData.getSo();
+        Log.d("getSo", "so size=" + soIdList.size());
+        ArrayList<String> customerList = tabData.getCustomer();
+        Log.d("getCustomer", "customer size=" + customerList.size());
         intent.putExtra("client", clientname);
         intent.putExtra("soid", soid);
         startActivity(intent);
