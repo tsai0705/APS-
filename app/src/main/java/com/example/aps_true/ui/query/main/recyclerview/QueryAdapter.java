@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
+
 import com.example.aps_true.R;
 import com.example.aps_true.ui.query.main.QueryTabActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> {
     private Context context;
@@ -18,7 +21,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
 
     public QueryAdapter(Context context, ArrayList<QueryItem> dataList) {
         this.context = context;
-        this.dataList = dataList;
+        this.dataList = dataList != null ? dataList : new ArrayList<>();
     }
 
     @Override
@@ -28,14 +31,45 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
-
+    // 修正：使用 dataList 而不是不存在的 items
     public void updateData(List<QueryItem> newData) {
+        if (this.dataList == null) {
+            this.dataList = new ArrayList<>();
+        }
         this.dataList.clear();
-        this.dataList.addAll(newData);
+        if (newData != null && !newData.isEmpty()) {
+            this.dataList.addAll(newData);
+        }
         notifyDataSetChanged();
     }
 
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        QueryItem item = dataList.get(position);
+        holder.serialTextView.setText(String.valueOf(item.getSerial()));
+        holder.ordernumberTextView.setText(String.valueOf(item.getOrderNumber()));
+        holder.sourceTextView.setText(String.valueOf(item.getSource()));
+        holder.numberTextView.setText(String.valueOf(item.getNumber()));
+        holder.number2TextView.setText(String.valueOf(item.getNumber2()));
+        holder.number3TextView.setText(String.valueOf(item.getNumber3()));
+        holder.number4TextView.setText(String.valueOf(item.getNumber4()));
+        holder.timeTextView.setText(String.valueOf(item.getTime()));
+        holder.processTextView.setText(String.valueOf(item.getProcess()));
+        holder.checkTextView.setText(String.valueOf(item.getCheck()));
 
+        // 建議在整行 itemView 上處理點擊（你也可以改回某個欄位）
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, QueryTabActivity.class);
+            // 若需要把 item 資訊傳到下一個 Activity，可放 extras，例如:
+            // intent.putExtra("orderNumber", item.getOrderNumber());
+            context.startActivity(intent);
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return dataList == null ? 0 : dataList.size();
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView serialTextView, ordernumberTextView, sourceTextView,
@@ -55,36 +89,5 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
             processTextView = itemView.findViewById(R.id.recyclerview_process_tv);
             checkTextView = itemView.findViewById(R.id.recyclerview_check_tv);
         }
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        QueryItem item = dataList.get(position);
-        holder.serialTextView.setText(String.valueOf(item.getSerial()));
-        holder.ordernumberTextView.setText(String.valueOf(item.getOrderNumber()));
-        holder.sourceTextView.setText(String.valueOf(item.getSource()));
-        holder.numberTextView.setText(String.valueOf(item.getNumber()));
-        holder.number2TextView.setText(String.valueOf(item.getNumber2()));
-        holder.number3TextView.setText(String.valueOf(item.getNumber3()));
-        holder.number4TextView.setText(String.valueOf(item.getNumber4()));
-        holder.timeTextView.setText(String.valueOf(item.getTime()));
-        holder.processTextView.setText(String.valueOf(item.getProcess()));
-        holder.checkTextView.setText(String.valueOf(item.getCheck()));
-
-        //跳轉單獨顯示頁面
-        holder.serialTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, QueryTabActivity.class);
-            context.startActivity(intent);
-        });
-
-    }
-
-
-
-
-
-    @Override
-    public int getItemCount() {
-        return dataList == null ? 0 : dataList.size();
     }
 }

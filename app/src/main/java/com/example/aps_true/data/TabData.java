@@ -11,6 +11,7 @@ public class TabData {
     private ArrayList<String> customer_name= new ArrayList<>();
     private ArrayList<String> qty = new ArrayList<>();
     private ArrayList<String> date = new ArrayList<>();
+    private ArrayList<String> container_date = new ArrayList<>();
     private String time;
     private String time_start;
     private String time_end;
@@ -79,6 +80,10 @@ public class TabData {
     public void setDate(ArrayList<String> date) {
         this.date = date;
     }
+
+    public ArrayList<String> getContainer_date() { return container_date; }
+
+    public void setContainer_date(ArrayList<String> customer_name) { this.container_date = container_date; }
 
     public String getTime() { return time; }
 
