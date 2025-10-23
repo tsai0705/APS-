@@ -42,7 +42,6 @@
                 android:focusable="true"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:layout_marginStart="45dp"
                 android:src="@drawable/u154"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +51,7 @@
                 android:id="@+id/query_query_tv"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="100dp"
+                android:layout_marginStart="50dp"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold"
@@ -106,10 +105,10 @@
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         app:layout_constraintBottom_toTopOf="@id/bottom_layout"
@@ -119,7 +118,7 @@
         <!-- 製程別 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
@@ -167,7 +166,7 @@
         <!-- 上線日期 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginBottom="8dp">
@@ -190,17 +189,16 @@
                 android:layout_marginEnd="15dp"/>
 
             <LinearLayout
-                android:layout_width="65dp"
-                android:layout_height="54dp"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="2dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/query_date_btn"
-                    android:layout_width="60dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="1dp"
                     android:background="@drawable/query_button"
@@ -213,7 +211,7 @@
         <!-- 訂單單號 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginBottom="8dp">
@@ -236,17 +234,16 @@
                 android:layout_marginEnd="15dp"/>
 
             <LinearLayout
-                android:layout_width="65dp"
-                android:layout_height="54dp"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="2dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/query_order_number_btn"
-                    android:layout_width="60dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="1dp"
                     android:background="@drawable/query_button"
@@ -258,7 +255,7 @@
         <!-- 客戶 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="45dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
@@ -280,17 +277,16 @@
                 android:layout_marginEnd="15dp"/>
 
             <LinearLayout
-                android:layout_width="65dp"
-                android:layout_height="56dp"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="5dp"
-                android:layout_marginBottom="2dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/query_client_btn"
-                    android:layout_width="60dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="3dp"
                     android:background="@drawable/query_button"
                     android:textColor="@color/black"
