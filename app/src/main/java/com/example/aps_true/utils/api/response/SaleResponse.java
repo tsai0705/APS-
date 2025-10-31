@@ -144,7 +144,8 @@ public class SaleResponse {
     public static class DownstreamChild {
         @SerializedName("id")
         private Integer id;
-
+        @SerializedName("down_id")
+        private Integer down_id;
         @SerializedName("row_no")
         private Integer rowNo;
 
@@ -175,7 +176,8 @@ public class SaleResponse {
         // Getters and Setters
         public Integer getId() { return id; }
         public void setId(Integer id) { this.id = id; }
-
+        public Integer getDown_id() { return down_id; }
+        public void setDown_id(Integer down_id) { this.down_id = down_id; }
         public Integer getRowNo() { return rowNo; }
         public void setRowNo(Integer rowNo) { this.rowNo = rowNo; }
 

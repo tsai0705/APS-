@@ -33,11 +33,15 @@ import java.util.Random;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class FragmentSchedule extends Fragment {
     private RecyclerView resultRecyclerView;
     private ScheduleAdapter adapter;
-    private boolean moLoaded = false, saleLoaded = false;
+
+    // --- (修正 1: 新增 orderLoaded 旗標) ---
+    private boolean moLoaded = false, saleLoaded = false, orderLoaded = false;
+
     private int SaleRequests = 0;
     private LoginData loginData = LoginData.getInstance();
     private TabData tabData = TabData.getInstance();
@@ -57,8 +61,6 @@ public class FragmentSchedule extends Fragment {
 
         // 建立 API 用戶端與接口
         apiClient = new ApiClient();
-        //apiClient.ApsApi()：取得一個 Retrofit 實例。
-        //.create(GetApi.class)：用這個 Retrofit 實例，建立 GetApi 接口的實作。
         getApi = apiClient.ApsApi().create(GetApi.class);
 
         // RecyclerView 設定
@@ -89,11 +91,19 @@ public class FragmentSchedule extends Fragment {
 
                         tabData.setSo(newSoIdList);
                         soIdList = newSoIdList;
-                        Log.d("loadInitialData", "已載入 " + soList.size() + " 筆訂單到主列表");
+                        Log.d("loadInitialData", "已載入 " + soIdList.size() + " 筆訂單到主列表");
+
+                        // --- (修正 2: 標記 Order 已載入並檢查) ---
+                        orderLoaded = true;
+                        checkDataReady();
                     }
                     @Override
                     public void onError(Throwable e) {
                         Log.e("loadInitialData", "載入訂單主列表失敗", e);
+
+                        // --- (修正 3: 發生錯誤也要標記並檢查) ---
+                        orderLoaded = true;
+                        checkDataReady();
                     }
                     @Override
                     public void onComplete() {}
@@ -152,20 +162,33 @@ public class FragmentSchedule extends Fragment {
 
         Log.d("getSaleData", "開始查詢 " + maxQuery + " 筆 sale（共 " + soIdList.size() + " 筆 order）");
 
+        // (如果 maxQuery 是 0，也必須觸發完成)
+        if (maxQuery == 0) {
+            Log.w("getSaleData", "沒有 SoIdList 可查詢，直接結束 Sale 階段。");
+            saleLoaded = true;
+            checkDataReady();
+            return;
+        }
+
         for (int i = 0; i < maxQuery; i++) {
             String soId = soIdList.get(i);
 
             getApi.getSale(soId, customer, onlineDate, loginData.getToken())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DisposableObserver<List<SaleResponse>>() {
+                    .subscribe(new DisposableObserver<Response<List<SaleResponse>>>() {
                         @Override
-                        public void onNext(List<SaleResponse> responseList) {
-                            synchronized (saleList) {
-                                saleList.addAll(responseList);
+                        public void onNext(Response<List<SaleResponse>> response) {
+                            List<SaleResponse> list = response.body();
+                            if (list != null) {
+                                synchronized (saleList) {
+                                    saleList.addAll(list);
+                                }
+                                Log.d("getSale", "soId=" + soId + " 回傳 " + list.size() + " 筆，目前總共 " + saleList.size());
+                            } else {
+                                Log.w("getSale", "soId=" + soId + " 回傳的 body 為 null");
                             }
 
-                            Log.d("getSale", "soId=" + soId + " 回傳 " + responseList.size() + " 筆，目前總共 " + saleList.size());
                             checkSaleRequestComplete();
                         }
 
@@ -196,15 +219,17 @@ public class FragmentSchedule extends Fragment {
 
     // 確認已抓取全部資料
     private void checkDataReady() {
-        Log.d("checkDataReady", "mo=" + moLoaded + " sale=" + saleLoaded + " SaleRequests=" + SaleRequests);
+        // (更新 Log，方便偵錯)
+        Log.d("checkDataReady", "order=" + orderLoaded + " mo=" + moLoaded + " sale=" + saleLoaded + " SaleRequests=" + SaleRequests);
 
-        // 當 MO 載入完成，且 Sale 尚未開始載入
-        if (moLoaded && !saleLoaded && SaleRequests == 0) {
-            Log.d("checkDataReady", "MO 已載入，開始載入 Sale 資料");
+        // --- (修正 4: 確保 Order 和 MO 都載入完成) ---
+        // 當 Order 和 MO 都載入完成，且 Sale 尚未開始
+        if (orderLoaded && moLoaded && !saleLoaded && SaleRequests == 0) {
+            Log.d("checkDataReady", "Order 和 MO 已載入，開始載入 Sale 資料");
             getSaleData();
         }
-        // 當兩者都載入完成
-        else if (moLoaded && saleLoaded) {
+        // 當所有資料都載入完成
+        else if (orderLoaded && moLoaded && saleLoaded) {
             Log.d("checkDataReady", "所有資料已載入完成，開始處理");
             loadData();
         }
@@ -223,7 +248,7 @@ public class FragmentSchedule extends Fragment {
         calendar.set(Calendar.MINUTE, 0); // 從 00 分開始
         calendar.set(Calendar.SECOND, 0);
 
-        Log.d("loadData", "有 sale 資料，開始處理");
+        Log.d("loadData", "有 sale 資料 ("+ saleList.size() +")，開始處理");
         for (int i = 0; i < saleList.size(); i++) {
             SaleResponse sale = saleList.get(i);
             Log.d("loadData", "處理第 " + i + " 筆 sale");

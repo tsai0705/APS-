@@ -2,10 +2,6 @@ package com.example.aps_true.utils.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * 修正後的 POJO。
- * 欄位已從 'Records' 內部類別移至頂層。
- */
 public class QianguanResponse {
 
     @SerializedName("id")
@@ -38,6 +34,11 @@ public class QianguanResponse {
     @SerializedName("customer")
     private String customer;
 
+    @SerializedName("batch")
+    private Integer batch;
+
+    @SerializedName("related_tech_route")
+    private RelatedTechRoute relatedTechRoute;
 
     public Integer getId() { return id; }
     public String getMoId() { return moId; }
@@ -49,4 +50,22 @@ public class QianguanResponse {
     public String getCompleteDate() { return completeDate; }
     public String getSoId() { return soId; }
     public String getCustomer() { return customer; }
+    public Integer getBatch() { return batch; }
+    public RelatedTechRoute getRelatedTechRoute() { return relatedTechRoute; }
+
+    // 巢狀類別（對應 related_tech_route）
+    public static class RelatedTechRoute {
+        @SerializedName("id")
+        private Integer id;
+
+        @SerializedName("tech_routing_id")
+        private String techRoutingId;
+
+        @SerializedName("tech_routing_name")
+        private String techRoutingName;
+
+        public Integer getId() { return id; }
+        public String getTechRoutingId() { return techRoutingId; }
+        public String getTechRoutingName() { return techRoutingName; }
+    }
 }

@@ -60,22 +60,22 @@ public interface GetApi {
 
     // 前關
     @GET("get-prev-manufacture")
-    Observable<List<QianguanResponse>> getQianguan(
-            @Query("customer") String customer,
-            @Query("sale_order") String sale_order,
+    Observable<Response<List<QianguanResponse>>> getQianguan(
+            @Query("so_id") String customer,
+            @Query("item_id") String sale_order,
             @Query("token") String token
     );
 
     // 本階
     @GET("get-current-stage-com")
-    Observable<List<ThislevelResponse>> getThislevel(
+    Observable<Response<List<ThislevelResponse>>> getThislevel(
             @Query("item_id") String item_id,
             @Query("token") String token
     );
 
     // 後關*
     @GET("get-next-part")
-    Observable<List<HouguanResponse>> getHouguan(
+    Observable<Response<List<HouguanResponse>>> getHouguan(
             @Query("sale_order") String sale_order,
             @Query("id") String id,
             @Query("token") String token
@@ -83,7 +83,7 @@ public interface GetApi {
 
     // 裝配*
     @GET("get-so-data")
-    Observable<List<AssemblyResponse>> getAssembly(
+    Observable<Response<List<AssemblyResponse>>> getAssembly(
             @Query("sale_order") String sale_order,
             @Query("item") String item,
             @Query("token") String token
@@ -91,7 +91,7 @@ public interface GetApi {
 
     // 訂單單號
     @GET("get-sale-order")
-    Observable<List<SaleResponse>> getSale(
+    Observable<Response<List<SaleResponse>>> getSale(
             @Query("sale_order") String so_id,
             @Query("customer") String customer,
             @Query("online_date") String online_date,

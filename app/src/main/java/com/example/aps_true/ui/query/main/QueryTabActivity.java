@@ -23,13 +23,18 @@ import com.example.aps_true.utils.api.response.ThislevelResponse;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.observers.DisposableObserver;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class QueryTabActivity extends AppCompatActivity {
     private TextView numberTextView, number2TextView, number3TextView, number4TextView, timeTextView,
@@ -39,20 +44,13 @@ public class QueryTabActivity extends AppCompatActivity {
     private TabLayout tab;
     private QueryViewPagerAdapter adapter;
     private TextView usernameTextview;
-    private ArrayList<QianguanResponse> qianguanList = new ArrayList<>();
-    private ArrayList<ThislevelResponse> thislevelList = new ArrayList<>();
-    private ArrayList<HouguanResponse> houguanList = new ArrayList<>();
-    private ArrayList<AssemblyResponse> assemblyList = new ArrayList<>();
-    private ArrayList<SaleResponse> saleList = new ArrayList<>();
+
     private LoginData loginData = LoginData.getInstance();
     private ApiClient apiClient;
     private GetApi getApi;
     private String item_id;
     private String so_id;
     private String token; // 儲存 Token
-
-    private CompositeDisposable disposables = new CompositeDisposable();
-    private int defaultTextColor;
 
     private static final String TAG = "QueryTabActivity";
 
@@ -81,8 +79,6 @@ public class QueryTabActivity extends AppCompatActivity {
         groupTextView = findViewById(R.id.querytab_group_tv);
         statusTextView = findViewById(R.id.querytab_status_tv);
 
-        defaultTextColor = statusTextView.getCurrentTextColor();
-
         apiClient = new ApiClient();
         getApi = apiClient.ApsApi().create(GetApi.class);
 
@@ -92,6 +88,7 @@ public class QueryTabActivity extends AppCompatActivity {
         // 從 Intent 獲取資料
         item_id = getIntent().getStringExtra("item_id");
         so_id = getIntent().getStringExtra("so_id");
+        Log.d(TAG, "item_id:"+item_id+",so_id:"+so_id+",token:"+token);
 
         viewPager = findViewById(R.id.viewpager);
         tab = findViewById(R.id.tab);
@@ -122,8 +119,6 @@ public class QueryTabActivity extends AppCompatActivity {
     }
 
     protected void Choose(Integer choose) {
-        disposables.clear(); // 清除上一個 Tab 的 API 請求
-
         numberTextView.setText(getResources().getStringArray(R.array.tab_number)[choose]);
         number2TextView.setText(getResources().getStringArray(R.array.tab_number2)[choose]);
         number3TextView.setText(getResources().getStringArray(R.array.tab_number3)[choose]);
@@ -133,18 +128,22 @@ public class QueryTabActivity extends AppCompatActivity {
         switch (choose) {
             case 0:
                 callQianguanApi();
+                statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
                 break;
             case 1:
                 callThislevelApi();
+                statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
                 break;
             case 2:
                 callHouguanApi();
                 break;
             case 3:
                 callAssemblyApi();
+                statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
                 break;
             case 4:
                 callSaleApi();
+                statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
                 break;
             default:
                 showErrorOnUi("無效的頁面");
@@ -153,110 +152,272 @@ public class QueryTabActivity extends AppCompatActivity {
     }
 
     // --- API 呼叫區 ---
-
     private void callQianguanApi() {
         Log.d(TAG, "呼叫 API (0): get-prev-manufacture");
-        disposables.add(
-                getApi.getQianguan(so_id, item_id, token)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<QianguanResponse>>() {
-                            @Override
-                            public void onNext(List<QianguanResponse> responseList) {
-                                synchronized (qianguanList) {
-                                    qianguanList.addAll(responseList);
-                                }
-                            }
-                            @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Qianguan Error", e); showErrorOnUi("前關 API 失敗: " + e.getMessage()); }
-                            @Override
-                            public void onComplete() {}
-                        })
-        );
+        getApi.getQianguan(so_id, item_id, token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<List<QianguanResponse>>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<QianguanResponse>> response) {
+                        if (!response.isSuccessful()) {
+                            showErrorOnUi("前關 API 錯誤: " + response.code()); return;
+                        }
+                        List<QianguanResponse> list = response.body();
+                        if (list == null || list.isEmpty()) {
+                            showErrorOnUi("查無前關製令資料"); return;
+                        }
+
+                        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                        Random random = new Random();
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.HOUR_OF_DAY, random.nextInt(24)); // 隨機設定 0-23 點
+                        calendar.set(Calendar.MINUTE, 0); // 從 00 分開始
+                        calendar.set(Calendar.SECOND, 0);
+                        String start = "計畫開始：" + timeFormat.format(calendar.getTime());
+                        calendar.add(Calendar.MINUTE, 30);
+                        String end = "計畫結束：" + timeFormat.format(calendar.getTime());
+
+                        QianguanResponse r = list.get(0);
+                        updateUiWithData(
+                                r.getMoId(),
+                                so_id,
+                                r.getCustomer(),
+                                r.getItemName(),
+                                r.getOnlineDate(),
+                                "生產數量:"+String.valueOf(r.getQty()),
+                                start,
+                                end,
+                                "一群-沖床",
+                                "結案"
+                        );
+                        Log.d(TAG, r.getMoId());
+                    }
+                    @Override
+                    public void onError(Throwable e) { Log.e(TAG, "Qianguan Error", e); showErrorOnUi("前關 API 失敗: " + e.getMessage()); }
+                    @Override
+                    public void onComplete() {}
+                });
     }
 
     private void callThislevelApi() {
         Log.d(TAG, "呼叫 API (1): get-current-stage-com");
-        disposables.add(
-                getApi.getThislevel(item_id, token)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<ThislevelResponse>>() {
-                            @Override
-                            public void onNext(List<ThislevelResponse> responseList) {
-                                synchronized (thislevelList) {
-                                    thislevelList.addAll(responseList);
-                                }
+        getApi.getThislevel(item_id, token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<List<ThislevelResponse>>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<ThislevelResponse>> response) {
+                        if (!response.isSuccessful()) {
+                            showErrorOnUi("本階 API 錯誤: " + response.code()); return;
+                        }
+                        List<ThislevelResponse> list = response.body();
+                        if (list == null || list.isEmpty()) {
+                            showErrorOnUi("查無本階製令資料"); return;
+                        }
+
+                        ThislevelResponse r = list.get(0);
+                        List<ThislevelResponse.Parent> parentList = r.getParent();
+                        String bomKeyName = "N/A";
+
+                        if (parentList != null && !parentList.isEmpty()) {
+                            ThislevelResponse.Parent firstParent = parentList.get(0);
+                            if (firstParent != null) {
+                                bomKeyName = firstParent.getBomkeyName();
                             }
-                            @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Thislevel Error", e); showErrorOnUi("本階 API 失敗: " + e.getMessage()); }
-                            @Override
-                            public void onComplete() {}
-                        })
-        );
+                        }
+
+                        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                        Random random = new Random();
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.HOUR_OF_DAY, random.nextInt(24)); // 隨機設定 0-23 點
+                        calendar.set(Calendar.MINUTE, 0); // 從 00 分開始
+                        calendar.set(Calendar.SECOND, 0);
+                        String start = "計畫開始：" + timeFormat.format(calendar.getTime());
+                        calendar.add(Calendar.MINUTE, 30);
+                        String end = "計畫結束：" + timeFormat.format(calendar.getTime());
+
+                        HouguanResponse r = list.get(0);
+                        updateUiWithData(
+                                r.getMoId(),
+                                so_id,
+                                r.getCustomer(),
+                                bomKeyName,
+                                r.getOnlineDate(),
+                                "生產數量:"+String.valueOf(r.getQty()),
+                                start,
+                                end,
+                                "一群-沖床",
+                                "結案"
+                        );
+                        Log.d(TAG, r.getMoId());
+                    }
+                    @Override
+                    public void onError(Throwable e) { Log.e(TAG, "Thislevel Error", e); showErrorOnUi("本階 API 失敗: " + e.getMessage()); }
+                    @Override
+                    public void onComplete() {}
+                });
     }
 
     private void callHouguanApi() {
         Log.d(TAG, "呼叫 API (2): get-next-part");
-        disposables.add(
-                getApi.getHouguan(so_id, item_id, token)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<HouguanResponse>>() {
-                            @Override
-                            public void onNext(List<HouguanResponse> responseList) {
-                                synchronized (houguanList) {
-                                    houguanList.addAll(responseList);
-                                }
-                            }
-                            @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Houguan Error", e); showErrorOnUi("後關 API 失敗: " + e.getMessage()); }
-                            @Override
-                            public void onComplete() {}
-                        })
-        );
+        getApi.getHouguan(so_id, item_id, token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<List<HouguanResponse>>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<HouguanResponse>> response) {
+                        if (!response.isSuccessful()) {
+                            showErrorOnUi("後關 API 錯誤: " + response.code()); return;
+                        }
+                        List<HouguanResponse> list = response.body();
+                        if (list == null || list.isEmpty()) {
+                            showErrorOnUi("查無後關製令資料"); return;
+                        }
+
+                        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                        Random random = new Random();
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.HOUR_OF_DAY, random.nextInt(24)); // 隨機設定 0-23 點
+                        calendar.set(Calendar.MINUTE, 0); // 從 00 分開始
+                        calendar.set(Calendar.SECOND, 0);
+                        String start = "計畫開始：" + timeFormat.format(calendar.getTime());
+                        calendar.add(Calendar.MINUTE, 30);
+                        String end = "計畫結束：" + timeFormat.format(calendar.getTime());
+
+                        HouguanResponse r = list.get(0);
+                        updateUiWithData(
+                                r.getMoId(),
+                                so_id,
+                                r.getCustomer(),
+                                r.getItemName(),
+                                r.getOnlineDate(),
+                                "生產數量:"+String.valueOf(r.getQty()),
+                                start,
+                                end,
+                                "一群-沖床",
+                                "結案"
+                        );
+                        Log.d(TAG, r.getMoId());
+                    }
+                    @Override
+                    public void onError(Throwable e) { Log.e(TAG, "Houguan Error", e); showErrorOnUi("後關 API 失敗: " + e.getMessage()); }
+                    @Override
+                    public void onComplete() {}
+                });
     }
 
     private void callAssemblyApi() {
         Log.d(TAG, "呼叫 API (3): get-so-data");
-        disposables.add(
-                getApi.getAssembly(so_id, item_id, token)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<AssemblyResponse>>() {
-                            @Override
-                            public void onNext(List<AssemblyResponse> responseList) {
-                                synchronized (assemblyList) {
-                                    assemblyList.addAll(responseList);
-                                }
-                            }
-                            @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Assembly Error", e); showErrorOnUi("裝配 API 失敗: " + e.getMessage()); }
-                            @Override
-                            public void onComplete() {}
-                        })
-        );
+        getApi.getAssembly(so_id, item_id, token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<List<AssemblyResponse>>>() {
+
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<AssemblyResponse>> response) {
+                        if (!response.isSuccessful()) {
+                            showErrorOnUi("裝配 API 錯誤: " + response.code()); return;
+                        }
+                        List<AssemblyResponse> list = response.body();
+                        if (list == null || list.isEmpty()) {
+                            showErrorOnUi("查無裝配製令資料"); return;
+                        }
+                        AssemblyResponse r = list.get(0);
+                        updateUiWithData(
+                                r.getMoId(),
+                                String.valueOf(r.getQty()), // 根據文件 qty 是 Int
+                                r.getOnlineDate(),
+                                r.getCompleteDate(),
+                                r.getCustomer(),
+                                "生效"
+                        );
+                    }
+                    @Override
+                    public void onError(Throwable e) { Log.e(TAG, "Assembly Error", e); showErrorOnUi("裝配 API 失敗: " + e.getMessage()); }
+                    @Override
+                    public void onComplete() {}
+                });
     }
 
     private void callSaleApi() {
         Log.d(TAG, "呼叫 API (4): get-sale-order");
-        disposables.add(
-                getApi.getSale(so_id, null, null, token) // 傳遞 null 給缺失的參數
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<SaleResponse>>() {
-                            @Override
-                            public void onNext(List<SaleResponse> responseList) {
-                                synchronized (saleList) {
-                                    saleList.addAll(responseList);
+        getApi.getSale(so_id, "", "", token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Response<List<SaleResponse>>>() {
+
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<SaleResponse>> response) {
+                        if (!response.isSuccessful()) {
+                            showErrorOnUi("銷售 API 錯誤: " + response.code()); return;
+                        }
+                        List<SaleResponse> list = response.body();
+                        if (list == null || list.isEmpty()) {
+                            showErrorOnUi("查無銷售訂單資料"); return;
+                        }
+
+                        SaleResponse r = list.get(0);
+                        // 根據文件，從巢狀的 sale_order 獲取詳細資料
+                        String customerName = r.getCustomer(); // 預設
+                        String containerDateStr = "N/A"; // 預設
+
+                        List<SaleResponse.SaleOrder> saleOrderList = r.getSaleOrder();
+                        if (saleOrderList != null && !saleOrderList.isEmpty()) {
+                            SaleResponse.SaleOrder firstOrder = saleOrderList.get(0);
+                            if (firstOrder.getCustomerName() != null) {
+                                customerName = firstOrder.getCustomerName();
+                            }
+                            if (firstOrder.getContainerDate() != null) {
+                                try {
+                                    // 轉換 Date 物件為 String
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                                    containerDateStr = sdf.format(firstOrder.getContainerDate());
+                                } catch (Exception e) {
+                                    Log.e(TAG, "日期格式化失敗", e);
                                 }
                             }
-                            @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Sale Error", e); showErrorOnUi("銷售 API 失敗: " + e.getMessage()); }
-                            @Override
-                            public void onComplete() {}
-                        })
-        );
+                        }
+
+                        updateUiWithData(
+                                r.getSoId(),        // number4Data (SO ID)
+                                r.getQty(),         // sumData (根據文件 qty 是 String)
+                                r.getDate(),        // startDate (上線日期)
+                                containerDateStr,   // endDate (結關日)
+                                customerName,       // groupData
+                                "生效"
+                        );
+                    }
+                    @Override
+                    public void onError(Throwable e) { Log.e(TAG, "Sale Error", e); showErrorOnUi("銷售 API 失敗: " + e.getMessage()); }
+                    @Override
+                    public void onComplete() {}
+                });
     }
 
     // --- UI 輔助方法 ---
@@ -270,26 +431,22 @@ public class QueryTabActivity extends AppCompatActivity {
         number4TextView.setText("-");
     }
 
-    private void updateUiWithData(String number4Data, String sumData, String startDate, String endDate, String groupData, String statusData) {
+    private void updateUiWithData(String numberData,String number2Data,String number3Data,String number4Data,String timeData, String sumData, String startDate, String endDate, String groupData, String statusData) {
         // 這些是資料欄位
+        numberTextView.setText(numberData != null ? numberData : "N/A");
+        number2TextView.setText(number2Data != null ? number2Data : "N/A");
+        number3TextView.setText(number3Data != null ? number3Data : "N/A");
         number4TextView.setText(number4Data != null ? number4Data : "N/A");
+        timeTextView.setText(timeData != null ? timeData : "N/A");
         sumTextView.setText(sumData != null ? sumData : "N/A");
         timestartTextView.setText(startDate != null ? startDate : "N/A");
         timeendTextView.setText(endDate != null ? endDate : "N/A");
         groupTextView.setText(groupData != null ? groupData : "N/A");
         statusTextView.setText(statusData != null ? statusData : "N/A");
-
-        // 狀態顏色
-        if (statusData != null && statusData.equals("已完工")) {
-            statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
-        } else {
-            statusTextView.setTextColor(defaultTextColor);
-        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        disposables.clear(); // 離開 Activity 時，清除所有 API 請求
     }
 }

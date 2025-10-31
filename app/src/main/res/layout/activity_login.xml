@@ -57,6 +57,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/border"
+                    android:text="e1001"
                     android:hint="  帳號"
                     android:inputType="text" />
 
@@ -92,6 +93,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/border"
+                    android:text="e1001"
                     android:hint="  密碼"
                     android:inputType="textPassword" />
 

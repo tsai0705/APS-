@@ -26,10 +26,10 @@ public class ThislevelResponse {
     private Integer rowId;
 
     @SerializedName("unit_id")
-    private Integer unitId;
+    private String unitId;
 
     @SerializedName("unit_qty")
-    private String unitQty;
+    private Integer unitQty;
 
     @SerializedName("nuse_qty")
     private Integer nuseQty;
@@ -91,19 +91,19 @@ public class ThislevelResponse {
         this.rowId = rowId;
     }
 
-    public Integer getUnitId() {
+    public String getUnitId() {
         return unitId;
     }
 
-    public void setUnitId(Integer unitId) {
+    public void setUnitId(String unitId) {
         this.unitId = unitId;
     }
 
-    public String getUnitQty() {
+    public Integer getUnitQty() {
         return unitQty;
     }
 
-    public void setUnitQty(String unitQty) {
+    public void setUnitQty(Integer unitQty) {
         this.unitQty = unitQty;
     }
 

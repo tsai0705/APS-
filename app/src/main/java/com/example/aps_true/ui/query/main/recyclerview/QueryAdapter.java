@@ -60,7 +60,7 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         // 建議在整行 itemView 上處理點擊
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, QueryTabActivity.class);
-            intent.putExtra("item_id", item.getNumber3());
+            intent.putExtra("item_id", item.getNumber());
             intent.putExtra("so_id", item.getSource());
             context.startActivity(intent);
         });

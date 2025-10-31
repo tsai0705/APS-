@@ -29,6 +29,7 @@ import java.util.Locale;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class QueryMainActivity extends AppCompatActivity {
     private ImageButton backImageButton;
@@ -131,14 +132,15 @@ public class QueryMainActivity extends AppCompatActivity {
             getApi.getSale(soId, customer, onlineDate, loginData.getToken())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DisposableObserver<List<SaleResponse>>() {
+                    .subscribe(new DisposableObserver<Response<List<SaleResponse>>>() {
                         @Override
-                        public void onNext(List<SaleResponse> responseList) {
+                        public void onNext(Response<List<SaleResponse>> response) {
+                            List<SaleResponse> list = response.body();
                             synchronized (saleList) {
-                                saleList.addAll(responseList);
+                                saleList.addAll(list);
                             }
 
-                            Log.d("getSale", "soId=" + soId + " 回傳 " + responseList.size() + " 筆，目前總共 " + saleList.size());
+                            Log.d("getSale", "soId=" + soId + " 回傳 " + list.size() + " 筆，目前總共 " + saleList.size());
                             checkSaleRequestComplete();
                         }
 
