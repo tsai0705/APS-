@@ -14,7 +14,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.aps_true.R;
 import com.example.aps_true.data.LoginData;
 import com.example.aps_true.data.TabData;
-import com.example.aps_true.ui.query.main.QueryViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -24,7 +23,7 @@ public class TodayMainActivity extends AppCompatActivity {
     private ImageButton backButton;
     private ViewPager2 viewPager;
     private TabLayout tab;
-    private QueryViewPagerAdapter adapter;
+    private TodayViewPagerAdapter adapter;
     private TabData tabData = TabData.getInstance(); // 呼叫類別的靜態方法產生單例
     private TextView usernameTextview;
     private LoginData loginData = LoginData.getInstance(); //連接LoginData
@@ -69,7 +68,7 @@ public class TodayMainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
         tab = findViewById(R.id.tab);
 
-        adapter = new QueryViewPagerAdapter(this);
+        adapter = new TodayViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(1);
 

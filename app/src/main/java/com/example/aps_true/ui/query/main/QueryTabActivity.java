@@ -23,15 +23,13 @@ import com.example.aps_true.utils.api.response.ThislevelResponse;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class QueryTabActivity extends AppCompatActivity {
     private TextView numberTextView, number2TextView, number3TextView, number4TextView, timeTextView,
@@ -41,7 +39,11 @@ public class QueryTabActivity extends AppCompatActivity {
     private TabLayout tab;
     private QueryViewPagerAdapter adapter;
     private TextView usernameTextview;
-
+    private ArrayList<QianguanResponse> qianguanList = new ArrayList<>();
+    private ArrayList<ThislevelResponse> thislevelList = new ArrayList<>();
+    private ArrayList<HouguanResponse> houguanList = new ArrayList<>();
+    private ArrayList<AssemblyResponse> assemblyList = new ArrayList<>();
+    private ArrayList<SaleResponse> saleList = new ArrayList<>();
     private LoginData loginData = LoginData.getInstance();
     private ApiClient apiClient;
     private GetApi getApi;
@@ -94,9 +96,9 @@ public class QueryTabActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager);
         tab = findViewById(R.id.tab);
 
-        adapter = new QueryViewPagerAdapter(this);
+        adapter = new QueryViewPagerAdapter(this, item_id, so_id);
         viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(1); // 預設選中 "本階製令"
+        viewPager.setCurrentItem(0); // 預設選中 "本階製令" (1) 現改為0測試
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -158,22 +160,12 @@ public class QueryTabActivity extends AppCompatActivity {
                 getApi.getQianguan(so_id, item_id, token)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<Response<List<QianguanResponse>>>() {
+                        .subscribeWith(new DisposableObserver<List<QianguanResponse>>() {
                             @Override
-                            public void onNext(Response<List<QianguanResponse>> response) {
-                                List<QianguanResponse> list = response.body();
-                                if (list == null || list.isEmpty()) {
-                                    showErrorOnUi("查無前關製令資料"); return;
+                            public void onNext(List<QianguanResponse> responseList) {
+                                synchronized (qianguanList) {
+                                    qianguanList.addAll(responseList);
                                 }
-                                QianguanResponse r = list.get(0);
-                                updateUiWithData(
-                                        r.getMoId(),
-                                        String.valueOf(r.getQty()),
-                                        r.getOnlineDate(),
-                                        r.getCompleteDate(),
-                                        r.getCustomer(),
-                                        "結案"
-                                );
                             }
                             @Override
                             public void onError(Throwable e) { Log.e(TAG, "Qianguan Error", e); showErrorOnUi("前關 API 失敗: " + e.getMessage()); }
@@ -189,22 +181,12 @@ public class QueryTabActivity extends AppCompatActivity {
                 getApi.getThislevel(item_id, token)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<Response<List<ThislevelResponse>>>() {
+                        .subscribeWith(new DisposableObserver<List<ThislevelResponse>>() {
                             @Override
-                            public void onNext(Response<List<ThislevelResponse>> response) {
-                                List<ThislevelResponse> list = response.body();
-                                if (list == null || list.isEmpty()) {
-                                    showErrorOnUi("查無本階製令資料"); return;
+                            public void onNext(List<ThislevelResponse> responseList) {
+                                synchronized (thislevelList) {
+                                    thislevelList.addAll(responseList);
                                 }
-                                ThislevelResponse r = list.get(0);
-                                updateUiWithData(
-                                        "N/A", // API 回應中沒有 mo_id
-                                        String.valueOf(r.getUnitQty()), // API 回應中有 unit_qty
-                                        "N/A",
-                                        "N/A",
-                                        "N/A",
-                                        "生效"
-                                );
                             }
                             @Override
                             public void onError(Throwable e) { Log.e(TAG, "Thislevel Error", e); showErrorOnUi("本階 API 失敗: " + e.getMessage()); }
@@ -220,33 +202,11 @@ public class QueryTabActivity extends AppCompatActivity {
                 getApi.getHouguan(so_id, item_id, token)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<Response<List<HouguanResponse>>>() {
+                        .subscribeWith(new DisposableObserver<List<HouguanResponse>>() {
                             @Override
-                            public void onNext(Response<List<HouguanResponse>> response) {
-                                if (!response.isSuccessful()) {
-                                    showErrorOnUi("後關 API 錯誤: " + response.code()); return;
-                                }
-                                List<HouguanResponse> list = response.body();
-                                if (list == null || list.isEmpty()) {
-                                    showErrorOnUi("查無後關製令資料"); return;
-                                }
-
-                                try {
-                                    HouguanResponse r = list.get(0);
-                                    HouguanResponse.RelatedTopParent parent = r.getRelatedTopParent().get(0);
-                                    HouguanResponse.Manufactures m = parent.getManufactures().get(0);
-
-                                    updateUiWithData(
-                                            m.getMoId(),
-                                            m.getQty(),
-                                            m.getOnlineDate(),
-                                            m.getCompleteDate(),
-                                            m.getCustomer(),
-                                            "生效"
-                                    );
-                                } catch (Exception e) {
-                                    Log.e(TAG, "解析 HouguanResponse 巢狀資料失敗", e);
-                                    showErrorOnUi("後關資料結構錯誤");
+                            public void onNext(List<HouguanResponse> responseList) {
+                                synchronized (houguanList) {
+                                    houguanList.addAll(responseList);
                                 }
                             }
                             @Override
@@ -263,25 +223,12 @@ public class QueryTabActivity extends AppCompatActivity {
                 getApi.getAssembly(so_id, item_id, token)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<Response<List<AssemblyResponse>>>() {
+                        .subscribeWith(new DisposableObserver<List<AssemblyResponse>>() {
                             @Override
-                            public void onNext(Response<List<AssemblyResponse>> response) {
-                                if (!response.isSuccessful()) {
-                                    showErrorOnUi("裝配 API 錯誤: " + response.code()); return;
+                            public void onNext(List<AssemblyResponse> responseList) {
+                                synchronized (assemblyList) {
+                                    assemblyList.addAll(responseList);
                                 }
-                                List<AssemblyResponse> list = response.body();
-                                if (list == null || list.isEmpty()) {
-                                    showErrorOnUi("查無裝配製令資料"); return;
-                                }
-                                AssemblyResponse r = list.get(0);
-                                updateUiWithData(
-                                        r.getMoId(),
-                                        String.valueOf(r.getQty()), // 根據文件 qty 是 Int
-                                        r.getOnlineDate(),
-                                        r.getCompleteDate(),
-                                        r.getCustomer(),
-                                        "生效"
-                                );
                             }
                             @Override
                             public void onError(Throwable e) { Log.e(TAG, "Assembly Error", e); showErrorOnUi("裝配 API 失敗: " + e.getMessage()); }
@@ -297,43 +244,12 @@ public class QueryTabActivity extends AppCompatActivity {
                 getApi.getSale(so_id, null, null, token) // 傳遞 null 給缺失的參數
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<SaleResponse>>() { // ⚠️ 沒有 Response<> 包裝
+                        .subscribeWith(new DisposableObserver<List<SaleResponse>>() {
                             @Override
                             public void onNext(List<SaleResponse> responseList) {
-                                if (responseList == null || responseList.isEmpty()) {
-                                    showErrorOnUi("查無銷售訂單資料"); return;
+                                synchronized (saleList) {
+                                    saleList.addAll(responseList);
                                 }
-                                SaleResponse r = responseList.get(0);
-
-                                // 根據文件，從巢狀的 sale_order 獲取詳細資料
-                                String customerName = r.getCustomer(); // 預設
-                                String containerDateStr = "N/A"; // 預設
-
-                                List<SaleResponse.SaleOrder> saleOrderList = r.getSaleOrder();
-                                if (saleOrderList != null && !saleOrderList.isEmpty()) {
-                                    SaleResponse.SaleOrder firstOrder = saleOrderList.get(0);
-                                    if (firstOrder.getCustomerName() != null) {
-                                        customerName = firstOrder.getCustomerName();
-                                    }
-                                    if (firstOrder.getContainerDate() != null) {
-                                        try {
-                                            // 轉換 Date 物件為 String
-                                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                                            containerDateStr = sdf.format(firstOrder.getContainerDate());
-                                        } catch (Exception e) {
-                                            Log.e(TAG, "日期格式化失敗", e);
-                                        }
-                                    }
-                                }
-
-                                updateUiWithData(
-                                        r.getSoId(),        // number4Data (SO ID)
-                                        r.getQty(),         // sumData (根據文件 qty 是 String)
-                                        r.getDate(),        // startDate (上線日期)
-                                        containerDateStr,   // endDate (結關日)
-                                        customerName,       // groupData
-                                        "生效"
-                                );
                             }
                             @Override
                             public void onError(Throwable e) { Log.e(TAG, "Sale Error", e); showErrorOnUi("銷售 API 失敗: " + e.getMessage()); }
@@ -354,9 +270,6 @@ public class QueryTabActivity extends AppCompatActivity {
         number4TextView.setText("-");
     }
 
-    /**
-     * 統一更新 UI 資料欄位 (自動處理 null)
-     */
     private void updateUiWithData(String number4Data, String sumData, String startDate, String endDate, String groupData, String statusData) {
         // 這些是資料欄位
         number4TextView.setText(number4Data != null ? number4Data : "N/A");
@@ -372,10 +285,6 @@ public class QueryTabActivity extends AppCompatActivity {
         } else {
             statusTextView.setTextColor(defaultTextColor);
         }
-    }
-
-    public String getDataForFragment() {
-        return item_id;
     }
 
     @Override

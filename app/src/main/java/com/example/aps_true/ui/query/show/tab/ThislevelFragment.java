@@ -17,7 +17,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.aps_true.R;
 import com.example.aps_true.data.LoginData;
 import com.example.aps_true.data.TabData;
-import com.example.aps_true.ui.query.main.QueryTabActivity;
 import com.example.aps_true.ui.query.show.tab.recyclerview.OrderAdapter;
 import com.example.aps_true.ui.query.show.tab.recyclerview.OrderItem;
 import com.example.aps_true.utils.api.request.ApiClient;
@@ -34,12 +33,21 @@ public class ThislevelFragment extends Fragment {
     private ImageButton rightButton,leftButton;
     private RecyclerView thislevelRecyclerView;
     private OrderAdapter adapter;
-    private QueryTabActivity activity = (QueryTabActivity) getActivity();
     private String item_id;
+    private String so_id;
     private ApiClient apiClient;
     private GetApi getApi;
     private LoginData loginData = LoginData.getInstance(); //連接LoginData
     private TabData tabData = TabData.getInstance();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            item_id = getArguments().getString("ITEM_ID");
+            so_id = getArguments().getString("SO_ID");
+        } //
+    }
 
     @Nullable
     @Override
@@ -62,8 +70,6 @@ public class ThislevelFragment extends Fragment {
         adapter = new OrderAdapter(requireContext(), new ArrayList<>());
         thislevelRecyclerView.setAdapter(adapter);
 
-
-        item_id = activity.getDataForFragment();
 
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
