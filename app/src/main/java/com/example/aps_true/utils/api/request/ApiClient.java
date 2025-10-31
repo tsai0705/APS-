@@ -1,5 +1,7 @@
 package com.example.aps_true.utils.api.request;
 
+import com.example.aps_true.BuildConfig;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -17,7 +19,10 @@ public class ApiClient {
     public Retrofit ApsApi() {
         // 配置 HttpLoggingInterceptor 用於除錯
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        // 只在 Debug 模式下記錄完整內容，Release 模式下只記錄基本信息
+        loggingInterceptor.setLevel(BuildConfig.DEBUG ? 
+                HttpLoggingInterceptor.Level.BODY : 
+                HttpLoggingInterceptor.Level.BASIC);
 
         // 配置 OkHttpClient，增加超時設置和重試機制
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
