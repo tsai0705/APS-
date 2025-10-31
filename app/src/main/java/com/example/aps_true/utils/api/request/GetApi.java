@@ -59,7 +59,7 @@ public interface GetApi {
     );
 
     // 前關
-    @GET("get-manufacture")
+    @GET("get-prev-manufacture")
     Observable<Response<List<QianguanResponse>>> getQianguan(
             @Query("customer") String customer,
             @Query("sale_order") String sale_order,

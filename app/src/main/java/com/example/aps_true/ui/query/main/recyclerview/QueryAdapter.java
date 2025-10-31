@@ -57,11 +57,11 @@ public class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> 
         holder.processTextView.setText(String.valueOf(item.getProcess()));
         holder.checkTextView.setText(String.valueOf(item.getCheck()));
 
-        // 建議在整行 itemView 上處理點擊（你也可以改回某個欄位）
+        // 建議在整行 itemView 上處理點擊
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, QueryTabActivity.class);
-            // 若需要把 item 資訊傳到下一個 Activity，可放 extras，例如:
-            // intent.putExtra("orderNumber", item.getOrderNumber());
+            intent.putExtra("item_id", item.getNumber3());
+            intent.putExtra("so_id", item.getSource());
             context.startActivity(intent);
         });
     }
