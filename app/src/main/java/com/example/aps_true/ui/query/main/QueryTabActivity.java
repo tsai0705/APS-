@@ -168,7 +168,9 @@ public class QueryTabActivity extends AppCompatActivity {
                                 }
                             }
                             @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Qianguan Error", e); showErrorOnUi("前關 API 失敗: " + e.getMessage()); }
+                            public void onError(Throwable e) { 
+                                handleApiError("Qianguan", "前關", e);
+                            }
                             @Override
                             public void onComplete() {}
                         })
@@ -189,7 +191,9 @@ public class QueryTabActivity extends AppCompatActivity {
                                 }
                             }
                             @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Thislevel Error", e); showErrorOnUi("本階 API 失敗: " + e.getMessage()); }
+                            public void onError(Throwable e) { 
+                                handleApiError("Thislevel", "本階", e);
+                            }
                             @Override
                             public void onComplete() {}
                         })
@@ -210,7 +214,9 @@ public class QueryTabActivity extends AppCompatActivity {
                                 }
                             }
                             @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Houguan Error", e); showErrorOnUi("後關 API 失敗: " + e.getMessage()); }
+                            public void onError(Throwable e) { 
+                                handleApiError("Houguan", "後關", e);
+                            }
                             @Override
                             public void onComplete() {}
                         })
@@ -231,7 +237,9 @@ public class QueryTabActivity extends AppCompatActivity {
                                 }
                             }
                             @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Assembly Error", e); showErrorOnUi("裝配 API 失敗: " + e.getMessage()); }
+                            public void onError(Throwable e) { 
+                                handleApiError("Assembly", "裝配", e);
+                            }
                             @Override
                             public void onComplete() {}
                         })
@@ -252,7 +260,9 @@ public class QueryTabActivity extends AppCompatActivity {
                                 }
                             }
                             @Override
-                            public void onError(Throwable e) { Log.e(TAG, "Sale Error", e); showErrorOnUi("銷售 API 失敗: " + e.getMessage()); }
+                            public void onError(Throwable e) { 
+                                handleApiError("Sale", "銷售", e);
+                            }
                             @Override
                             public void onComplete() {}
                         })
@@ -260,6 +270,19 @@ public class QueryTabActivity extends AppCompatActivity {
     }
 
     // --- UI 輔助方法 ---
+
+    private void handleApiError(String tag, String apiName, Throwable e) {
+        Log.e(TAG, tag + " Error", e);
+        String errorMessage = apiName + " API 失敗: ";
+        if (e instanceof java.net.ProtocolException) {
+            errorMessage += "網絡連接異常，請檢查網絡或稍後重試";
+        } else if (e instanceof java.net.SocketTimeoutException) {
+            errorMessage += "連接超時，請檢查網絡";
+        } else {
+            errorMessage += e.getMessage();
+        }
+        showErrorOnUi(errorMessage);
+    }
 
     private void showErrorOnUi(String message) {
         sumTextView.setText("-");
